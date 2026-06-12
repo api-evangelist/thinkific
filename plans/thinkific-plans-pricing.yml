@@ -1,0 +1,77 @@
+name: Thinkific Plans and Pricing
+description: Pricing plans for the Thinkific online course platform with API access details
+version: '0.1'
+url: https://www.thinkific.com/pricing/
+plans:
+  - name: Start
+    description: Entry-level plan for creators launching their first courses
+    monthlyPrice: 99
+    annualPrice: 74
+    currency: USD
+    billingPeriod: monthly
+    features:
+      - Unlimited courses
+      - Unlimited live events
+      - 10,000 current students
+      - 1 community with DMs and weekly digests
+      - 2 course administrator accounts
+      - 200 GB/month video bandwidth
+    apiAccess: false
+    apiNotes: No API or webhook access on this plan
+  - name: Grow
+    description: Most popular plan for growing businesses needing API and webhook integrations
+    monthlyPrice: 199
+    annualPrice: 149
+    currency: USD
+    billingPeriod: monthly
+    features:
+      - Unlimited courses
+      - Unlimited live events
+      - 10,000 current students
+      - 3 communities for audience segmentation
+      - 2 site administrator accounts
+      - 400 GB/month video bandwidth
+      - Phone and priority chat support
+      - Standard API and webhooks access
+    apiAccess: true
+    apiNotes: Standard API and webhooks available; required minimum plan for API access
+  - name: Expand
+    description: Advanced plan for scaling operations with more administrators and communities
+    monthlyPrice: 499
+    annualPrice: 374
+    currency: USD
+    billingPeriod: monthly
+    features:
+      - Unlimited courses
+      - Unlimited live events
+      - 10,000 current students
+      - 10 communities with 200 community spaces
+      - 5 site administrator accounts
+      - 1000 GB/month video bandwidth
+      - Dedicated launch support
+      - Full API and webhooks access
+      - Third-party integrations
+    apiAccess: true
+    apiNotes: Full API and webhook access with third-party integrations
+  - name: Plus
+    description: Enterprise plan with custom pricing, unlimited students, and advanced integrations
+    monthlyPrice: null
+    annualPrice: null
+    currency: USD
+    billingPeriod: custom
+    pricing: Contact sales for custom pricing
+    features:
+      - Unlimited courses and students
+      - Unlimited communities with custom spaces
+      - Multiple site administrator accounts
+      - 7500+ GB/month video bandwidth
+      - Built-in AI teaching assistant
+      - Dedicated onboarding and step-by-step support
+      - CRM integrations with HubSpot and Salesforce
+      - Advanced API and webhooks with higher rate limits
+    apiAccess: true
+    apiNotes: Advanced API access with higher rate limits than standard plans; CRM integrations included
+notes: >
+  API and webhook access requires the Grow plan ($199/month) or higher. Transaction fees apply
+  when using external Stripe instead of Thinkific Payments. A 30-day free trial is available
+  on Basic, Start, and Grow plans.

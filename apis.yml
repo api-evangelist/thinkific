@@ -1,0 +1,96 @@
+aid: thinkific
+name: Thinkific
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+description: >
+  Thinkific is an online course creation and delivery platform that enables creators and businesses
+  to build, market, and sell courses, communities, and digital products. The Thinkific Admin REST
+  API provides programmatic access to site data including courses, enrollments, users, products,
+  orders, bundles, and groups. The Webhooks API (v2) delivers real-time event notifications for
+  user actions, payment events, product changes, and lead captures. API access is available on
+  the Grow plan and above, with higher rate limits available to Plus customers. Developers can
+  authenticate via API key or OAuth to build public apps listed in the Thinkific App Store or
+  private integrations.
+tags:
+  - Online Courses
+  - E-Learning
+  - LMS
+  - Course Creation
+  - Enrollments
+  - Users
+  - Education
+  - Digital Products
+  - Webhooks
+apis:
+  - aid: thinkific:admin-api
+    name: Thinkific Admin REST API
+    type: REST
+    description: >
+      The Thinkific Admin REST API exposes endpoints for managing courses, enrollments, users,
+      products, orders, bundles, groups, and site data. Authentication is via API key or OAuth.
+      The base URL is https://api.thinkific.com/api/public/v1.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.thinkific.com/api/api-documentation
+    baseURL: https://api.thinkific.com/api/public/v1
+    tags:
+      - Courses
+      - Enrollments
+      - Users
+      - Products
+      - Orders
+    properties:
+      - type: Documentation
+        url: https://developers.thinkific.com/api/api-documentation
+  - aid: thinkific:webhooks-api
+    name: Thinkific Webhooks API
+    type: REST
+    description: >
+      The Thinkific Webhooks API (v2) provides real-time event-driven notifications for site
+      events including user creation, enrollment changes, order processing, product updates,
+      lead captures, payment events, and user deletions. Webhooks can be created programmatically
+      using an API key.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.thinkific.com/api/webhooks-api/
+    baseURL: https://api.thinkific.com/api/v2
+    tags:
+      - Webhooks
+      - Events
+      - Real-Time
+      - Notifications
+    properties:
+      - type: Documentation
+        url: https://developers.thinkific.com/api/webhooks-api/
+common:
+  - type: Website
+    url: https://www.thinkific.com
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+  - type: GettingStarted
+    url: https://support.thinkific.dev/hc/en-us/articles/4422684433815-Getting-Started-with-Thinkific
+  - type: GitHubOrganization
+    url: https://github.com/thinkific
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/thinkific/
+  - type: Blog
+    url: https://www.thinkific.com/blog/
+  - type: Changelog
+    url: https://developers.thinkific.com/changelog
+  - type: Pricing
+    url: https://www.thinkific.com/pricing/
+  - type: StatusPage
+    url: https://status.thinkific.com/
+  - type: X
+    url: https://x.com/thinkific
+  - type: Plans
+    url: plans/thinkific-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/thinkific-rate-limits.yml
+  - type: FinOps
+    url: finops/thinkific-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

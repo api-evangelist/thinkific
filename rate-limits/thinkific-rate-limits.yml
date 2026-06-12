@@ -1,0 +1,45 @@
+name: Thinkific API Rate Limits
+description: Rate limiting policy for the Thinkific Admin REST API and Webhooks API
+version: '0.1'
+url: https://developers.thinkific.com/api/rate-limits/
+limits:
+  - name: Standard Request Rate
+    description: Maximum number of API requests allowed per minute for standard plans
+    rate: 120
+    period: minute
+    scope: per API key
+    plans:
+      - Grow
+      - Expand
+  - name: Concurrent Request Limit
+    description: Maximum number of in-flight API requests allowed at the same time
+    rate: 10
+    period: concurrent
+    scope: per API key
+    plans:
+      - Grow
+      - Expand
+      - Plus
+  - name: Plus Plan Rate
+    description: Higher rate limits available to Thinkific Plus customers; contact sales for specifics
+    rate: null
+    period: minute
+    scope: per API key
+    plans:
+      - Plus
+    notes: Higher rates are available to Thinkific Plus customers; exact limits provided at contract
+errorHandling:
+  rateLimitExceededStatus: 429
+  rateLimitResetHeader: RateLimit-Reset
+  rateLimitResetFormat: epoch_time
+  description: >
+    When a rate limit is exceeded, the API returns HTTP 429. The response includes a
+    RateLimit-Reset header containing the epoch time when the rate limit will reset and
+    additional requests can be made. Consumers should implement retry logic using
+    industry-standard exponential backoff strategies.
+bestPractices:
+  - Implement exponential backoff when receiving 429 responses
+  - Monitor the RateLimit-Reset header to schedule retries appropriately
+  - Avoid burst requests; spread API calls evenly over time
+  - Keep concurrent in-flight requests at or below the 10-request limit
+  - Upgrade to Thinkific Plus for higher rate limits if needed

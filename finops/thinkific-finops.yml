@@ -1,0 +1,82 @@
+name: Thinkific FinOps
+description: FinOps Framework 1.0 FOCUS-aligned cost and usage profile for Thinkific API services
+version: '1.0'
+provider: Thinkific
+url: https://www.thinkific.com/pricing/
+currency: USD
+costModel:
+  type: subscription
+  billingCycle:
+    - monthly
+    - annual
+  annualDiscount: true
+  annualDiscountNotes: Annual billing provides significant savings vs monthly billing
+services:
+  - name: Grow Plan (API Access)
+    sku: thinkific-grow
+    category: Platform Subscription
+    description: Minimum plan required for API and webhook access
+    unitOfMeasure: per month
+    monthlyListPrice: 199.00
+    annualMonthlyListPrice: 149.00
+    annualSavings: 600.00
+    includes:
+      - Standard REST API access
+      - Webhook integrations
+      - 10,000 students
+      - 3 communities
+      - 400 GB/month video bandwidth
+  - name: Expand Plan
+    sku: thinkific-expand
+    category: Platform Subscription
+    description: Advanced plan with full API, third-party integrations, and more communities
+    unitOfMeasure: per month
+    monthlyListPrice: 499.00
+    annualMonthlyListPrice: 374.00
+    annualSavings: 1500.00
+    includes:
+      - Full REST API and webhook access
+      - Third-party integrations
+      - 10,000 students
+      - 10 communities
+      - 1000 GB/month video bandwidth
+  - name: Plus Plan (Enterprise)
+    sku: thinkific-plus
+    category: Platform Subscription
+    description: Enterprise plan with custom pricing, unlimited students, and higher API rate limits
+    unitOfMeasure: per month
+    monthlyListPrice: null
+    pricing: Custom (contact sales)
+    includes:
+      - Advanced API access with higher rate limits
+      - CRM integrations (HubSpot, Salesforce)
+      - Unlimited students
+      - 7500+ GB/month video bandwidth
+      - Dedicated onboarding support
+transactionFees:
+  - name: External Stripe Surcharge
+    description: Additional fee per transaction when using own Stripe account instead of Thinkific Payments
+    rate: up to 5%
+    applies: per transaction when using external Stripe
+    waived: When using Thinkific Payments as the payment processor
+costOptimization:
+  - strategy: Annual Billing
+    description: Switch to annual billing to reduce monthly cost by approximately 25-33%
+    applicablePlans:
+      - Grow
+      - Expand
+  - strategy: Use Thinkific Payments
+    description: Avoid the up-to-5% external Stripe surcharge by using Thinkific Payments
+    impact: Eliminates per-transaction surcharge fees
+  - strategy: Right-size Plan
+    description: API access requires at minimum the Grow plan; do not over-provision to Expand or Plus unless needed
+    impact: Significant monthly savings by matching plan to actual usage
+  - strategy: Student Limit Monitoring
+    description: Monitor current student count against the 10,000 student cap to avoid service disruptions
+    impact: Prevents unexpected upgrade requirements
+tags:
+  - E-Learning
+  - SaaS
+  - Subscription
+  - Online Courses
+  - API Access

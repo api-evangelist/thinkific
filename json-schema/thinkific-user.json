@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-user.json",
+  "title": "UserResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "User's ID",
+      "example": 1.0
+    },
+    "created_at": {
+      "type": "string",
+      "description": "User's created date",
+      "format": "date-time",
+      "example": "2018-07-12T23:19:00.154Z"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "The first name of the User.",
+      "example": "Bob"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "The last name of the User.",
+      "example": "Smith"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "The email of the User.",
+      "example": "Bob Smith"
+    },
+    "company": {
+      "type": "string",
+      "description": "The company of the User.",
+      "example": "The user's company"
+    },
+    "email": {
+      "type": "string",
+      "description": "User's email",
+      "format": "email",
+      "example": "bob@example.com"
+    },
+    "roles": {
+      "type": "array",
+      "description": "Any specific roles that the User should be placed in. Possible roles are: affiliate, course_admin, group_analyst, site_admin.",
+      "example": [
+        "affiliate"
+      ],
+      "items": {
+        "type": "string",
+        "enum": [
+          "affiliate",
+          "course_admin",
+          "group_analyst",
+          "site_admin"
+        ]
+      }
+    },
+    "avatar_url": {
+      "type": "string",
+      "description": "The fully-qualified avatar url of the User.",
+      "example": "https://example.com/avatar/123"
+    },
+    "bio": {
+      "type": "string",
+      "description": "The bio of the User.",
+      "example": "User's bio"
+    },
+    "headline": {
+      "type": "string",
+      "description": "The headline/title of the User.",
+      "example": "User's headline"
+    },
+    "affiliate_code": {
+      "type": "string",
+      "description": "The affiliate code of the User. ** Required only if the User is an affiliate. **",
+      "example": "abc123"
+    },
+    "external_source": {
+      "type": "string",
+      "description": "User's external source"
+    },
+    "affiliate_commission": {
+      "type": "number",
+      "description": "The affiliate commission % of the User. ** Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100. **",
+      "example": 20.0
+    },
+    "affiliate_commission_type": {
+      "type": "string",
+      "description": "The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). ** Required only if the User is an affiliate. **",
+      "example": "%"
+    },
+    "affiliate_payout_email": {
+      "type": "string",
+      "description": "The email of the User. ** Required only if the user is an affiliate. Used to pay the User out. **",
+      "example": "bob@example.com"
+    },
+    "administered_course_ids": {
+      "type": "array",
+      "description": "User's administered course ids",
+      "items": {
+        "type": "number",
+        "example": [
+          10,
+          20,
+          30
+        ]
+      }
+    },
+    "custom_profile_fields": {
+      "type": "array",
+      "description": "Custom profile fields for the User.",
+      "items": {
+        "$ref": "#/components/schemas/CustomProfileField"
+      }
+    }
+  }
+}

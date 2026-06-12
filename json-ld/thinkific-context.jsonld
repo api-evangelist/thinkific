@@ -1,0 +1,101 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "thinkific": "https://developers.thinkific.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Course": "schema:Course",
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "slug": "thinkific:slug",
+    "productable_type": "thinkific:productableType",
+    "productable_id": "thinkific:productableId",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "Enrollment": "thinkific:Enrollment",
+    "user_id": "thinkific:userId",
+    "course_id": "thinkific:courseId",
+    "activated_at": {
+      "@id": "thinkific:activatedAt",
+      "@type": "xsd:dateTime"
+    },
+    "expiry_date": {
+      "@id": "thinkific:expiryDate",
+      "@type": "xsd:date"
+    },
+    "completed": "thinkific:completed",
+    "completed_at": {
+      "@id": "thinkific:completedAt",
+      "@type": "xsd:dateTime"
+    },
+    "percentage_completed": "thinkific:percentageCompleted",
+    "is_free_trial": "thinkific:isFreeTrial",
+
+    "User": "schema:Person",
+    "first_name": "schema:givenName",
+    "last_name": "schema:familyName",
+    "email": "schema:email",
+    "company": "schema:worksFor",
+    "headline": "schema:jobTitle",
+    "bio": "schema:description",
+    "roles": "thinkific:roles",
+    "affiliate_code": "thinkific:affiliateCode",
+    "external_source": "thinkific:externalSource",
+
+    "Bundle": "schema:ItemList",
+    "bundle_enrollments": "thinkific:bundleEnrollments",
+
+    "Chapter": "schema:Chapter",
+    "course_id_ref": "thinkific:courseId",
+    "position": "schema:position",
+
+    "Coupon": "schema:Offer",
+    "coupon_code": "schema:serialNumber",
+    "discount_type": "thinkific:discountType",
+    "discount_amount": "schema:price",
+    "quantity": "schema:inventoryLevel",
+    "remaining_uses": "thinkific:remainingUses",
+    "expiration_date": {
+      "@id": "schema:validThrough",
+      "@type": "xsd:dateTime"
+    },
+
+    "Order": "schema:Order",
+    "amount_cents": "thinkific:amountCents",
+    "payment_type": "thinkific:paymentType",
+    "status": "thinkific:status",
+
+    "Group": "schema:Organization",
+    "group_analysts": "thinkific:groupAnalysts",
+    "group_users": "thinkific:groupUsers",
+
+    "Instructor": "schema:Person",
+    "instructor_email": "schema:email",
+    "instructor_name": "schema:name",
+
+    "Webhook": "thinkific:Webhook",
+    "url": "schema:url",
+    "topic": "thinkific:topic",
+    "active": "thinkific:active",
+
+    "SiteScript": "thinkific:SiteScript",
+    "src": "thinkific:src",
+    "content": "thinkific:content",
+
+    "Pagination": "thinkific:Pagination",
+    "total_items": "thinkific:totalItems",
+    "current_page": "thinkific:currentPage",
+    "next_page": "thinkific:nextPage",
+    "prev_page": "thinkific:prevPage",
+    "per_page": "thinkific:perPage"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": 1.0,
+  "user_id": 12.0,
+  "title": "Mr.",
+  "first_name": "My Course",
+  "last_name": "My Course",
+  "bio": "Bob Jones is an instructor of note.",
+  "slug": "bob",
+  "avatar_url": "https://example.com/avatar.png",
+  "email": "bob_jones@example.com",
+  "created_at": "example_created_at"
+}

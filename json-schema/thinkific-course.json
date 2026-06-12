@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-course.json",
+  "title": "CourseResponse",
+  "required": [
+    "chapter_ids",
+    "id",
+    "instructor_id",
+    "name",
+    "product_id",
+    "reviews_enabled"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The ID of the course",
+      "example": 1.0
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the course",
+      "example": "My Course"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly version of the course name. Used to construct URL for course Landing Pages & Course Player.",
+      "example": "my-course"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Deprecated - Used in legacy themes to display the subtitle of the Course.",
+      "example": "My Course Subtitle"
+    },
+    "product_id": {
+      "type": "number",
+      "description": "The Course's Product ID"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the Course(V2 themes currently don't have that info)",
+      "example": "Course description"
+    },
+    "course_card_text": {
+      "type": "string",
+      "description": "Deprecated - use 'description'.* - Used in legacy themes to populate the text for a Course card.",
+      "example": "my course"
+    },
+    "intro_video_youtube": {
+      "type": "string",
+      "description": "Deprecated - Used in legacy themes to designate an intro video from Youtube.",
+      "example": "youtube01"
+    },
+    "contact_information": {
+      "type": "string",
+      "description": "Deprecated - The contact information of the Course.",
+      "example": "Contact info"
+    },
+    "keywords": {
+      "type": "string",
+      "description": "The keywords of the Course",
+      "example": "course,learn,great"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Deprecated - Used in legacy themes to display the duration of the Course.",
+      "example": "22"
+    },
+    "banner_image_url": {
+      "type": "string",
+      "description": "Deprecated - use 'course_card_image_url'* - The landing page banner image url of the Course.",
+      "example": "http://example.com/banner.jpg"
+    },
+    "course_card_image_url": {
+      "type": "string",
+      "description": "The card image url of the Course",
+      "example": "http://example.com/card.jpg"
+    },
+    "intro_video_wistia_identifier": {
+      "type": "string",
+      "description": "Deprecated - Used in legacy themes to designate an intro video from Wistia.",
+      "example": "wistia0123"
+    },
+    "administrator_user_ids": {
+      "type": "array",
+      "example": [
+        1,
+        2
+      ],
+      "items": {
+        "type": "number",
+        "description": "The IDs of the Users that can administer the Course as integers"
+      }
+    },
+    "chapter_ids": {
+      "type": "array",
+      "example": [
+        1,
+        2
+      ],
+      "items": {
+        "type": "number",
+        "description": "The IDs of the Chapters in the Course as integers"
+      }
+    },
+    "reviews_enabled": {
+      "type": "boolean",
+      "description": "A boolean indicating whether reviews are enabled for the Course",
+      "example": false
+    },
+    "user_id": {
+      "type": "number",
+      "description": "The ID of the User that created the Course",
+      "example": 1.0
+    },
+    "instructor_id": {
+      "type": "number",
+      "description": "The ID of the Instructor of the Course",
+      "example": 1.0
+    }
+  }
+}

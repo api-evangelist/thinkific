@@ -1,0 +1,382 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Webhooks API
+  description:
+    Thinkific's Webhooks API can be used to integrate your application
+    with your Thinkific site.
+  version: 2.0.1
+  termsOfService: http://developers.thinkific.com/legal/
+externalDocs:
+  description: Find out more about Thinkifc's Webhooks API
+  url: http://developers.thinkific.com/api/using-webhooks/
+servers:
+  - url: https://platform.thinkific.com/api/v2
+security:
+  - OAuthAccessToken: []
+tags:
+  - name: Webhooks
+    description: Webhooks operations
+  - name: Events
+    description: Events operations
+paths:
+  /webhooks:
+    get:
+      tags:
+        - Webhooks
+      summary: Get Webhooks
+      description: This endpoint returns a list of Webhooks.
+      parameters:
+        - name: next
+          in: query
+          description: The next page identifier
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: The number of items to be returned
+          schema:
+            type: number
+            default: 25.0
+      responses:
+        200:
+          description: Webhooks response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWebhooksResponse'
+              example:
+                items:
+                  - id: '20190807141006320656581'
+                    status: active
+                    topic: product.updated
+                    created_at: '2019-08-07T14:10:06.320656581-04:00'
+                    created_by: '156118'
+                    updated_at: '2019-08-07T14:10:06.320656581-04:00'
+                    updated_by: '156118'
+                    target_url: 'https://mockserver-webhooks.thinkific.com/webhooks'
+                  - id: '20190807141006328188121'
+                    status: active
+                    topic: course.created
+                    created_at: '2019-08-07T14:10:06.328188121-04:00'
+                    created_by: '156118'
+                    updated_at: '2019-08-07T14:10:06.328188121-04:00'
+                    updated_by: '156118'
+                    target_url: 'https://mockserver-webhooks.thinkific.com/webhooks'
+                  - id: '20190807141006333016171'
+                    status: active
+                    topic: course.updated
+                    created_at: '2019-08-07T14:10:06.333016171-04:00'
+                    created_by: '156118'
+                    updated_at: '2019-08-07T14:10:06.333016171-04:00'
+                    updated_by: '156118'
+                    target_url: 'https://mockserver-webhooks.thinkific.com/webhooks'
+                meta:
+                  page:
+                    has_next: false
+                    next_page: ''
+                    page_items: 9
+                    total_items: 9
+
+    post:
+      tags:
+        - Webhooks
+      summary: Create Webhook
+      description: This endpoint creates a new Webhook
+      requestBody:
+        $ref: '#/components/requestBodies/WebhookRequest'
+      responses:
+        201:
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+              examples:
+                WebhookCreated:
+                  value:
+                    id: '20200227213233625839530'
+                    status: active
+                    topic: order.created
+                    created_at: '2020-02-27T21:32:33.62583953-05:00'
+                    created_by: '156118'
+                    updated_at: '2020-02-27T21:32:33.62583953-05:00'
+                    updated_by: '156118'
+                    target_url: 'https://mockserver.thinkific.com/webhooks'
+
+        422:
+          description: ' Unprocessable Entity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              examples:
+                InvalidTopic:
+                  value:
+                    errors:
+                      topic: invalid format
+                InvalidUrl:
+                  value:
+                    errors:
+                      url: is not valid
+      x-codegen-request-body-name: body
+  /webhooks/{id}:
+    get:
+      tags:
+        - Webhooks
+      summary: Get Webhook by ID
+      description: This endpoint returns the Webhook identified by the provided id.
+      operationId: getWebhookByID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the Webhook in the form of an string.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Webhook response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+    put:
+      tags:
+        - Webhooks
+      summary: Update Webhook by ID
+      description: This endpoint updates the Webhook identified by the provided id.
+      operationId: updateWebhookByID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the Webhook in the form of an string.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/WebhookRequest'
+        required: true
+      responses:
+        200:
+          description: Webhook response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+        422:
+          description: ' Unprocessable Entity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+            UnprocessableEntity:
+              example:
+                errors:
+                  topic:
+                    - invalid format
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - Webhooks
+      summary: Delete Webhook by ID
+      description: This endpoint deletes the Webhook identified by the provided id.
+      operationId: deleteWebhookByID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the Webhook in the form of an string.
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Webhook deleted
+          content: {}
+        404:
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /events/{id}:
+    get:
+      tags:
+        - Events
+      summary: Get Event by ID
+      description: This endpoint returns the Event identified by the provided id.
+      operationId: getEventByID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the Event in the form of an string.
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Event Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  requestBodies:
+    WebhookRequest:
+      description: Webhook request type
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WebhookRequest'
+          example:
+            topic: order.created
+            target_url: 'https://mockserver.thinkific.com/webhooks'
+  schemas:
+    WebhookResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the Webhook as an string.
+          example: '1'
+        topic:
+          type: string
+          description: The topic that the Webhook is listening for.
+          example: order.created
+        target_url:
+          type: string
+          description: The destination URL which should receive the events.
+          example: https://my.app.com/target
+        status:
+          type: string
+          description: The Webhook's current status
+          example: active
+        created_by:
+          type: number
+          description: User who created the Webhook
+          example: 1.0
+        created_at:
+          type: string
+          description: The Webhook's creation timestamp
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        updated_at:
+          type: string
+          description: The Webhook's last update timestamp
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        updated_by:
+          type: number
+          description: Last User who updated the Webhook
+          example: 1.0
+    GetWebhooksResponse:
+      required:
+        - items
+        - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    WebhookRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: The topic that the Webhook will be listening for.
+        target_url:
+          type: string
+          description: |
+            The destination URL which should receive the events.<br />
+            **Note:** A Webhook's target URL must use SSL encryption (aka use https).
+    EventResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the Event as an string.
+          example: '1'
+        resource:
+          type: string
+          description: The resource associated with that Event.
+          example: order
+        action:
+          type: string
+          description: The action that generated the Event.
+          example: created
+        created_at:
+          type: string
+          description: When the Event happened.
+        payload:
+          type: object
+          description: A snapshot of the resource's attributes after the event occurrence.
+    Meta:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      description: Pagination metadata
+      properties:
+        has_next:
+          type: boolean
+          description: indicate if there is a next page
+          example: 1.0
+        next_page:
+          type: string
+          description: Next page identifier
+          example: '20190807141006328188121'
+        page_items:
+          type: number
+          description: Number of total items
+          example: 2
+        total_items:
+          type: number
+          description: Number of total of items
+          example: 10
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 5
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorNotFound:
+      type: object
+      example:
+        error: Record not found.
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer

@@ -1,0 +1,17 @@
+{
+  "id": 1.0,
+  "user_email": "bob@example.com",
+  "user_name": "Bob Smith",
+  "user_id": 1.0,
+  "course_name": "My Course",
+  "course_id": 1.0,
+  "percentage_completed": 1.0,
+  "expired": false,
+  "is_free_trial": false,
+  "completed": true,
+  "started_at": "2018-01-01T01:01:00Z",
+  "activated_at": "2018-01-01T01:01:00Z",
+  "completed_at": "2018-01-31T01:01:00Z",
+  "updated_at": "2018-01-31T01:01:00Z",
+  "expiry_date": "2019-01-01T01:01:00Z"
+}

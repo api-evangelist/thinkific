@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-coupon.json",
+  "title": "CouponResponse",
+  "required": [
+    "code",
+    "created_at",
+    "id",
+    "note",
+    "promotion_id",
+    "quantity",
+    "quantity_used"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The ID of the Coupon as an integer.",
+      "example": 1.0
+    },
+    "code": {
+      "type": "string",
+      "description": "The Coupon code.",
+      "example": "abc123"
+    },
+    "note": {
+      "type": "string",
+      "description": "A note associated with the Coupon. NOTE: this will be deprecated in future versions of the API.",
+      "example": "A note"
+    },
+    "quantity_used": {
+      "type": "number",
+      "description": "The number of times the Coupon has been used.",
+      "example": 4.0
+    },
+    "quantity": {
+      "type": "number",
+      "description": "The number of times the Coupon can be used. If this value if not set, the Coupon can be used an unlimited number of times.",
+      "example": 10.0
+    },
+    "promotion_id": {
+      "type": "number",
+      "description": "The ID of the associated Promotion as an integer.",
+      "example": 12.0
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The data and time the Coupon was created.",
+      "format": "date-time",
+      "example": "2017-04-30T01:00:00Z"
+    }
+  }
+}

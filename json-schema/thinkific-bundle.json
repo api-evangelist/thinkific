@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-bundle.json",
+  "title": "BundleResponse",
+  "required": [
+    "id",
+    "name",
+    "course_ids"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The ID of the Bundle",
+      "example": 1.0
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the Bundle",
+      "example": "A Bundle"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description on the Bundle",
+      "example": "The Bundle description"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "The tagline for the Bundle (Deprecated)",
+      "example": "Bundle tagline"
+    },
+    "banner_image_url": {
+      "type": "string",
+      "description": "Deprecated - use 'bundle_card_image_url'* - The banner image url for the Bundle.",
+      "example": "http://example.com/image.jpg"
+    },
+    "course_ids": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "description": "The IDs of the Courses in the Bundle"
+      }
+    },
+    "bundle_card_image_url": {
+      "type": "string",
+      "description": "The card image url for the Bundle",
+      "example": "http://example.com/image.jpg"
+    }
+  }
+}

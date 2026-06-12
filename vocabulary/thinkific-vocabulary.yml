@@ -1,0 +1,155 @@
+vocabulary:
+  name: Thinkific API Vocabulary
+  description: >
+    Core vocabulary terms extracted from the Thinkific Admin REST API and Webhooks API,
+    covering online course creation, delivery, enrollment management, and e-commerce.
+  url: https://developers.thinkific.com/api/api-documentation
+  version: v1
+
+terms:
+
+  - term: Course
+    description: >
+      A structured learning product on Thinkific consisting of chapters and content units.
+      Courses can be free or paid and are the primary deliverable for course creators.
+    schema: CourseResponse
+    endpoints:
+      - GET /courses
+      - GET /courses/{id}
+      - POST /courses
+      - PUT /courses/{id}
+
+  - term: Enrollment
+    description: >
+      A record linking a user to a course, indicating access has been granted either through
+      purchase, free sign-up, or manual assignment by an admin.
+    schema: EnrollmentResponse
+    endpoints:
+      - GET /enrollments
+      - GET /enrollments/{id}
+      - POST /enrollments
+      - PUT /enrollments/{id}
+
+  - term: User
+    description: >
+      A registered member of a Thinkific site. Users can be students, instructors, or
+      site owners. Users have profiles, enrollments, and may belong to groups.
+    schema: UserResponse
+    endpoints:
+      - GET /users
+      - GET /users/{id}
+      - POST /users
+      - PUT /users/{id}
+      - DELETE /users/{id}
+
+  - term: Bundle
+    description: >
+      A packaged collection of courses sold or offered together as a single product.
+      Bundles allow creators to group related courses for purchase.
+    schema: BundleResponse
+    endpoints:
+      - GET /bundles
+      - GET /bundles/{id}
+
+  - term: Chapter
+    description: >
+      A section within a course that organizes content units (lessons). Chapters provide
+      structural grouping for course curriculum.
+    schema: ChapterResponse
+    endpoints:
+      - GET /courses/{courseId}/chapters
+      - GET /chapters/{id}
+
+  - term: Content
+    description: >
+      An individual learning unit within a chapter, such as a video, quiz, survey,
+      assignment, PDF, or text lesson.
+    schema: ContentResponse
+    endpoints:
+      - GET /chapters/{chapterId}/contents
+      - GET /contents/{id}
+
+  - term: Coupon
+    description: >
+      A discount code that reduces the price of a course or bundle purchase.
+      Coupons have usage limits, expiry dates, and discount amounts or percentages.
+    schema: CouponResponse
+    endpoints:
+      - GET /courses/{courseId}/coupons
+      - POST /courses/{courseId}/coupons
+      - DELETE /coupons/{id}
+
+  - term: Order
+    description: >
+      A record of a purchase transaction on a Thinkific site, including product, price,
+      payment method, and status.
+    schema: OrderResponse
+    endpoints:
+      - GET /orders
+      - GET /orders/{id}
+
+  - term: Group
+    description: >
+      A collection of users organized for cohort-based learning or administrative
+      management. Groups can have analysts and shared course access.
+    schema: GroupResponse
+    endpoints:
+      - GET /groups
+      - GET /groups/{id}
+      - POST /groups
+      - DELETE /groups/{id}
+
+  - term: Instructor
+    description: >
+      A user designated as the author or teacher of one or more courses. Instructors
+      have a public profile displayed on their course pages.
+    schema: InstructorResponse
+    endpoints:
+      - GET /instructors
+      - GET /instructors/{id}
+      - POST /instructors
+      - PUT /instructors/{id}
+
+  - term: Webhook
+    description: >
+      A configured HTTP callback that delivers real-time event notifications to an
+      external URL when specific events occur on a Thinkific site.
+    schema: WebhookResponse
+    api: webhooks-api
+    endpoints:
+      - GET /webhooks
+      - POST /webhooks
+      - PUT /webhooks/{id}
+      - DELETE /webhooks/{id}
+
+  - term: Promotion
+    description: >
+      A marketing mechanism that applies discounts or special pricing to courses
+      or bundles for a defined time period.
+    schema: PromotionRequest
+
+  - term: Pagination
+    description: >
+      Metadata included in list API responses indicating total item count, current
+      page, and links to navigate through paginated result sets.
+    schema: Pagination
+
+  - term: Category
+    description: >
+      A classification tag applied to courses for organization and discovery within
+      a Thinkific site's course catalog.
+    schema: CollectionResponse
+    endpoints:
+      - GET /collections
+      - GET /collections/{id}
+
+  - term: SiteScript
+    description: >
+      Custom JavaScript code that can be injected into Thinkific site pages for
+      tracking, customization, or third-party integrations.
+    schema: SiteScriptResponse
+    endpoints:
+      - GET /site_scripts
+      - POST /site_scripts
+      - PUT /site_scripts/{id}
+      - DELETE /site_scripts/{id}

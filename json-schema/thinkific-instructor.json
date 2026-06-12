@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-instructor.json",
+  "title": "InstructorResponse",
+  "required": [
+    "created_at",
+    "first_name",
+    "id",
+    "last_name"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The ID of the Instructor as an integer.",
+      "example": 1.0
+    },
+    "user_id": {
+      "type": "number",
+      "description": "The ID of the User owning the Instructor",
+      "example": 12.0
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the Instructor",
+      "example": "Mr."
+    },
+    "first_name": {
+      "type": "string",
+      "description": "The first name of the Instructor.",
+      "example": "My Course"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "The last name of the Instructor.",
+      "example": "My Course"
+    },
+    "bio": {
+      "type": "string",
+      "description": "The bio of the Instructor",
+      "example": "Bob Jones is an instructor of note."
+    },
+    "slug": {
+      "type": "string",
+      "description": "The slug of the Instructor NOTE: This will be removed in future API versions",
+      "example": "bob"
+    },
+    "avatar_url": {
+      "type": "string",
+      "description": "The fully-qualified url of the Instructor's avatar",
+      "example": "https://example.com/avatar.png"
+    },
+    "email": {
+      "type": "string",
+      "description": "The email of the Instructor",
+      "example": "bob_jones@example.com"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The date/time that the Instructor was created."
+    }
+  }
+}

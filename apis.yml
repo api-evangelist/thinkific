@@ -45,6 +45,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.thinkific.com/api/api-documentation
+      - type: OpenAPI
+        url: openapi/thinkific-admin-api-openapi.yml
   - aid: thinkific:webhooks-api
     name: Thinkific Webhooks API
     type: REST
@@ -64,6 +66,8 @@ apis:
     properties:
       - type: Documentation
         url: https://developers.thinkific.com/api/webhooks-api/
+      - type: OpenAPI
+        url: openapi/thinkific-webhooks-api-openapi.yml
 common:
   - type: Website
     url: https://www.thinkific.com
@@ -91,6 +95,12 @@ common:
     url: rate-limits/thinkific-rate-limits.yml
   - type: FinOps
     url: finops/thinkific-finops.yml
+  - type: Vocabulary
+    url: vocabulary/thinkific-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/thinkific-context.jsonld
+  - type: Blogs
+    url: blogs/blogs.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

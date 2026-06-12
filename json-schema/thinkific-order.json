@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-order.json",
+  "title": "OrderResponse",
+  "required": [
+    "amount_cents",
+    "amount_dollars",
+    "id",
+    "product_id",
+    "product_name",
+    "status",
+    "subscription",
+    "user_email",
+    "user_id",
+    "user_name"
+  ],
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "number",
+      "description": "The ID of the User owning the Order as an integer.",
+      "example": 1.0
+    },
+    "user_email": {
+      "type": "string",
+      "description": "The Email ID of the User.",
+      "example": "bob@example.com"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "The full name of the User owning the Order.",
+      "example": "Bob Smith"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "The name of the Product purchased.",
+      "example": "My Course"
+    },
+    "product_id": {
+      "type": "number",
+      "description": "The ID of the Product purchased as an integer.",
+      "example": 1.0
+    },
+    "amount_dollars": {
+      "type": "string",
+      "description": "The Order amount in dollars.",
+      "example": "20.0"
+    },
+    "amount_cents": {
+      "type": "number",
+      "description": "The Order amount in cents.",
+      "example": 2000.0
+    },
+    "subscription": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the Order was for a subscription.",
+      "example": false
+    },
+    "coupon_code": {
+      "type": "string",
+      "description": "The Coupon code used on the Order.",
+      "example": "abc123"
+    },
+    "coupon_id": {
+      "type": "number",
+      "description": "The ID of the Coupon used on the Order as an integer.",
+      "example": 1
+    },
+    "items": {
+      "type": "array",
+      "description": "Products included in the Order.",
+      "items": {
+        "$ref": "#/components/schemas/Item"
+      }
+    },
+    "affiliate_referral_code": {
+      "type": "string",
+      "description": "The Affiliate referral code used on the Order.",
+      "example": "exexex"
+    },
+    "status": {
+      "type": "string",
+      "description": "The order status.",
+      "example": "complete"
+    },
+    "created at": {
+      "type": "string",
+      "description": "The date/time that the Order was created."
+    },
+    "id": {
+      "type": "number",
+      "description": "The ID of the Order as an integer.",
+      "example": 1.0
+    }
+  }
+}

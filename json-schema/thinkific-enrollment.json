@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/json-schema/thinkific-enrollment.json",
+  "title": "EnrollmentResponse",
+  "required": [
+    "activated_at",
+    "completed",
+    "completed_at",
+    "course_id",
+    "course_name",
+    "expired",
+    "expiry_date",
+    "id",
+    "is_free_trial",
+    "percentage_completed",
+    "started_at",
+    "updated_at",
+    "user_email",
+    "user_id",
+    "user_name"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "The ID of the Enrollment as an integer.",
+      "example": 1.0
+    },
+    "user_email": {
+      "type": "string",
+      "description": "The email of the User owning the Enrollment.",
+      "example": "bob@example.com"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "The full name of the User owning the Enrollment.",
+      "example": "Bob Smith"
+    },
+    "user_id": {
+      "type": "number",
+      "description": "The ID of the User owning the Enrollment as an integer.",
+      "example": 1.0
+    },
+    "course_name": {
+      "type": "string",
+      "description": "The name of the Course.",
+      "example": "My Course"
+    },
+    "course_id": {
+      "type": "number",
+      "description": "The ID of the Course as an integer.",
+      "example": 1.0
+    },
+    "percentage_completed": {
+      "type": "number",
+      "description": "The percentage complete of the Enrollment. A number between 0.0 and 1.0. For example, to represent a percentage complete of 75%, this value would be 0.75.",
+      "example": 1.0
+    },
+    "expired": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the Enrollment is expired.",
+      "example": false
+    },
+    "is_free_trial": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the Enrollment is a free trial.",
+      "example": false
+    },
+    "completed": {
+      "type": "boolean",
+      "description": "A boolean indicating whether the Enrollment is complete.",
+      "example": true
+    },
+    "started_at": {
+      "type": "string",
+      "description": "The date/time that the Enrollment started.",
+      "format": "date-time",
+      "example": "2018-01-01T01:01:00Z"
+    },
+    "activated_at": {
+      "type": "string",
+      "description": "The date/time that the Enrollment was activated.",
+      "format": "date-time",
+      "example": "2018-01-01T01:01:00Z"
+    },
+    "completed_at": {
+      "type": "string",
+      "description": "The date/time that the Enrollment was completed.",
+      "format": "date-time",
+      "example": "2018-01-31T01:01:00Z"
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "The date/time that the Enrollment was updated last.",
+      "format": "date-time",
+      "example": "2018-01-31T01:01:00Z"
+    },
+    "expiry_date": {
+      "type": "string",
+      "description": "The date/time that the Enrollment expires.",
+      "format": "date-time",
+      "example": "2019-01-01T01:01:00Z"
+    }
+  }
+}

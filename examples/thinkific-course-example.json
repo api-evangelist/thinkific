@@ -1,0 +1,21 @@
+{
+  "id": 1.0,
+  "name": "My Course",
+  "slug": "my-course",
+  "subtitle": "My Course Subtitle",
+  "product_id": 0.0,
+  "description": "Course description",
+  "course_card_text": "my course",
+  "intro_video_youtube": "youtube01",
+  "contact_information": "Contact info",
+  "keywords": "course,learn,great",
+  "duration": "22",
+  "banner_image_url": "http://example.com/banner.jpg",
+  "course_card_image_url": "http://example.com/card.jpg",
+  "intro_video_wistia_identifier": "wistia0123",
+  "administrator_user_ids": [],
+  "chapter_ids": [],
+  "reviews_enabled": false,
+  "user_id": 1.0,
+  "instructor_id": 1.0
+}

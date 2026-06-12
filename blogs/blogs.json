@@ -1,0 +1,10 @@
+{
+  "name": "Thinkific Blog",
+  "description": "Official Thinkific blog covering online course creation, e-learning trends, and platform updates.",
+  "url": "https://www.thinkific.com/blog/",
+  "rss": "https://www.thinkific.com/blog/feed/",
+  "last_checked": "2026-06-12",
+  "rss_status": 403,
+  "note": "RSS feed returns 403 Forbidden; blog content available at humanURL only.",
+  "posts": []
+}

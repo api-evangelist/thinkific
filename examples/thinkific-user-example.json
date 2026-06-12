@@ -1,0 +1,20 @@
+{
+  "id": 1.0,
+  "created_at": "2018-07-12T23:19:00.154Z",
+  "first_name": "Bob",
+  "last_name": "Smith",
+  "full_name": "Bob Smith",
+  "company": "The user's company",
+  "email": "bob@example.com",
+  "roles": [],
+  "avatar_url": "https://example.com/avatar/123",
+  "bio": "User's bio",
+  "headline": "User's headline",
+  "affiliate_code": "abc123",
+  "external_source": "example_external_source",
+  "affiliate_commission": 20.0,
+  "affiliate_commission_type": "%",
+  "affiliate_payout_email": "bob@example.com",
+  "administered_course_ids": [],
+  "custom_profile_fields": []
+}

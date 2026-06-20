@@ -1,7 +1,7 @@
 aid: thinkific
 name: Thinkific
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
@@ -33,7 +33,7 @@ apis:
       The Thinkific Admin REST API exposes endpoints for managing courses, enrollments, users,
       products, orders, bundles, groups, and site data. Authentication is via API key or OAuth.
       The base URL is https://api.thinkific.com/api/public/v1.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.thinkific.com/api/api-documentation
     baseURL: https://api.thinkific.com/api/public/v1
     tags:
@@ -55,7 +55,7 @@ apis:
       events including user creation, enrollment changes, order processing, product updates,
       lead captures, payment events, and user deletions. Webhooks can be created programmatically
       using an API key.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.thinkific.com/api/webhooks-api/
     baseURL: https://api.thinkific.com/api/v2
     tags:

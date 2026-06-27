@@ -1,19 +1,21 @@
 {
-  "name": "Thinkific Blog",
-  "description": "Official Thinkific blog covering online course creation, e-learning trends, and platform updates.",
-  "url": "https://www.thinkific.com/blog/",
-  "rss": "https://www.thinkific.com/blog/feed/",
-  "last_checked": "2026-06-12",
-  "rss_status": 403,
-  "note": "RSS feed returns 403 Forbidden; blog content available at humanURL only.",
-  "posts": [],
   "repo": "thinkific",
   "feeds": [
     {
+      "source": "https://www.thinkific.com/blog/",
+      "feed_url": "https://www.thinkific.com/feed/",
+      "title": "",
+      "saved": 4,
+      "method": "discovered"
+    },
+    {
       "source": "https://www.linkedin.com/company/thinkific/",
-      "error": "HTTPError"
+      "feed_url": "https://www.linkedin.com/company/thinkific/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:03:07Z",
+  "post_count": 6
 }

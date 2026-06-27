@@ -81,7 +81,7 @@ common:
     url: https://www.linkedin.com/company/thinkific/
   - type: Blog
     url: https://www.thinkific.com/blog/
-  - type: Changelog
+  - type: ChangeLog
     url: https://developers.thinkific.com/changelog
   - type: Pricing
     url: https://www.thinkific.com/pricing/
@@ -99,7 +99,7 @@ common:
     url: vocabulary/thinkific-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/thinkific-context.jsonld
-  - type: Blogs
+  - type: Blog
     url: blogs/blogs.json
 maintainers:
   - FN: Kin Lane

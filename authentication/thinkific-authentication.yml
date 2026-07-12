@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/thinkific-admin-api-openapi.yml, openapi/thinkific-webhooks-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: OAuthAccessToken
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/thinkific-admin-api-openapi.yml
+  - openapi/thinkific-webhooks-api-openapi.yml
+- name: ApiKey
+  type: apiKey
+  in: header
+  parameter: X-Auth-API-Key
+  description: Used together with ApiKeySubdomain
+  sources:
+  - openapi/thinkific-admin-api-openapi.yml
+- name: ApiKeySubdomain
+  type: apiKey
+  in: header
+  parameter: X-Auth-Subdomain
+  description: Used together with ApiKey
+  sources:
+  - openapi/thinkific-admin-api-openapi.yml

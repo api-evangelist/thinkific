@@ -69,6 +69,8 @@ apis:
       - type: OpenAPI
         url: openapi/thinkific-webhooks-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/thinkific-agentic-access.yml
   - type: DomainSecurity
     url: security/thinkific-domain-security.yml
   - type: Authentication

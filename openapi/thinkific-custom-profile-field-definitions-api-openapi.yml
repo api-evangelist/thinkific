@@ -1,0 +1,149 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Custom Profile Field Definitions API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Custom Profile Field Definitions
+  description: Custom Profile Field Definitions
+paths:
+  /custom_profile_field_definitions:
+    get:
+      tags:
+      - Custom Profile Field Definitions
+      summary: Get Custom profile field definition
+      description: Retrieve a list of Custom Profile Field Definitions
+      operationId: getCustomProfileFields
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch.
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned.
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Custom Profile Field Definitions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomProfileFieldDefinitions'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  schemas:
+    GetCustomProfileFieldDefinitions:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomProfileFieldDefinitionsResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    CustomProfileFieldDefinitionsResponse:
+      required:
+      - field_type
+      - id
+      - label
+      - required
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Custom Profile Field Definition as an integer.
+          example: 1.0
+        label:
+          type: string
+          description: The label of the Custom Profile Field Definition.
+          example: Phone
+        field_type:
+          type: string
+          description: The Course's Product ID as an integer.
+          example: '1'
+        required:
+          type: boolean
+          description: A boolean indicating whether the Custom Profile Field Definition is required.
+          example: true
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

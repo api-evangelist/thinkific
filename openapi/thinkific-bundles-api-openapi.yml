@@ -1,0 +1,641 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Bundles
+  description: Bundle operations
+paths:
+  /bundles/{id}:
+    get:
+      tags:
+      - Bundles
+      summary: List a bundle
+      description: Retrieves the Bundle identified by the provided id
+      operationId: getBundleByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Bundle in the form of an integer
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Bundle Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BundleResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Record not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /bundles/{id}/courses:
+    get:
+      tags:
+      - Bundles
+      summary: List Courses by bundle ID
+      description: Retrieves the Courses within the Bundle identified by the provided id
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Bundle in the form of an integer
+        required: true
+        schema:
+          type: number
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Courses Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCoursesResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /bundles/{id}/enrollments:
+    get:
+      tags:
+      - Bundles
+      summary: List a enrollments in a bundle
+      description: Retrieves all the enrollments in the bundle identified by the provided id
+      operationId: getBundleEnrollments
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Bundle in the form of an integer
+        required: true
+        schema:
+          type: number
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      - name: query[user_id]
+        in: query
+        description: Search Bundle Enrollments by User ID.
+        schema:
+          type: number
+        example: 123
+      - name: query[email]
+        in: query
+        description: Search Bundle Enrollments by User email
+        schema:
+          type: string
+        example: user@example.com
+      - name: query[completed]
+        in: query
+        description: Filter for only completed Bundle Enrollments when set to true.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[expired]
+        in: query
+        description: Filter for only expired Bundle Enrollments when set to true.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[created_after]
+        in: query
+        description: Filter for only Enrollments created after the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[created_before]
+        in: query
+        description: Filter for only Enrollments created before the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[created_on]
+        in: query
+        description: Filter for only Enrollments created on the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[created_on_or_after]
+        in: query
+        description: Filter for only Enrollments created on or after the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[created_on_or_before]
+        in: query
+        description: Filter for only Enrollments created on or before the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[updated_after]
+        in: query
+        description: Filter for only Enrollments updated after the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[updated_before]
+        in: query
+        description: Filter for only Enrollments updated before the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[updated_on]
+        in: query
+        description: Filter for only Enrollments updated on the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[updated_on_or_after]
+        in: query
+        description: Filter for only Enrollments created on or after the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      - name: query[updated_on_or_before]
+        in: query
+        description: Filter for only Enrollments updated on or before the date specified.
+        schema:
+          type: string
+          format: date-time
+        example: '2021-04-27'
+      responses:
+        200:
+          description: Bundle Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEnrollmentsResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+    post:
+      tags:
+      - Bundles
+      summary: Create an Enrollment in a Bundle of Courses
+      description: This endpoint enrolls a User in a Bundle and each of the Courses contained within the Bundle
+      operationId: createEnrollmentInBundle
+      parameters:
+      - name: id
+        description: ID of the bundle in a form of integer
+        in: path
+        required: true
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: number
+                activated_at:
+                  type: string
+                  description: The date/time at which the Enrollment is to be activated. If not provided, the Enrollment will only provide access to free preview content within the Courses. Provide full access to courses by setting this value to the current date/time.
+                  format: date-time
+                expiry_date:
+                  type: string
+                  description: The date/time at which the Enrollment should be expired. If not provided, the Enrollment does not expire.
+                  format: date-time
+              required:
+              - user_id
+            example:
+              user_id: 1
+              activated_at: '2015-08-26T03:33:33.723Z'
+              expiry_date: '2016-08-26T03:33:33.723Z'
+      responses:
+        201:
+          description: Enrollments created synchronously
+        202:
+          description: Enrollments created asynchronously
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  user_id:
+                  - can't be blank
+    put:
+      tags:
+      - Bundles
+      summary: Update Enrollments in a Bundle
+      description: This endpoint updates a User’s Enrollment in a Bundle and each of the Courses contained within the Bundle.
+      operationId: updateEnrollmentsInBundle
+      parameters:
+      - name: id
+        description: ID of the bundle in a form of integer
+        in: path
+        required: true
+        schema:
+          type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: number
+                activated_at:
+                  type: string
+                  description: The date/time at which the Enrollment is to be activated. If not provided, the Enrollment will only provide access to free preview content within the Courses. Provide full access to courses by setting this value to the current date/time.
+                  format: date-time
+                expiry_date:
+                  type: string
+                  description: The date/time at which the Enrollment should be expired. If not provided, the Enrollment does not expire.
+                  format: date-time
+              required:
+              - user_id
+            example:
+              user_id: 1
+              activated_at: '2015-08-26T03:33:33.723Z'
+              expiry_date: '2016-08-26T03:33:33.723Z'
+      responses:
+        204:
+          description: Enrollments Updated
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  user_id:
+                  - can't be blank
+components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  schemas:
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    CourseResponse:
+      required:
+      - chapter_ids
+      - id
+      - instructor_id
+      - name
+      - product_id
+      - reviews_enabled
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the course
+          example: 1.0
+        name:
+          type: string
+          description: The name of the course
+          example: My Course
+        slug:
+          type: string
+          description: URL-friendly version of the course name. Used to construct URL for course Landing Pages & Course Player.
+          example: my-course
+        subtitle:
+          type: string
+          description: Deprecated - Used in legacy themes to display the subtitle of the Course.
+          example: My Course Subtitle
+        product_id:
+          type: number
+          description: The Course's Product ID
+        description:
+          type: string
+          description: The description of the Course(V2 themes currently don't have that info)
+          example: Course description
+        course_card_text:
+          type: string
+          description: Deprecated - use 'description'.* - Used in legacy themes to populate the text for a Course card.
+          example: my course
+        intro_video_youtube:
+          type: string
+          description: Deprecated - Used in legacy themes to designate an intro video from Youtube.
+          example: youtube01
+        contact_information:
+          type: string
+          description: Deprecated - The contact information of the Course.
+          example: Contact info
+        keywords:
+          type: string
+          description: The keywords of the Course
+          example: course,learn,great
+        duration:
+          type: string
+          description: Deprecated - Used in legacy themes to display the duration of the Course.
+          example: '22'
+        banner_image_url:
+          type: string
+          description: Deprecated - use 'course_card_image_url'* - The landing page banner image url of the Course.
+          example: http://example.com/banner.jpg
+        course_card_image_url:
+          type: string
+          description: The card image url of the Course
+          example: http://example.com/card.jpg
+        intro_video_wistia_identifier:
+          type: string
+          description: Deprecated - Used in legacy themes to designate an intro video from Wistia.
+          example: wistia0123
+        administrator_user_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+            description: The IDs of the Users that can administer the Course as integers
+        chapter_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+            description: The IDs of the Chapters in the Course as integers
+        reviews_enabled:
+          type: boolean
+          description: A boolean indicating whether reviews are enabled for the Course
+          example: false
+        user_id:
+          type: number
+          description: The ID of the User that created the Course
+          example: 1.0
+        instructor_id:
+          type: number
+          description: The ID of the Instructor of the Course
+          example: 1.0
+    EnrollmentResponse:
+      required:
+      - activated_at
+      - completed
+      - completed_at
+      - course_id
+      - course_name
+      - expired
+      - expiry_date
+      - id
+      - is_free_trial
+      - percentage_completed
+      - started_at
+      - updated_at
+      - user_email
+      - user_id
+      - user_name
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Enrollment as an integer.
+          example: 1.0
+        user_email:
+          type: string
+          description: The email of the User owning the Enrollment.
+          example: bob@example.com
+        user_name:
+          type: string
+          description: The full name of the User owning the Enrollment.
+          example: Bob Smith
+        user_id:
+          type: number
+          description: The ID of the User owning the Enrollment as an integer.
+          example: 1.0
+        course_name:
+          type: string
+          description: The name of the Course.
+          example: My Course
+        course_id:
+          type: number
+          description: The ID of the Course as an integer.
+          example: 1.0
+        percentage_completed:
+          type: number
+          description: The percentage complete of the Enrollment. A number between 0.0 and 1.0. For example, to represent a percentage complete of 75%, this value would be 0.75.
+          example: 1.0
+        expired:
+          type: boolean
+          description: A boolean indicating whether the Enrollment is expired.
+          example: false
+        is_free_trial:
+          type: boolean
+          description: A boolean indicating whether the Enrollment is a free trial.
+          example: false
+        completed:
+          type: boolean
+          description: A boolean indicating whether the Enrollment is complete.
+          example: true
+        started_at:
+          type: string
+          description: The date/time that the Enrollment started.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        activated_at:
+          type: string
+          description: The date/time that the Enrollment was activated.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        completed_at:
+          type: string
+          description: The date/time that the Enrollment was completed.
+          format: date-time
+          example: '2018-01-31T01:01:00Z'
+        updated_at:
+          type: string
+          description: The date/time that the Enrollment was updated last.
+          format: date-time
+          example: '2018-01-31T01:01:00Z'
+        expiry_date:
+          type: string
+          description: The date/time that the Enrollment expires.
+          format: date-time
+          example: '2019-01-01T01:01:00Z'
+    BundleResponse:
+      required:
+      - id
+      - name
+      - course_ids
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Bundle
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Bundle
+          example: A Bundle
+        description:
+          type: string
+          description: The description on the Bundle
+          example: The Bundle description
+        tagline:
+          type: string
+          description: The tagline for the Bundle (Deprecated)
+          example: Bundle tagline
+        banner_image_url:
+          type: string
+          description: Deprecated - use 'bundle_card_image_url'* - The banner image url for the Bundle.
+          example: http://example.com/image.jpg
+        course_ids:
+          type: array
+          items:
+            type: number
+            description: The IDs of the Courses in the Bundle
+        bundle_card_image_url:
+          type: string
+          description: The card image url for the Bundle
+          example: http://example.com/image.jpg
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    GetEnrollmentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    GetCoursesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

@@ -1,0 +1,423 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Coupons API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Coupons
+  description: Coupons operations
+paths:
+  /coupons:
+    get:
+      tags:
+      - Coupons
+      summary: Get Coupons
+      description: Retrieve a list of all Coupons
+      operationId: getCoupons
+      parameters:
+      - name: promotion_id
+        in: query
+        description: The ID of the Promotion for which to get the Coupons in the form of an integer.
+        required: true
+        schema:
+          type: number
+      - name: page
+        in: query
+        description: The page within the collection to fetch.
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Coupon Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCouponResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+    post:
+      tags:
+      - Coupons
+      summary: Create a Coupon
+      description: Create a Coupon
+      operationId: createCoupon
+      parameters:
+      - name: promotion_id
+        in: query
+        description: ID of the Promotion to add the Coupon to in the form of an integer.
+        required: true
+        schema:
+          type: number
+      requestBody:
+        description: New Coupon attributes
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCouponRequest'
+        required: true
+      responses:
+        201:
+          description: Create Coupon Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+            UnprocessableEntity:
+              example:
+                errors:
+                  code:
+                  - Can't be blank
+      x-codegen-request-body-name: body
+  /coupons/bulk_create:
+    post:
+      tags:
+      - Coupons
+      summary: Bulk Create Coupons
+      description: Bulk Create Coupons
+      operationId: bulkCreateCoupons
+      parameters:
+      - name: promotion_id
+        in: query
+        description: The ID of the Promotion for which to bulk create the Coupons.
+        required: true
+        schema:
+          type: number
+      requestBody:
+        description: New Coupon attributes
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkCreateCouponRequest'
+        required: true
+      responses:
+        201:
+          description: Create Coupon Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBulkCouponResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+      x-codegen-request-body-name: body
+  /coupons/{id}:
+    get:
+      tags:
+      - Coupons
+      summary: Get a Coupon by ID
+      description: Retrieve a Coupon
+      operationId: getCouponByID
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Coupon in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Coupon Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CouponResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+    put:
+      tags:
+      - Coupons
+      summary: Update a Coupon
+      description: Update an existing Coupon
+      operationId: updateCoupon
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Coupon in the form of an integer.
+        required: true
+        schema:
+          type: number
+      requestBody:
+        description: Update an existing coupon
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCoupon'
+        required: true
+      responses:
+        204:
+          description: Coupon Updated
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+            UnprocessableEntity:
+              example:
+                errors:
+                  code:
+                  - Can't be blank
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - Coupons
+      summary: Delete Coupon by ID
+      description: Deletes a coupon identified by the provided id
+      operationId: deleteCouponByID
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Coupon in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        204:
+          description: Coupon Deleted
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  schemas:
+    CreateBulkCouponResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CouponResponse'
+    GetCouponResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CouponResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    UpdateCoupon:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+          description: The Coupon code.
+          example: ABCD
+        note:
+          type: string
+          description: 'A note associated with the Coupon. NOTE: this will be deprecated in future versions of the API.'
+          example: Black Friday Coupon
+        quantity_used:
+          type: string
+          description: The number of times the Coupon has been used.
+          example: '4'
+        quantity:
+          type: number
+          description: The number of times the Coupon can be used. If this value if not set, the Coupon can be used an unlimited number of times.
+          example: 10.0
+    CreateCouponRequest:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+          description: The Coupon code.
+          example: ABCD
+        note:
+          type: string
+          description: 'A note associated with the Coupon. NOTE: this will be deprecated in future versions of the API.'
+          example: Black Friday Coupon
+        quantity:
+          type: number
+          description: The number of times the Coupon can be used. If this value if not set, the Coupon can be used an unlimited number of times.
+          example: 10.0
+    BulkCreateCouponRequest:
+      type: object
+      properties:
+        bulk_quantity_per_coupon:
+          type: number
+          description: The number of times each of the autogenerated Coupons can be used. Defaults to allowing unlimited use.
+          example: 10.0
+        bulk_coupon_code_length:
+          type: number
+          description: The length of the Coupon code. The minimum length is 6.
+          example: 10.0
+        bulk_quantity:
+          type: number
+          description: The number of unique Coupons to create. Maximum value is 1000.
+          example: 100.0
+    CouponResponse:
+      required:
+      - code
+      - created_at
+      - id
+      - note
+      - promotion_id
+      - quantity
+      - quantity_used
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Coupon as an integer.
+          example: 1.0
+        code:
+          type: string
+          description: The Coupon code.
+          example: abc123
+        note:
+          type: string
+          description: 'A note associated with the Coupon. NOTE: this will be deprecated in future versions of the API.'
+          example: A note
+        quantity_used:
+          type: number
+          description: The number of times the Coupon has been used.
+          example: 4.0
+        quantity:
+          type: number
+          description: The number of times the Coupon can be used. If this value if not set, the Coupon can be used an unlimited number of times.
+          example: 10.0
+        promotion_id:
+          type: number
+          description: The ID of the associated Promotion as an integer.
+          example: 12.0
+        created_at:
+          type: string
+          description: The data and time the Coupon was created.
+          format: date-time
+          example: '2017-04-30T01:00:00Z'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

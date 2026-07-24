@@ -1,0 +1,408 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Groups API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Groups
+  description: Groups operations
+paths:
+  /groups:
+    get:
+      tags:
+      - Groups
+      summary: Get Groups
+      description: Retrieves a list of groups
+      operationId: getGroups
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch.
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned.
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Groups response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupsResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+    post:
+      tags:
+      - Groups
+      summary: Create Group
+      description: Creates a group
+      operationId: createGroup
+      requestBody:
+        description: Group
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupRequest'
+      responses:
+        200:
+          description: Group response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  name:
+                  - can't be blank
+  /groups/{id}:
+    get:
+      tags:
+      - Groups
+      summary: Get Group
+      description: Retrieves a specific group
+      operationId: getGroup
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Group to fetch.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Group response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+              example:
+                error:
+                - Record not found.
+    delete:
+      tags:
+      - Groups
+      summary: Delete Group by ID
+      description: Deletes a group identified by the provided id
+      operationId: deleteGroupByID
+      parameters:
+      - name: id
+        in: path
+        description: The ID of the Group in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        204:
+          description: Group Deleted
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /groups/{group_id}/analysts:
+    get:
+      tags:
+      - Groups
+      summary: Get Group Analysts
+      description: Retrieves a list of group analysts
+      operationId: getGroupAnalysts
+      parameters:
+      - name: group_id
+        in: path
+        description: ID of the Group in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Groups response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupAnalystsResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unable to process request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                - user_ids: 'Invalid user IDs: 1'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+              example:
+                error:
+                - group_id: Could not find group with ID 1.
+    post:
+      tags:
+      - Groups
+      summary: Assign Analysts to a Group
+      description: Assign Group Analysts to a group. Users need to be assigned the Group Analyst (group_analyst) role.
+      operationId: postGroupAnalysts
+      parameters:
+      - name: group_id
+        in: path
+        description: ID of the Group in the form of an integer.
+        required: true
+        schema:
+          type: number
+      requestBody:
+        description: Group Analyst
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupAddAnalystRequest'
+      responses:
+        201:
+          description: Group Analyst response
+          content: {}
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unable to process request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  group_analysts: 'User IDs missing group_analysts role:: 1, 2'
+                  user_id: 'Invalid user IDs: 3, 4'
+                  group_id: 'Invalid group ID: 1'
+  /groups/{group_id}/analysts/{user_id}:
+    delete:
+      tags:
+      - Groups
+      summary: Delete Analyst
+      description: Remove an analyst from a group
+      operationId: removeAnalystFromGroup
+      parameters:
+      - name: group_id
+        in: path
+        description: ID of the Group in the form of an integer.
+        required: true
+        schema:
+          type: number
+      - name: user_id
+        in: path
+        description: ID of the User in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        204:
+          description: Group Analyst response
+          content: {}
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Unable to process request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+              example:
+                error:
+                  user_id:
+                  - Could not find user with ID 1.
+                  group_id:
+                  - Could not find group with ID 1.
+components:
+  schemas:
+    GroupAddAnalystRequest:
+      required:
+      - user_ids
+      type: object
+      properties:
+        user_ids:
+          type: array
+          description: The list of User IDs to add as analysts to the Group
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetGroupAnalystsResponse:
+      required:
+      - group_analysts
+      type: object
+      properties:
+        group_analysts:
+          type: array
+          description: The list of User IDs to add as analysts to the Group
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+    GetGroupsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    GroupResponse:
+      required:
+      - id
+      - created_at
+      - name
+      - token
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Group
+          example: 1
+        name:
+          type: string
+          description: The name of the Group
+          example: New Group 1
+        token:
+          type: string
+          description: The 8-character unique identifier for the Group
+          example: c2395613
+        created_at:
+          type: string
+          description: The date/time the Group was created
+          format: date-time
+          example: '2019-01-01T01:01:00Z'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    GroupRequest:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the Group
+          example: New Group 1
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

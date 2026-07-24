@@ -1,0 +1,141 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Category Memberships API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Category Memberships
+  description: Category Memberships operations
+paths:
+  /collection_memberships/{id}:
+    post:
+      tags:
+      - Category Memberships
+      summary: Add Product to Category
+      description: Create one or more Products to a Category
+      operationId: addProductsToCategory
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Category in the form of an integer
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: An array of the IDs of the Products that should be added to the Category as integers.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipsRequest'
+        required: true
+      responses:
+        201:
+          description: Products added to category
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - Category Memberships
+      summary: Delete  Products by ID
+      description: Delete one or more Products from a Category.
+      operationId: deleteProductsByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Category in the form of an integer
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: number
+      requestBody:
+        description: An array of the IDs of the Products that should be added to the Category as integers.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MembershipsRequest'
+        required: true
+      responses:
+        204:
+          description: Products removed from category
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  schemas:
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    MembershipsRequest:
+      required:
+      - product_ids
+      type: object
+      properties:
+        product_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+            description: An array of the IDs of the Products that should be added to the Category as integers
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

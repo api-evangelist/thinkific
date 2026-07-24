@@ -1,0 +1,672 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Users API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Users
+  description: Users operations
+paths:
+  /users:
+    get:
+      tags:
+      - Users
+      summary: List Users
+      description: Retrieve a list of users
+      operationId: getUsers
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      - name: query[email]
+        in: query
+        description: Search Users by email.
+        schema:
+          type: string
+      - name: query[role]
+        in: query
+        description: Search Users by role.
+        schema:
+          type: string
+      - name: query[external_source]
+        in: query
+        description: Search Users by external source.
+        schema:
+          type: string
+      - name: query[custom_profile_field_label]
+        in: query
+        description: Search by custom profile field label (must be combined with custom_profile_field_value)
+        schema:
+          type: string
+      - name: query[custom_profile_field_value]
+        in: query
+        description: Search by custom profile field value (must be combined with custom_profile_field_label)
+        schema:
+          type: string
+      - name: query[group_id]
+        in: query
+        description: Search by group id.
+        schema:
+          type: number
+      responses:
+        200:
+          description: Users response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUsersResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+    post:
+      tags:
+      - Users
+      summary: Create user
+      description: Create a new user
+      operationId: createUser
+      requestBody:
+        description: Create user request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+        required: true
+      responses:
+        201:
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  first_name:
+                  - can't be blank
+      x-codegen-request-body-name: body
+  /users/{id}:
+    get:
+      tags:
+      - Users
+      summary: List Users by ID
+      description: Retrieves a User identified by the provided id
+      operationId: getUserByID
+      parameters:
+      - name: id
+        in: path
+        description: Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the "provider" parameter.
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        description: Provider from which the user's External Id is associated (Required if using External Id as id parameter)
+        required: false
+        schema:
+          type: string
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          description: Provider that creates the user and with which the External Id is associated.
+          example: SSO
+      responses:
+        200:
+          description: User Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+    put:
+      tags:
+      - Users
+      summary: Update user by ID
+      description: Updates the user specified by the provided id
+      operationId: updateUserByID
+      parameters:
+      - name: id
+        in: path
+        description: Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the "provider" parameter.
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        description: Provider from which the user's External Id is associated (Required if using External Id as id parameter)
+        required: false
+        schema:
+          type: string
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          description: Provider that creates the user and with which the External Id is associated.
+          example: SSO
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+        required: true
+      responses:
+        204:
+          description: User Updated
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+        422:
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  first_name:
+                  - can't be blank
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+      - Users
+      summary: Delete user by ID
+      description: Deletes a User identified by the provided id
+      operationId: deleteUserByID
+      parameters:
+      - name: id
+        in: path
+        description: Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the "provider" parameter.
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: query
+        description: Provider from which the user's External Id is associated (Required if using External Id as id parameter)
+        required: false
+        schema:
+          type: string
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          description: Provider that creates the user and with which the External Id is associated.
+          example: SSO
+      responses:
+        204:
+          description: User Deleted
+        404:
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /users/{id}/authentications/{provider}:
+    get:
+      tags:
+      - Users
+      summary: Get User Auth data by ID and Provider
+      description: Retrieves a User authentication data identified by the id and provider
+      operationId: getUserAuthByIDAndProvider
+      parameters:
+      - name: id
+        in: path
+        description: Accepts a Thinkific generated ID (in the form of an integer)
+        required: true
+        schema:
+          type: string
+      - name: provider
+        in: path
+        description: Provider from which the user's External Id is associated
+        required: true
+        schema:
+          type: string
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          description: Provider that creates the user and with which the External Id is associated.
+          example: SSO
+      responses:
+        200:
+          description: User Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  schemas:
+    AuthenticationResponse:
+      type: object
+      properties:
+        provider:
+          type: string
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          description: Authentication provider associated with the user.
+          example: OPENID_CONNECT
+        external_id:
+          type: string
+          description: User External Id given by the provider.
+          example: abc123
+    UpdateUserRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: 'User''s first name '
+          example: Bob
+        last_name:
+          type: string
+          description: User's last name
+          example: Smith
+        email:
+          type: string
+          description: User's email. This can only be updated by private integrations.
+          format: email
+          example: bob@example.com
+        password:
+          minLength: 6
+          type: string
+          description: The password of the User.
+          example: password
+        roles:
+          type: array
+          description: User's roles
+          example:
+          - affiliate
+          items:
+            type: string
+            enum:
+            - affiliate
+            - course_admin
+            - group_analyst
+            - site_admin
+        avatar_url:
+          type: string
+          description: The fully-qualified avatar url of the User.
+          example: https://example.com/avatar/123
+        bio:
+          type: string
+          description: User's bio
+          example: The user's bio
+        company:
+          type: string
+          description: User's Company Name
+          example: The user's company
+        headline:
+          type: string
+          description: User's headline
+          example: The user's job title
+        external_source:
+          type: string
+          description: User's external source
+          example: The external source that the user was created from
+        affiliate_code:
+          type: string
+          description: User's affiliate code
+          example: abc123
+        affiliate_commission:
+          type: number
+          description: Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100 if the type is percentage or lower than 9999.99 if is a fixed type.
+          example: 20.0
+        affiliate_commission_type:
+          type: string
+          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). Required only if the User is an affiliate.
+          example: '%'
+        affiliate_payout_email:
+          type: string
+          description: The email of the User. Required only if the user is an affiliate. Used to pay the User out.
+          example: bob@example.com
+        custom_profile_fields:
+          type: array
+          description: Custom profile fields for the User.
+          items:
+            $ref: '#/components/schemas/CustomProfileFieldRequest'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: User's ID
+          example: 1.0
+        created_at:
+          type: string
+          description: User's created date
+          format: date-time
+          example: '2018-07-12T23:19:00.154Z'
+        first_name:
+          type: string
+          description: The first name of the User.
+          example: Bob
+        last_name:
+          type: string
+          description: The last name of the User.
+          example: Smith
+        full_name:
+          type: string
+          description: The email of the User.
+          example: Bob Smith
+        company:
+          type: string
+          description: The company of the User.
+          example: The user's company
+        email:
+          type: string
+          description: User's email
+          format: email
+          example: bob@example.com
+        roles:
+          type: array
+          description: 'Any specific roles that the User should be placed in. Possible roles are: affiliate, course_admin, group_analyst, site_admin.'
+          example:
+          - affiliate
+          items:
+            type: string
+            enum:
+            - affiliate
+            - course_admin
+            - group_analyst
+            - site_admin
+        avatar_url:
+          type: string
+          description: The fully-qualified avatar url of the User.
+          example: https://example.com/avatar/123
+        bio:
+          type: string
+          description: The bio of the User.
+          example: User's bio
+        headline:
+          type: string
+          description: The headline/title of the User.
+          example: User's headline
+        affiliate_code:
+          type: string
+          description: The affiliate code of the User. ** Required only if the User is an affiliate. **
+          example: abc123
+        external_source:
+          type: string
+          description: User's external source
+        affiliate_commission:
+          type: number
+          description: The affiliate commission % of the User. ** Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100. **
+          example: 20.0
+        affiliate_commission_type:
+          type: string
+          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). ** Required only if the User is an affiliate. **
+          example: '%'
+        affiliate_payout_email:
+          type: string
+          description: The email of the User. ** Required only if the user is an affiliate. Used to pay the User out. **
+          example: bob@example.com
+        administered_course_ids:
+          type: array
+          description: User's administered course ids
+          items:
+            type: number
+            example:
+            - 10
+            - 20
+            - 30
+        custom_profile_fields:
+          type: array
+          description: Custom profile fields for the User.
+          items:
+            $ref: '#/components/schemas/CustomProfileField'
+    CustomProfileFieldRequest:
+      required:
+      - custom_profile_field_definition_id
+      type: object
+      properties:
+        value:
+          type: string
+          description: Custom profile field value
+          example: 887 909 9999
+        custom_profile_field_definition_id:
+          type: number
+          description: Custom profile field definition id
+          example: 1.0
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    GetUsersResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    CreateUserRequest:
+      required:
+      - email
+      - first_name
+      - last_name
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: 'User''s first name '
+          example: Bob
+        last_name:
+          type: string
+          description: User's last name
+          example: Smith
+        email:
+          type: string
+          description: User's email
+          format: email
+          example: bob@example.com
+        password:
+          minLength: 6
+          type: string
+          description: The password of the User. If not included, the Express Sign In Link becomes activated for the User.
+          example: password
+        roles:
+          type: array
+          description: User's roles
+          example:
+          - affiliate
+          items:
+            type: string
+            enum:
+            - affiliate
+            - course_admin
+            - group_analyst
+            - site_admin
+        bio:
+          type: string
+          description: User's bio
+          example: The user's bio
+        company:
+          type: string
+          description: User's Company Name
+          example: The user's company
+        headline:
+          type: string
+          description: User's headline
+          example: The user's job title
+        affiliate_code:
+          type: string
+          description: User's affiliate code
+          example: abc123
+        affiliate_commission:
+          type: number
+          description: Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100 if the type is percentage or lower than 9999.99 if is a fixed type.
+          example: 20.0
+        affiliate_commission_type:
+          type: string
+          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). Required only if the User is an affiliate.
+          example: '%'
+        affiliate_payout_email:
+          type: string
+          description: The email of the User. Required only if the user is an affiliate. Used to pay the User out.
+          example: bob@example.com
+        custom_profile_fields:
+          type: array
+          description: Custom profile fields for the User.
+          items:
+            $ref: '#/components/schemas/CustomProfileFieldRequest'
+        skip_custom_fields_validation:
+          type: boolean
+          description: Option to skip required custom profile fields validation.
+          default: false
+        send_welcome_email:
+          type: boolean
+          description: Option to send the Site Welcome email to the User.
+          default: false
+        external_id:
+          type: string
+          description: Optional identifier of the user in an external system. Typically used in conjunction with Thinkific's single sign-on. For further information on this, please read [this](https://help.thinkific.com/support/solutions/articles/221622-sso-automatically-sign-in-from-your-own-website)
+        provider:
+          type: string
+          description: When using Thinkific single sign-on and providing an external_id, specify the provider type to distinguish which single sign-on type the user should be associated with.
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          default: SSO
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    CustomProfileField:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Custom profile field ID
+          example: 1.0
+        value:
+          type: string
+          description: Custom profile field value
+          example: 887 909 9999
+        label:
+          type: string
+          description: Custom profile field label
+          example: Phone
+        custom_profile_field_definition_id:
+          type: number
+          description: Custom profile field definition ID
+          example: 1.0
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

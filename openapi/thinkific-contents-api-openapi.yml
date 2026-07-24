@@ -1,0 +1,142 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Contents API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Contents
+  description: Contents operations
+paths:
+  /contents/{id}:
+    get:
+      tags:
+      - Contents
+      summary: Get Contents by Id
+      description: Retrieves a Content
+      operationId: getContentByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Content in the form of an integer
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Content response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  schemas:
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    ContentResponse:
+      required:
+      - chapter_id
+      - contentable_type
+      - free
+      - id
+      - name
+      - position
+      - take_url
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Content as an integer
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Content
+          example: Video Lesson
+        position:
+          type: number
+          description: The position of the Content within a Chapter.
+          example: 1.0
+        chapter_id:
+          type: number
+          description: The ID of the Chapter that the Content is in as an integer
+          example: 1.0
+        contentable_type:
+          type: string
+          enum:
+          - Assignment
+          - Audio
+          - Download
+          - BrilliumExam
+          - Disqus
+          - HtmlItem
+          - Iframe
+          - LiveLesson
+          - Lesson
+          - Pdf
+          - Presentation
+          - Quiz
+          - Survey
+          description: The type of the Content
+          example: Lesson
+        free:
+          type: boolean
+          description: A boolean indicating whether the Content is free
+          example: false
+        take_url:
+          type: string
+          description: The url of the Content in the Course Player
+          example: http://somesite.thinkific.com/courses/take/xxx/yyy
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

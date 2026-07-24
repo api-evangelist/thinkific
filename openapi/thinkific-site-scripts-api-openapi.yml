@@ -1,0 +1,614 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Site Scripts API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Site Scripts
+  description: Site Scripts operations [Scope Required](https://developers.thinkific.com/building-apps/site-scripts/#oauth-scope)
+paths:
+  /site_scripts:
+    get:
+      tags:
+      - Site Scripts
+      summary: List Site Scripts
+      description: Retrieve a list of site scripts
+      operationId: getSiteScripts
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Site Scripts response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSiteScriptsResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenInsufficientScopeResponse'
+    post:
+      tags:
+      - Site Scripts
+      summary: Create Site Script
+      description: Create a new Site Script
+      operationId: createSiteScript
+      requestBody:
+        description: 'Create Site Script request body
+
+
+          To create Site Scripts, either the `src` or `content` attribute must be provided. Only one should be specified.
+
+
+          When using the `src` attribute, the top-level domain of the URL should match the top-level domain of the App URL. When using the `content` attribute, the header `HMAC-SHA256-SIGNATURE` generated using the app''s secret and content must be included in the request.
+
+
+          Use the drop down menu to view examples with `src` or `content` attribute
+
+          '
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteScriptRequest'
+            examples:
+              CreateSiteScriptWithContentRequest:
+                $ref: '#/components/examples/SiteScriptWithContentRequest'
+              CreateSiteScriptWithSrcRequest:
+                $ref: '#/components/examples/SiteScriptWithSrcRequest'
+        required: true
+      responses:
+        201:
+          description: Site Script created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteScriptResponse'
+              examples:
+                CreateSiteScriptWithContentResponse:
+                  $ref: '#/components/examples/SiteScriptWithContentResponse'
+                CreateSiteScriptWithSrcResponse:
+                  $ref: '#/components/examples/SiteScriptWithSrcResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenInsufficientScopeResponse'
+        422:
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              examples:
+                MissingInput:
+                  $ref: '#/components/responses/SiteScriptPutPostError/MissingInput'
+                InvalidSource:
+                  $ref: '#/components/responses/SiteScriptPutPostError/InvalidSource'
+                MissingHMACHeaderForContentInput:
+                  $ref: '#/components/responses/SiteScriptPutPostError/MissingHMACHeaderForContentInput'
+                InvalidHMACHeaderForContentInput:
+                  $ref: '#/components/responses/SiteScriptPutPostError/InvalidHMACHeaderForContentInput'
+      x-codegen-request-body-name: body
+  /site_scripts/{id}:
+    get:
+      tags:
+      - Site Scripts
+      summary: Get Site Script by ID
+      description: Retrieves a Site Script identified by the provided ID
+      operationId: getSiteScriptByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Site Script in the form of a string
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Site Script Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SiteScriptResponse'
+              examples:
+                GetSiteScriptWithContentResponse:
+                  $ref: '#/components/examples/SiteScriptWithContentResponse'
+                GetSiteScriptWithSrcResponse:
+                  $ref: '#/components/examples/SiteScriptWithSrcResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenInsufficientScopeResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+    put:
+      tags:
+      - Site Scripts
+      summary: Update Site Script by ID
+      description: Updates the Site Script specified by the provided ID
+      operationId: updateSiteScriptByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Site Script in the form of a string
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: 'Update Site Script request body
+
+
+          When updating Site Scripts, only one of `src` or `content` should be specified.
+
+
+          When using the `src` attribute, the top-level domain of the URL should match the top-level domain of the app.
+
+          When using the `content` attribute, the header `HMAC-SHA256-SIGNATURE` generated using the app''s secret and content must be included in the request.
+
+
+          Use the dropdown menu to view examples with `src` or `content` attribute.
+
+          '
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SiteScriptRequest'
+            examples:
+              UpdateSiteScriptWithContentRequest:
+                $ref: '#/components/examples/SiteScriptWithContentRequest'
+              UpdateSiteScriptWithSrcRequest:
+                $ref: '#/components/examples/SiteScriptWithSrcRequest'
+        required: true
+      responses:
+        204:
+          description: Site Script Updated
+        403:
+          $ref: '#/components/responses/ErrorForbiddenInsufficientScopeResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+        422:
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              examples:
+                MissingInput:
+                  $ref: '#/components/responses/SiteScriptPutPostError/MissingInput'
+                InvalidSource:
+                  $ref: '#/components/responses/SiteScriptPutPostError/InvalidSource'
+                MissingHMACHeaderForContentInput:
+                  $ref: '#/components/responses/SiteScriptPutPostError/MissingHMACHeaderForContentInput'
+                InvalidHMACHeaderForContentInput:
+                  $ref: '#/components/responses/SiteScriptPutPostError/InvalidHMACHeaderForContentInput'
+    delete:
+      tags:
+      - Site Scripts
+      summary: Delete Site Script by ID
+      description: Deletes a Site Script identified by the provided ID
+      operationId: deleteSiteScriptByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Site Script in the form of a string
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Site Script Deleted
+        403:
+          $ref: '#/components/responses/ErrorForbiddenInsufficientScopeResponse'
+        404:
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  responses:
+    SiteScriptPutPostError:
+      InvalidSource:
+        value:
+          errors:
+            base:
+            - the source of the script must match the app's domain
+      MissingInput:
+        value:
+          errors:
+            base:
+            - 'must provide one of: src or content'
+      MissingHMACHeaderForContentInput:
+        value:
+          errors:
+            base:
+            - Missing header `HMAC-SHA256-SIGNATURE`
+      InvalidHMACHeaderForContentInput:
+        value:
+          errors:
+            base:
+            - Invalid header `HMAC-SHA256-SIGNATURE`
+    ErrorForbiddenInsufficientScopeResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenInsufficientScope'
+  schemas:
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetSiteScriptsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SiteScriptResponse'
+          example:
+          - id: 123e4567-e89b-12d3-a456-426614174000
+            src: https://your-site.com/site-script.js
+            name: MyApp's Tracking Script
+            description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+            page_scopes:
+            - landing_pages
+            - course_player
+            location: footer
+            load_method: async
+            category: marketing
+          - id: 123e4567-e89b-12d3-a456-426614174999
+            content: console.log('Hello! This is a Site Script')
+            name: MyApp's Tracking Script
+            description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+            page_scopes:
+            - landing_pages
+            - course_player
+            location: footer
+            load_method: async
+            category: marketing
+        meta:
+          $ref: '#/components/schemas/Meta'
+    SiteScriptResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The Site Script's ID.
+          example: 01A6BCDEF19GHIJ7K4LMNOP87Q
+        content:
+          type: string
+          description: A string containing HTML/Javascript. Required if `src` is not provided.
+          example: console.log('Hello! This is a Site Script')
+        src:
+          type: string
+          description: A URL that points to where the script is hosted. Required if `content` is not provided.
+          format: uri
+          example: https://your-site.com/site-script.js
+        name:
+          type: string
+          description: A short and user-friendly string to identify the script.
+          example: MyApp's Tracking Script
+        description:
+          type: string
+          description: A user-friendly explanation of the script's purpose and what it does.
+          example: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+          type: array
+          description: 'An array of page and domain identifiers that the Site Script should be injected onto. `page_scopes` can contain identifiers that are groupings of pages and/or the pages themselves.
+
+
+            The majority of the page identifiers correspond to Liquid pages. For more details, take a look at our [Liquid API docs](https://developers.thinkific.com/themes/liquid-api/pages/).
+
+
+            Groupings and Page Identifiers:
+
+
+            | Page Grouping | Page Identifiers Included |
+
+            | ------- | --------|
+
+            | landing_pages   | home_landing_page, course_landing_page, collections_landing_page, bundle_landing_page, coming_soon_page, page_template (used for custom pages)   |
+
+            | checkout   | checkout_thankyou_page   |
+
+            | learning_experience   | student_dashboard, course_player   |
+
+            | all   | all page identifiers listed above   |
+
+            '
+          example:
+          - landing_pages
+          - course_player
+          items:
+            type: string
+            enum:
+            - landing_pages
+            - checkout
+            - learning_experience
+            - all
+            - home_landing_page
+            - course_landing_page
+            - collections_landing_page
+            - bundle_landing_page
+            - coming_soon_page
+            - page_template
+            - checkout_thankyou_page
+            - student_dashboard
+            - course_player
+        location:
+          type: string
+          description: 'Where in the HTML the script should be injected. Accepted values are: head or footer'
+          example: footer
+          enum:
+          - head
+          - footer
+        load_method:
+          type: string
+          description: 'How the Site Script will be loaded into the page. Accepted values are: async, defer, and default'
+          example: async
+          enum:
+          - async
+          - defer
+          - default
+        category:
+          type: string
+          description: 'Describes the purpose of the script. Accepted values are: functional, analytics, marketing'
+          example: marketing
+          enum:
+          - functional
+          - analytics
+          - marketing
+        created_at:
+          type: string
+          description: Site Script's created date
+          format: date-time
+          example: '2018-07-12T23:19:00.154Z'
+        updated_at:
+          type: string
+          description: Site Script's updated date
+          format: date-time
+          example: '2018-07-12T23:19:00.154Z'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    SiteScriptRequest:
+      required:
+      - name
+      - description
+      - page_scopes
+      - category
+      properties:
+        src:
+          type: string
+          description: A URL that points to where the script is hosted. Required if `content` is not provided. Note the TLD of the src url must match the app's url.
+          format: uri
+          example: https://your-site.com/site-script.js
+        content:
+          type: string
+          description: A string containing HTML/Javascript. Required if `src` is not provided. When providing the script using content, the header HMAC-SHA256-SIGNATURE is also require to be sent. Generate the signature using the app's client secret and the value.
+          example: console.log('Hello! This is a Site Script')
+        name:
+          type: string
+          description: A short and user-friendly string to identify the script.
+          example: MyApp's Tracking Script
+        description:
+          type: string
+          description: A user-friendly explanation of the script's purpose and what it does.
+          example: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+          type: array
+          description: 'An array of page and domain identifiers that the Site Script should be injected onto. `page_scopes` can contain identifiers that are groupings of pages and/or the pages themselves.
+
+
+            The majority of the page identifiers correspond to Liquid pages. For more details, take a look at our [Liquid API docs](https://developers.thinkific.com/themes/liquid-api/pages/).
+
+
+            Groupings and Page Identifiers:
+
+
+            | Page Grouping | Page Identifiers Included |
+
+            | ------- | --------|
+
+            | landing_pages   | home_landing_page, course_landing_page, collections_landing_page, bundle_landing_page, coming_soon_page, page_template (used for custom pages)   |
+
+            | checkout   | checkout_thankyou_page   |
+
+            | learning_experience   | student_dashboard, course_player   |
+
+            | all   | all page identifiers listed above   |
+
+            '
+          example:
+          - landing_pages
+          - course_player
+          items:
+            type: string
+            enum:
+            - landing_pages
+            - checkout
+            - learning_experience
+            - all
+            - home_landing_page
+            - course_landing_page
+            - collections_landing_page
+            - bundle_landing_page
+            - coming_soon_page
+            - page_template
+            - checkout_thankyou_page
+            - student_dashboard
+            - course_player
+        location:
+          type: string
+          description: 'Where in the HTML the script should be injected. Accepted values are: head or footer'
+          example: footer
+          enum:
+          - head
+          - footer
+          default: footer
+        load_method:
+          type: string
+          description: 'How the Site Script will be loaded into the page. Accepted values are: async, defer, and default'
+          example: async
+          enum:
+          - async
+          - defer
+          - default
+          default: async
+        category:
+          type: string
+          description: 'Describes the purpose of the script. Accepted values are: functional, analytics, marketing'
+          example: marketing
+          enum:
+          - functional
+          - analytics
+          - marketing
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorForbiddenInsufficientScope:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access token has insufficient scope.
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  examples:
+    SiteScriptWithContentRequest:
+      summary: Site Script with content
+      value:
+        content: console.log('Hello! This is a Site Script')
+        name: MyApp's Tracking Script
+        description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+        - landing_pages
+        - course_player
+        location: footer
+        load_method: async
+        category: marketing
+    SiteScriptWithContentResponse:
+      summary: Site Script with content
+      value:
+        site_script:
+          id: 123e4567-e89b-12d3-a456-426614174999
+          content: console.log('Hello! This is a Site Script')
+          name: MyApp's Tracking Script
+          description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+          page_scopes:
+          - landing_pages
+          - course_player
+          location: footer
+          load_method: async
+          category: marketing
+    SiteScriptWithSrcRequest:
+      summary: Site Script with src
+      value:
+        src: https://your-site.com/site-script.js
+        name: MyApp's Tracking Script
+        description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+        - landing_pages
+        - course_player
+        location: footer
+        load_method: async
+        category: marketing
+    SiteScriptWithSrcResponse:
+      summary: Site Script with src
+      value:
+        site_script:
+          id: 123e4567-e89b-12d3-a456-426614174000
+          src: https://your-site.com/site-script.js
+          name: MyApp's Tracking Script
+          description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+          page_scopes:
+          - landing_pages
+          - course_player
+          location: footer
+          load_method: async
+          category: marketing
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

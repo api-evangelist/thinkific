@@ -1,0 +1,180 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles External Orders API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: External Orders
+  description: Please note that any External Orders created through the API do not appear on the orders report or dashboard in your Thinkific site. Using the External Orders endpoints will simply store the information in our database.
+paths:
+  /external_orders:
+    post:
+      tags:
+      - External Orders
+      summary: Create a new external order
+      description: Please note that any External Orders created through the API do not appear on the orders report or dashboard in your Thinkific site. Using the External Orders endpoints will simply store the information in our database.
+      operationId: createExternalOrder
+      requestBody:
+        description: External Order request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalOrderRequest'
+      responses:
+        201:
+          description: External Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+  /external_orders/{id}/transactions/refund:
+    post:
+      tags:
+      - External Orders
+      summary: refund transaction
+      description: This endpoint will create a new transaction refund for the External Order.
+      requestBody:
+        description: Transaction
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalOrderTransaction'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        description: External Order ID as integer
+        schema:
+          type: number
+      responses:
+        200:
+          description: Transaction created
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+  /external_orders/{id}/transactions/purchase:
+    post:
+      tags:
+      - External Orders
+      summary: purchase transaction
+      description: This endpoint will create a new transaction purchase for the External Order.
+      requestBody:
+        description: Transaction
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalOrderTransaction'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        description: External Order ID
+        schema:
+          type: string
+      responses:
+        200:
+          description: Transaction created
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+components:
+  schemas:
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ExternalOrderTransaction:
+      description: External Order Transaction
+      type: object
+      required:
+      - amount
+      - currency
+      properties:
+        amount:
+          example: 10000
+          type: number
+          description: the order amount in currency's smallest unit
+        currency:
+          type: string
+          example: USD
+          description: the order currency
+        reference:
+          example: 123abc
+          type: string
+          description: reference number provided by external payment provider
+        action:
+          example: purchase
+          type: string
+          description: Action of the transaction
+    ExternalOrderRequest:
+      type: object
+      description: External Order Request
+      required:
+      - payment_provider
+      - user_id
+      - product_id
+      - order_type
+      properties:
+        payment_provider:
+          type: string
+          description: An identifier to external provider
+          example: ExternalProvider
+        user_id:
+          type: number
+          example: 1
+          description: The ID of the user as an integer
+        product_id:
+          example: 1
+          type: number
+          description: The ID of the product as an integer
+        order_type:
+          type: string
+          enum:
+          - one-time
+          - subscription
+          - payment-plan
+          example: one-time
+          description: type of the order
+        transaction:
+          $ref: '#/components/schemas/ExternalOrderTransaction'
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

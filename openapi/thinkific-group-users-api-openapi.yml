@@ -1,0 +1,113 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Group Users API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Group Users
+  description: Group Users operations
+paths:
+  /group_users:
+    post:
+      tags:
+      - Group Users
+      summary: Create a User to existing Groups
+      description: Create an existing User to existing Groups
+      operationId: createGroupUsers
+      requestBody:
+        description: Group Users attributes
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupUsersRequest'
+        required: true
+      responses:
+        201:
+          description: Group Users response
+          content: {}
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                - Invalid group_names
+      x-codegen-request-body-name: body
+components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  schemas:
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    CreateGroupUsersRequest:
+      required:
+      - group_names
+      - user_id
+      type: object
+      properties:
+        user_id:
+          type: number
+          description: The ID of the User to add to Groups
+          example: 3251643.0
+        group_names:
+          type: array
+          description: The list of Group names to add selected User to
+          example:
+          - New Group 1
+          - New Group 2
+          items:
+            type: string
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

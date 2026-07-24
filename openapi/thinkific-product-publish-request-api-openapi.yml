@@ -1,0 +1,356 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Product Publish Request API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Product Publish Request
+  description: Product Publish Request operations
+paths:
+  /product_publish_requests:
+    get:
+      tags:
+      - Product Publish Request
+      summary: Get List of unhandled product publish requests
+      description: Returns a list of unhandled Product Publish Requests.
+      operationId: getProductPublishRequests
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Product Publish Requests response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductPublishResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+  /product_publish_requests/{id}:
+    get:
+      tags:
+      - Product Publish Request
+      summary: Get product publish request by ID
+      description: Returns the Product Publish Request identified by the provided id.
+      operationId: getProductPublishRequestByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Product Publish Request in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Product Publish Request success response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductPublishRequest'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /product_publish_requests/{id}/approve:
+    post:
+      tags:
+      - Product Publish Request
+      summary: Approves Product Publish Request
+      description: Approves the Product Publish Request identified by the provided id.
+      operationId: approvePublishRequest
+      requestBody:
+        description: Product Publish Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductPublishRequestBody'
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Product Publish Request in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Product Publish Request approved
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+              - errors:
+                - user_id: not found
+  /product_publish_requests/{id}/deny:
+    post:
+      tags:
+      - Product Publish Request
+      summary: Denies Product Publish Request
+      description: Denies the Product Publish Request identified by the provided id.
+      operationId: denyPublicationRequest
+      requestBody:
+        description: Product Publish Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductPublishRequestBody'
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Product Publish Request in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Product Publish Request denied
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+        422:
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+              - errors:
+                - user_id: not found
+components:
+  schemas:
+    ProductPublishRequest:
+      required:
+      - product_id
+      - requesting_user_id
+      - status
+      type: object
+      properties:
+        product_id:
+          type: number
+          description: The ID pf the Product as an integer.
+          example: 1.0
+        status:
+          type: string
+          description: The approval status of the Product Publish Request. Can be either 'approved' or 'denied'.
+          example: approved
+        response_text:
+          type: string
+          description: The text of the response provided by the approver.
+          example: Wow! Great course!
+        requesting_user_id:
+          type: number
+          description: The ID of the requesting User as an integer.
+          example: 2.0
+        responding_user_id:
+          type: number
+          description: The ID of the responding User as an integer.
+        completed_at:
+          type: string
+          description: The date/time the Product Publish Request was completed.
+        created_at:
+          type: string
+          description: The date/time the Product Publish Request was created.
+        updated_at:
+          type: string
+          description: The date/time the Product Publish Request was last updated.
+    PromotionResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Promotion as an integer.
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Promotion.
+          example: A Promo
+        description:
+          type: string
+          description: A description for the Promotion.
+          example: The promo description
+        starts_at:
+          type: string
+          description: The date and time when the Promotion begins.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        expires_at:
+          type: string
+          description: The date and time when the Promotion ends.
+          format: date-time
+          example: '2018-01-31T01:01:00Z'
+        discount_type:
+          type: string
+          description: The type of discount. Must be either 'fixed' or 'percentage'.
+          enum:
+          - fixed
+          - percentage
+          example: fixed
+        amount:
+          type: number
+          description: The amount of the discount. If 'fixed', must be a dollar value. If 'percentage', must be a number greater than 0 and less than or equal to 100.
+          example: 10.0
+        coupon_ids:
+          type: array
+          description: The coupon ids related to the promotion.
+          example:
+          - 1
+          - 2
+          - 3
+          items:
+            type: number
+        duration:
+          type: number
+          description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
+          example: 3.0
+    GetProductPublishResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ProductPublishRequestBody:
+      required:
+      - user_id
+      type: object
+      properties:
+        user_id:
+          type: number
+          description: user responding for publish request
+          example: 100
+        response_text:
+          type: string
+          description: approval or declining message
+          example: Course approved
+        notify_requester:
+          type: boolean
+          description: whether it should notify the user who made the request
+          example: true
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

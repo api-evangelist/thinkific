@@ -1,0 +1,336 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Courses API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Courses
+  description: Courses operations
+paths:
+  /courses:
+    get:
+      tags:
+      - Courses
+      summary: Get Courses
+      description: Retrieve a list of Courses
+      operationId: getCourses
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch.
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Courses Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCoursesResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+  /courses/{id}:
+    get:
+      tags:
+      - Courses
+      summary: Get courses by ID
+      description: Returns the Course identified by the provided id.
+      operationId: getCourseByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Course in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Courses response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CourseResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /courses/{id}/chapters:
+    get:
+      tags:
+      - Courses
+      summary: Get Chapters by Course ID
+      description: Returns the Chapter of the course identified by the provided id.
+      operationId: getChapterOfCourseByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of the Chapter in the form of an integer.
+        required: true
+        schema:
+          type: number
+      - name: page
+        in: query
+        description: The page within the collection to fetch.
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned.
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Chapter of a course response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetChaptersResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  schemas:
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    CourseResponse:
+      required:
+      - chapter_ids
+      - id
+      - instructor_id
+      - name
+      - product_id
+      - reviews_enabled
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the course
+          example: 1.0
+        name:
+          type: string
+          description: The name of the course
+          example: My Course
+        slug:
+          type: string
+          description: URL-friendly version of the course name. Used to construct URL for course Landing Pages & Course Player.
+          example: my-course
+        subtitle:
+          type: string
+          description: Deprecated - Used in legacy themes to display the subtitle of the Course.
+          example: My Course Subtitle
+        product_id:
+          type: number
+          description: The Course's Product ID
+        description:
+          type: string
+          description: The description of the Course(V2 themes currently don't have that info)
+          example: Course description
+        course_card_text:
+          type: string
+          description: Deprecated - use 'description'.* - Used in legacy themes to populate the text for a Course card.
+          example: my course
+        intro_video_youtube:
+          type: string
+          description: Deprecated - Used in legacy themes to designate an intro video from Youtube.
+          example: youtube01
+        contact_information:
+          type: string
+          description: Deprecated - The contact information of the Course.
+          example: Contact info
+        keywords:
+          type: string
+          description: The keywords of the Course
+          example: course,learn,great
+        duration:
+          type: string
+          description: Deprecated - Used in legacy themes to display the duration of the Course.
+          example: '22'
+        banner_image_url:
+          type: string
+          description: Deprecated - use 'course_card_image_url'* - The landing page banner image url of the Course.
+          example: http://example.com/banner.jpg
+        course_card_image_url:
+          type: string
+          description: The card image url of the Course
+          example: http://example.com/card.jpg
+        intro_video_wistia_identifier:
+          type: string
+          description: Deprecated - Used in legacy themes to designate an intro video from Wistia.
+          example: wistia0123
+        administrator_user_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+            description: The IDs of the Users that can administer the Course as integers
+        chapter_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+            description: The IDs of the Chapters in the Course as integers
+        reviews_enabled:
+          type: boolean
+          description: A boolean indicating whether reviews are enabled for the Course
+          example: false
+        user_id:
+          type: number
+          description: The ID of the User that created the Course
+          example: 1.0
+        instructor_id:
+          type: number
+          description: The ID of the Instructor of the Course
+          example: 1.0
+    GetChaptersResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChapterResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    ChapterResponse:
+      required:
+      - content_ids
+      - id
+      - name
+      - position
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Chapter as an integer
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Chapter
+          example: Chapter 1
+        position:
+          type: number
+          description: The position of the Chapter within the Course
+          example: 1.0
+        description:
+          type: string
+          description: The description of the Chapter
+          example: The first Chapter
+        duration_in_seconds:
+          type: number
+          description: The duration of the Chapter in seconds. This is the sum of the length of the video lessons in the Chapter
+          example: 60.0
+        content_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          - 3
+          items:
+            type: number
+            description: The IDs of the Contents within the Chapter
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    GetCoursesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

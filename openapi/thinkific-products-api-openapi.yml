@@ -1,0 +1,381 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Products API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Products
+  description: Products operations
+paths:
+  /products:
+    get:
+      tags:
+      - Products
+      summary: List products
+      operationId: getProducts
+      parameters:
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Products response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+  /products/{id}:
+    get:
+      tags:
+      - Products
+      summary: Get product by ID
+      description: Returns the Product identified by the provided id.
+      operationId: getProductByID
+      parameters:
+      - name: id
+        in: path
+        description: Id of the product in the form of an integer
+        required: true
+        schema:
+          type: number
+      responses:
+        200:
+          description: Products response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+  /products/{id}/related:
+    get:
+      tags:
+      - Products
+      summary: Get related products
+      description: Returns a list of products that are related to the Product identified by the provided id.
+      operationId: getRelatedProductByProductID
+      parameters:
+      - name: id
+        in: path
+        description: Id of the product in the form of an integer
+        required: true
+        schema:
+          type: number
+      - name: page
+        in: query
+        description: The page within the collection to fetch
+        schema:
+          type: number
+          default: 1.0
+      - name: limit
+        in: query
+        description: The number of items to be returned
+        schema:
+          type: number
+          default: 25.0
+      responses:
+        200:
+          description: Products response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductsResponse'
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  schemas:
+    ProductPriceResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Product Price as an integer.
+          example: 4.0
+        is_primary:
+          type: boolean
+          description: A boolean indicating whether the Product Price is the default.
+          example: true
+          default: false
+        payment_type:
+          type: string
+          description: The type of payment. Must be one of 'free', 'one-time', 'subscription', or 'payment-plan'.
+          enum:
+          - free
+          - one-time
+          - subscription
+          - payment-plan
+          example: subscription
+        label:
+          type: string
+          description: The description for the Product Price. This value is required when is_primary is false.
+          example: null
+          default: null
+        price:
+          type: string
+          description: The amount in dollars to be charged.
+          example: '10.0'
+        days_until_expiry:
+          type: string
+          description: The number of days, after purchase, that a student will be enrolled in the course.
+          example: null
+        pay_button_text:
+          type: string
+          description: This text that is displayed on the Buy Button on the course card and the course landing page.
+          example: null
+        number_of_payments:
+          type: string
+          description: The number of recurring payments for a Product Price with payment_type of 'payment-plan'.
+          example: null
+        interval:
+          type: string
+          description: The billing frequency. Must be one of 'month' or 'year'.
+          enum:
+          - month
+          - year
+          example: month
+        interval_count:
+          type: string
+          description: The number of intervals between billings. For example, if interval is 'month' and interval_count is '1', the billing frequency is once every month.
+          example: '1'
+        trial_interval:
+          type: string
+          description: The interval for the trial period. Must be one of 'day' or 'month'.
+          enum:
+          - day
+          - month
+          example: null
+        trial_interval_count:
+          type: string
+          description: The number of intervals for the trial period. For example, if trial_interval is 'month' and trial_interval_count is '6', the free trial will end (and regular payments will begin) in 6 months.
+          example: null
+        custom_first_price:
+          type: string
+          description: Students pay this amount for the first payment period of the subscription.
+          example: null
+        price_name:
+          type: string
+          description: The name of the Product Price. If is_primary is true, returns the name of the product, otherwise returns "{Product name} - {Product Price label}".
+          example: Learn Jiu Jitsu
+        currency:
+          type: string
+          description: The three-letter ISO currency code of the Product Price. Must be a supported currency.
+          example: usd
+          default: usd
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetProductsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    ProductResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Product as an integer.
+          example: 6.0
+        created_at:
+          type: string
+          description: The date and time that the Product was created.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        productable_id:
+          type: number
+          description: The ID of the Course or Bundle that is represented by the Product.
+          example: 6.0
+        productable_type:
+          type: string
+          description: The type of item that the Product represents.
+          example: Course
+        price:
+          type: number
+          description: 'The price of the Product. ** NOTE: price will be deprecated in future versions of the API **'
+          example: 10.99
+        position:
+          type: number
+          description: The position of the Product within the site. Used for ordering.
+          example: 1.0
+        status:
+          type: string
+          description: The status of the Product. Can be either 'published' or 'draft'.
+          example: published
+        name:
+          type: string
+          description: The name of the Product.
+          example: My Course
+        private:
+          type: boolean
+          description: A boolean indicating whether the Product is private. When private, a Product cannot be purchased. A user must be enrolled manually.
+          example: false
+        hidden:
+          type: boolean
+          description: A boolean indicating whether the Product is hidden. When hidden, the Product will not appear on any site pages. It's landing page will be still be accessible via a link, however.
+          example: false
+        subscription:
+          type: boolean
+          description: 'A boolean indicating whether the Product is a subscription or not. '
+          example: false
+        days_until_expiry:
+          type: number
+          description: If access to a Product can end, this value controls how many days access is granted for from the date of enrollment.
+          example: 365.0
+        has_certificate:
+          type: boolean
+          description: A boolean indicating whether the Product has a certificate.
+          example: false
+        keywords:
+          type: string
+          description: Keywords associated with the Product.
+          example: some key words
+        seo_title:
+          type: string
+          description: The SEO title of the Product.
+          example: Product Title
+        seo_description:
+          type: string
+          description: The SEO description of the Product.
+          example: Description
+        collection_ids:
+          type: array
+          description: The IDs of the Categories to which this Product belongs as integers.
+          example:
+          - 2
+          - 3
+          - 5
+          items:
+            type: number
+        related_product_ids:
+          type: array
+          description: The IDs of any related Products as integers.
+          example:
+          - 16
+          - 22
+          items:
+            type: number
+        description:
+          type: string
+          example: Product Description
+          description: The description of the product (course or bundle)
+        card_image_url:
+          type: string
+          example: http://example.com/card.jpg
+          description: The card image URL for the product.
+        slug:
+          type: string
+          description: The slug of the product
+          example: new-product
+        product_prices:
+          type: array
+          description: The Product Price objects for the Product.
+          items:
+            $ref: '#/components/schemas/ProductPriceResponse'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

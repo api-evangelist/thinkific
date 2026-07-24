@@ -1,0 +1,180 @@
+openapi: 3.0.1
+info:
+  title: Thinkific Admin Bundles Group Analysts API
+  description: Thinkific's public API can be used to integrate your application with your Thinkific site.
+  termsOfService: https://www.thinkific.com/legal/
+  contact:
+    email: developers@thinkific.com
+  version: v1
+servers:
+- url: https://api.thinkific.com/api/public/v1
+security:
+- OAuthAccessToken: []
+- ApiKey: []
+  ApiKeySubdomain: []
+tags:
+- name: Group Analysts
+  description: Group Analyst operations
+paths:
+  /group_analysts/{user_id}/groups:
+    post:
+      tags:
+      - Group Analysts
+      summary: Add Analyst to Groups
+      description: Assign Group Analyst to groups. User need to be assigned the Group Analyst (group_analyst) role.
+      operationId: addGroupToAnalyst
+      parameters:
+      - name: user_id
+        in: path
+        description: ID of the User in the form of an integer.
+        required: true
+        schema:
+          type: number
+      requestBody:
+        description: Group Analyst
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupAnalystsAddGroupRequest'
+      responses:
+        201:
+          description: Group Analyst response
+          content: {}
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unable to process request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  group_analysts: 'User IDs missing group_analysts role: 1'
+                  group_id: 'Invalid group IDs: 1, 2'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+              example:
+                error:
+                  user_id:
+                  - Could not find user with ID 1.
+  /group_analysts/{user_id}/groups/{group_id}:
+    delete:
+      tags:
+      - Group Analysts
+      summary: Delete Analyst
+      description: Remove an analyst from a group
+      operationId: removeGroupFromAnalyst
+      parameters:
+      - name: user_id
+        in: path
+        description: ID of the User in the form of an integer.
+        required: true
+        schema:
+          type: number
+      - name: group_id
+        in: path
+        description: ID of the Group in the form of an integer.
+        required: true
+        schema:
+          type: number
+      responses:
+        204:
+          description: Group Analyst response
+          content: {}
+        403:
+          $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+        422:
+          description: Unable to process request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableEntityError'
+              example:
+                errors:
+                  group_id:
+                  - Could not find group with ID 1.
+        404:
+          description: Unable to process request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorNotFound'
+              example:
+                error:
+                  user_id:
+                  - Could not find user with ID 1.
+                  group_id:
+                  - Could not find group with ID 1.
+components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
+  schemas:
+    GroupAnalystsAddGroupRequest:
+      required:
+      - group_ids
+      type: object
+      properties:
+        group_ids:
+          type: array
+          description: The list of Group IDs to add the analyst
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+  securitySchemes:
+    OAuthAccessToken:
+      type: http
+      scheme: bearer
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Auth-API-Key
+      description: Used together with ApiKeySubdomain
+    ApiKeySubdomain:
+      type: apiKey
+      in: header
+      name: X-Auth-Subdomain
+      description: Used together with ApiKey
+externalDocs:
+  description: Find out more about Thinkifc's API
+  url: http://developers.thinkific.com/api/api-documentation/

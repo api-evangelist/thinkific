@@ -1,7 +1,20 @@
 aid: thinkific
 name: Thinkific
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thinkific.png
 url: https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
@@ -26,49 +39,297 @@ tags:
   - Digital Products
   - Webhooks
 apis:
-  - aid: thinkific:admin-api
-    name: Thinkific Admin REST API
-    type: REST
-    description: >
-      The Thinkific Admin REST API exposes endpoints for managing courses, enrollments, users,
-      products, orders, bundles, groups, and site data. Authentication is via API key or OAuth.
-      The base URL is https://api.thinkific.com/api/public/v1.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.thinkific.com/api/api-documentation
-    baseURL: https://api.thinkific.com/api/public/v1
-    tags:
-      - Courses
-      - Enrollments
-      - Users
-      - Products
-      - Orders
-    properties:
-      - type: Documentation
-        url: https://developers.thinkific.com/api/api-documentation
-      - type: OpenAPI
-        url: openapi/thinkific-admin-api-openapi.yml
-  - aid: thinkific:webhooks-api
-    name: Thinkific Webhooks API
-    type: REST
-    description: >
-      The Thinkific Webhooks API (v2) provides real-time event-driven notifications for site
-      events including user creation, enrollment changes, order processing, product updates,
-      lead captures, payment events, and user deletions. Webhooks can be created programmatically
-      using an API key.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.thinkific.com/api/webhooks-api/
-    baseURL: https://api.thinkific.com/api/v2
-    tags:
-      - Webhooks
-      - Events
-      - Real-Time
-      - Notifications
-    properties:
-      - type: Documentation
-        url: https://developers.thinkific.com/api/webhooks-api/
-      - type: OpenAPI
-        url: openapi/thinkific-webhooks-api-openapi.yml
+- aid: thinkific:webhooks-api
+  name: Thinkific Webhooks API
+  type: REST
+  description: >
+    The Thinkific Webhooks API (v2) provides real-time event-driven notifications for site events including
+    user creation, enrollment changes, order processing, product updates, lead captures, payment events,
+    and user deletions. Webhooks can be created programmatically using an API key.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.thinkific.com/api/webhooks-api/
+  baseURL: https://api.thinkific.com/api/v2
+  tags:
+  - Webhooks
+  - Events
+  - Real-Time
+  - Notifications
+  properties:
+  - type: Documentation
+    url: https://developers.thinkific.com/api/webhooks-api/
+  - type: OpenAPI
+    url: openapi/thinkific-webhooks-api-openapi.yml
+- aid: thinkific:thinkific-bundles-api
+  name: Thinkific Bundles API
+  description: Bundle operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Bundles
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-bundles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-categories-api
+  name: Thinkific Categories API
+  description: Categories operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-category-memberships-api
+  name: Thinkific Category Memberships API
+  description: Category Memberships operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Category Memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-category-memberships-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-chapters-api
+  name: Thinkific Chapters API
+  description: Chapters operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Chapters
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-chapters-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-contents-api
+  name: Thinkific Contents API
+  description: Contents operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Contents
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-contents-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-coupons-api
+  name: Thinkific Coupons API
+  description: Coupons operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Coupons
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-coupons-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-course-reviews-api
+  name: Thinkific Course Reviews API
+  description: Course Reviews operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Course Reviews
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-course-reviews-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-courses-api
+  name: Thinkific Courses API
+  description: Courses operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Courses
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-courses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-custom-profile-field-definitions-api
+  name: Thinkific Custom Profile Field Definitions API
+  description: Custom Profile Field Definitions
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Custom Profile Field Definitions
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-custom-profile-field-definitions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-enrollments-api
+  name: Thinkific Enrollments API
+  description: Enrollments operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Enrollments
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-enrollments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-events-api
+  name: Thinkific Events API
+  description: Events operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-events-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-external-orders-api
+  name: Thinkific External Orders API
+  description: >-
+    Please note that any External Orders created through the API do not appear on the orders report or
+    dashboard in your Thinkific site. Using the External Orders endpoints will simply store the information
+    in our database.
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - External Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-external-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-group-analysts-api
+  name: Thinkific Group Analysts API
+  description: Group Analyst operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Group Analysts
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-group-analysts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-group-users-api
+  name: Thinkific Group Users API
+  description: Group Users operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Group Users
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-group-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-groups-api
+  name: Thinkific Groups API
+  description: Groups operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-instructors-api
+  name: Thinkific Instructors API
+  description: Instructors operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Instructors
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-instructors-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-orders-api
+  name: Thinkific Orders API
+  description: Orders operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-product-publish-request-api
+  name: Thinkific Product Publish Request API
+  description: Product Publish Request operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Product Publish Request
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-product-publish-request-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-products-api
+  name: Thinkific Products API
+  description: Products operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-products-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-promotions-api
+  name: Thinkific Promotions API
+  description: Promotions operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Promotions
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-promotions-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-site-scripts-api
+  name: Thinkific Site Scripts API
+  description: >-
+    Site Scripts operations [Scope Required](https://developers.thinkific.com/building-apps/site-scripts/#oauth-scope)
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Site Scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-site-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
+- aid: thinkific:thinkific-users-api
+  name: Thinkific Users API
+  description: Users operations
+  humanURL: https://developers.thinkific.com/api/api-documentation
+  baseURL: https://api.thinkific.com/api/public/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/thinkific-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.thinkific.com/api/api-documentation
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/thinkific/overview
   - type: AgenticAccess
     url: agentic-access/thinkific-agentic-access.yml
   - type: DomainSecurity

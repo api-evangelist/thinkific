@@ -1,0 +1,582 @@
+{
+  "info": {
+    "_postman_id": "a77be783-5425-4011-b5b1-4d55fcd77671",
+    "name": "Thinkific Admin Bundles External Orders API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:34.000Z",
+    "updatedAt": "2026-07-28T03:13:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a77be783-5425-4011-b5b1-4d55fcd77671"
+  },
+  "item": [
+    {
+      "name": "external_orders",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "transactions",
+              "item": [
+                {
+                  "name": "refund",
+                  "item": [
+                    {
+                      "name": "refund transaction",
+                      "id": "2f23aeeb-f5b2-47cd-a380-1c5332a25cb1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/external_orders/:id/transactions/refund",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "external_orders",
+                            ":id",
+                            "transactions",
+                            "refund"
+                          ],
+                          "variable": [
+                            {
+                              "id": "29829077-58b4-4395-a74c-e4fc9513e5b0",
+                              "key": "id",
+                              "value": "<number>",
+                              "description": "(Required) External Order ID as integer"
+                            }
+                          ]
+                        },
+                        "description": "This endpoint will create a new transaction refund for the External Order."
+                      },
+                      "response": [
+                        {
+                          "id": "2040c27a-e0eb-4e38-9fe6-ade05a3714eb",
+                          "name": "Transaction created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/external_orders/:id/transactions/refund",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "external_orders",
+                                ":id",
+                                "transactions",
+                                "refund"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:13:35.000Z",
+                          "updatedAt": "2026-07-28T03:13:35.000Z",
+                          "uid": "35240-2040c27a-e0eb-4e38-9fe6-ade05a3714eb"
+                        },
+                        {
+                          "id": "dd51f4b6-9707-4983-9323-4a7f4859d2ac",
+                          "name": "Access Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/external_orders/:id/transactions/refund",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "external_orders",
+                                ":id",
+                                "transactions",
+                                "refund"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:35.000Z",
+                          "updatedAt": "2026-07-28T03:13:35.000Z",
+                          "uid": "35240-dd51f4b6-9707-4983-9323-4a7f4859d2ac"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:13:35.000Z",
+                      "updatedAt": "2026-07-28T03:13:35.000Z",
+                      "uid": "35240-2f23aeeb-f5b2-47cd-a380-1c5332a25cb1"
+                    }
+                  ],
+                  "id": "d05c6b6b-ceab-4d82-81eb-232cfa022b0a",
+                  "createdAt": "2026-07-28T03:13:35.000Z",
+                  "updatedAt": "2026-07-28T03:13:35.000Z",
+                  "uid": "35240-d05c6b6b-ceab-4d82-81eb-232cfa022b0a"
+                },
+                {
+                  "name": "purchase",
+                  "item": [
+                    {
+                      "name": "purchase transaction",
+                      "id": "94792c68-7161-4296-9360-23aa92c5a616",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/external_orders/:id/transactions/purchase",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "external_orders",
+                            ":id",
+                            "transactions",
+                            "purchase"
+                          ],
+                          "variable": [
+                            {
+                              "id": "533d6f57-c793-4bbb-8c98-caf3955fef75",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) External Order ID"
+                            }
+                          ]
+                        },
+                        "description": "This endpoint will create a new transaction purchase for the External Order."
+                      },
+                      "response": [
+                        {
+                          "id": "27497d8a-eeeb-4e93-9532-bff0c3c77311",
+                          "name": "Transaction created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/external_orders/:id/transactions/purchase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "external_orders",
+                                ":id",
+                                "transactions",
+                                "purchase"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:13:35.000Z",
+                          "updatedAt": "2026-07-28T03:13:35.000Z",
+                          "uid": "35240-27497d8a-eeeb-4e93-9532-bff0c3c77311"
+                        },
+                        {
+                          "id": "a2e5424d-e7a8-4da3-baa2-fd8b873116d7",
+                          "name": "Access Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"action\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/external_orders/:id/transactions/purchase",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "external_orders",
+                                ":id",
+                                "transactions",
+                                "purchase"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:35.000Z",
+                          "updatedAt": "2026-07-28T03:13:35.000Z",
+                          "uid": "35240-a2e5424d-e7a8-4da3-baa2-fd8b873116d7"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:13:35.000Z",
+                      "updatedAt": "2026-07-28T03:13:35.000Z",
+                      "uid": "35240-94792c68-7161-4296-9360-23aa92c5a616"
+                    }
+                  ],
+                  "id": "68476272-c1e7-4e9f-ae7e-a02594fa4550",
+                  "createdAt": "2026-07-28T03:13:35.000Z",
+                  "updatedAt": "2026-07-28T03:13:35.000Z",
+                  "uid": "35240-68476272-c1e7-4e9f-ae7e-a02594fa4550"
+                }
+              ],
+              "id": "33608b8b-ddd3-4618-afda-8b8fe96eff5b",
+              "createdAt": "2026-07-28T03:13:35.000Z",
+              "updatedAt": "2026-07-28T03:13:35.000Z",
+              "uid": "35240-33608b8b-ddd3-4618-afda-8b8fe96eff5b"
+            }
+          ],
+          "id": "9d573fb6-33ef-4876-9949-9b0391b5fcf0",
+          "createdAt": "2026-07-28T03:13:35.000Z",
+          "updatedAt": "2026-07-28T03:13:35.000Z",
+          "uid": "35240-9d573fb6-33ef-4876-9949-9b0391b5fcf0"
+        },
+        {
+          "name": "Create a new external order",
+          "id": "c0e00813-6230-4d97-820b-5e6903b3f57c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_provider\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"product_id\": \"<number>\",\n  \"order_type\": \"subscription\",\n  \"transaction\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"action\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/external_orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "external_orders"
+              ]
+            },
+            "description": "Please note that any External Orders created through the API do not appear on the orders report or dashboard in your Thinkific site. Using the External Orders endpoints will simply store the information in our database."
+          },
+          "response": [
+            {
+              "id": "cc32f404-9c48-4423-80ad-f388518a6bc5",
+              "name": "External Order created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_provider\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"product_id\": \"<number>\",\n  \"order_type\": \"subscription\",\n  \"transaction\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"action\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/external_orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "external_orders"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T03:13:35.000Z",
+              "updatedAt": "2026-07-28T03:13:35.000Z",
+              "uid": "35240-cc32f404-9c48-4423-80ad-f388518a6bc5"
+            },
+            {
+              "id": "1566c6ae-5a4c-4d52-8c1c-8de194dd1ae8",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_provider\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"product_id\": \"<number>\",\n  \"order_type\": \"subscription\",\n  \"transaction\": {\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\",\n    \"reference\": \"<string>\",\n    \"action\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/external_orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "external_orders"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:35.000Z",
+              "updatedAt": "2026-07-28T03:13:35.000Z",
+              "uid": "35240-1566c6ae-5a4c-4d52-8c1c-8de194dd1ae8"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:35.000Z",
+          "updatedAt": "2026-07-28T03:13:35.000Z",
+          "uid": "35240-c0e00813-6230-4d97-820b-5e6903b3f57c"
+        }
+      ],
+      "id": "0eaa7d05-d1b5-4679-9145-12a7bf14d972",
+      "createdAt": "2026-07-28T03:13:35.000Z",
+      "updatedAt": "2026-07-28T03:13:35.000Z",
+      "uid": "35240-0eaa7d05-d1b5-4679-9145-12a7bf14d972"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

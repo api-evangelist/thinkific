@@ -1,0 +1,510 @@
+{
+  "info": {
+    "_postman_id": "5770c3bb-065a-409c-9232-990664c94b8a",
+    "name": "Thinkific Admin Bundles Category Memberships API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:13.000Z",
+    "updatedAt": "2026-07-28T03:13:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5770c3bb-065a-409c-9232-990664c94b8a"
+  },
+  "item": [
+    {
+      "name": "collection_memberships",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Add Product to Category",
+              "id": "06e63d95-5bd1-4361-b675-b3a4a31e3e83",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collection_memberships/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collection_memberships",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b46acb77-6d19-47b8-af5e-3f608f32ddfc",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Category in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Create one or more Products to a Category"
+              },
+              "response": [
+                {
+                  "id": "eebbede1-d894-48fe-a708-5abe7a544101",
+                  "name": "Products added to category",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collection_memberships/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collection_memberships",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:14.000Z",
+                  "updatedAt": "2026-07-28T03:13:14.000Z",
+                  "uid": "35240-eebbede1-d894-48fe-a708-5abe7a544101"
+                },
+                {
+                  "id": "c7c56611-e7ba-4d10-a427-ee4a1aa7a2c0",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collection_memberships/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collection_memberships",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:14.000Z",
+                  "updatedAt": "2026-07-28T03:13:14.000Z",
+                  "uid": "35240-c7c56611-e7ba-4d10-a427-ee4a1aa7a2c0"
+                },
+                {
+                  "id": "86fa30a1-82f0-47db-b3ff-b5ec3e893541",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collection_memberships/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collection_memberships",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:14.000Z",
+                  "updatedAt": "2026-07-28T03:13:14.000Z",
+                  "uid": "35240-86fa30a1-82f0-47db-b3ff-b5ec3e893541"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:14.000Z",
+              "updatedAt": "2026-07-28T03:13:14.000Z",
+              "uid": "35240-06e63d95-5bd1-4361-b675-b3a4a31e3e83"
+            },
+            {
+              "name": "Delete  Products by ID",
+              "id": "1cb4ff29-4143-4473-9f3e-9fb1fba03653",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collection_memberships/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collection_memberships",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "86cb65e6-75de-44b3-978e-7979988c19fc",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Category in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Delete one or more Products from a Category."
+              },
+              "response": [
+                {
+                  "id": "63536c0a-154d-4db6-9a5e-c8e60850244c",
+                  "name": "Products removed from category",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collection_memberships/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collection_memberships",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:14.000Z",
+                  "updatedAt": "2026-07-28T03:13:14.000Z",
+                  "uid": "35240-63536c0a-154d-4db6-9a5e-c8e60850244c"
+                },
+                {
+                  "id": "2159f786-c3eb-461c-8c39-0407920c6c32",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collection_memberships/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collection_memberships",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:14.000Z",
+                  "updatedAt": "2026-07-28T03:13:14.000Z",
+                  "uid": "35240-2159f786-c3eb-461c-8c39-0407920c6c32"
+                },
+                {
+                  "id": "f81484d2-5bdd-48ba-840f-2ee428c15a68",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collection_memberships/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collection_memberships",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:14.000Z",
+                  "updatedAt": "2026-07-28T03:13:14.000Z",
+                  "uid": "35240-f81484d2-5bdd-48ba-840f-2ee428c15a68"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:14.000Z",
+              "updatedAt": "2026-07-28T03:13:14.000Z",
+              "uid": "35240-1cb4ff29-4143-4473-9f3e-9fb1fba03653"
+            }
+          ],
+          "id": "e5ac8d5b-49b4-4c26-b3ac-a7b7723e19b4",
+          "createdAt": "2026-07-28T03:13:14.000Z",
+          "updatedAt": "2026-07-28T03:13:14.000Z",
+          "uid": "35240-e5ac8d5b-49b4-4c26-b3ac-a7b7723e19b4"
+        }
+      ],
+      "id": "5e56308c-f8cb-4b3c-8761-8c09aca74b84",
+      "createdAt": "2026-07-28T03:13:14.000Z",
+      "updatedAt": "2026-07-28T03:13:14.000Z",
+      "uid": "35240-5e56308c-f8cb-4b3c-8761-8c09aca74b84"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

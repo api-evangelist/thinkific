@@ -1,0 +1,615 @@
+{
+  "info": {
+    "_postman_id": "8b2731c5-24e4-48ed-a469-925274057930",
+    "name": "Thinkific Admin Bundles Group Analysts API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:35.000Z",
+    "updatedAt": "2026-07-28T03:13:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8b2731c5-24e4-48ed-a469-925274057930"
+  },
+  "item": [
+    {
+      "name": "group_analysts",
+      "item": [
+        {
+          "name": "{user_id}",
+          "item": [
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "{group_id}",
+                  "item": [
+                    {
+                      "name": "Delete Analyst",
+                      "id": "3c55f781-4d3b-4f4e-b887-ba3a2aff69c2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/group_analysts/:user_id/groups/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group_analysts",
+                            ":user_id",
+                            "groups",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6bb14a09-c408-4657-98cd-2027256a2e26",
+                              "key": "user_id",
+                              "value": "<number>",
+                              "description": "(Required) ID of the User in the form of an integer."
+                            },
+                            {
+                              "id": "fad9ee2b-b55e-4d72-a5aa-ebfaffce9978",
+                              "key": "group_id",
+                              "value": "<number>",
+                              "description": "(Required) ID of the Group in the form of an integer."
+                            }
+                          ]
+                        },
+                        "description": "Remove an analyst from a group"
+                      },
+                      "response": [
+                        {
+                          "id": "5666ce47-f583-4218-8ad3-7c92a893d877",
+                          "name": "Group Analyst response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/group_analysts/:user_id/groups/:group_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "group_analysts",
+                                ":user_id",
+                                "groups",
+                                ":group_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_id"
+                                },
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:13:36.000Z",
+                          "updatedAt": "2026-07-28T03:13:36.000Z",
+                          "uid": "35240-5666ce47-f583-4218-8ad3-7c92a893d877"
+                        },
+                        {
+                          "id": "47b07181-4ecb-4d60-988f-f9a48fdae6aa",
+                          "name": "Access Forbidden",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/group_analysts/:user_id/groups/:group_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "group_analysts",
+                                ":user_id",
+                                "groups",
+                                ":group_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_id"
+                                },
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:36.000Z",
+                          "updatedAt": "2026-07-28T03:13:36.000Z",
+                          "uid": "35240-47b07181-4ecb-4d60-988f-f9a48fdae6aa"
+                        },
+                        {
+                          "id": "2df21c68-15c5-4d9b-be02-974be2880bc9",
+                          "name": "Unable to process request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/group_analysts/:user_id/groups/:group_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "group_analysts",
+                                ":user_id",
+                                "groups",
+                                ":group_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_id"
+                                },
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:36.000Z",
+                          "updatedAt": "2026-07-28T03:13:36.000Z",
+                          "uid": "35240-2df21c68-15c5-4d9b-be02-974be2880bc9"
+                        },
+                        {
+                          "id": "2ccd9780-8668-469d-a1ca-5ce1ccc2812f",
+                          "name": "Unable to process request",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/group_analysts/:user_id/groups/:group_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "group_analysts",
+                                ":user_id",
+                                "groups",
+                                ":group_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "user_id"
+                                },
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T03:13:36.000Z",
+                          "updatedAt": "2026-07-28T03:13:36.000Z",
+                          "uid": "35240-2ccd9780-8668-469d-a1ca-5ce1ccc2812f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:13:36.000Z",
+                      "updatedAt": "2026-07-28T03:13:36.000Z",
+                      "uid": "35240-3c55f781-4d3b-4f4e-b887-ba3a2aff69c2"
+                    }
+                  ],
+                  "id": "a94491bb-bbcd-460d-ab9f-c6b6b07f8e4f",
+                  "createdAt": "2026-07-28T03:13:36.000Z",
+                  "updatedAt": "2026-07-28T03:13:36.000Z",
+                  "uid": "35240-a94491bb-bbcd-460d-ab9f-c6b6b07f8e4f"
+                },
+                {
+                  "name": "Add Analyst to Groups",
+                  "id": "ddd97eb9-76f3-477b-9000-65a394198709",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"group_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/group_analysts/:user_id/groups",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group_analysts",
+                        ":user_id",
+                        "groups"
+                      ],
+                      "variable": [
+                        {
+                          "id": "70a3438e-5118-4527-a5f1-e2a9c414ce28",
+                          "key": "user_id",
+                          "value": "<number>",
+                          "description": "(Required) ID of the User in the form of an integer."
+                        }
+                      ]
+                    },
+                    "description": "Assign Group Analyst to groups. User need to be assigned the Group Analyst (group_analyst) role."
+                  },
+                  "response": [
+                    {
+                      "id": "3ddcf26a-ff0f-4515-9821-2d1d33b6147b",
+                      "name": "Group Analyst response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"group_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group_analysts/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group_analysts",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:13:36.000Z",
+                      "updatedAt": "2026-07-28T03:13:36.000Z",
+                      "uid": "35240-3ddcf26a-ff0f-4515-9821-2d1d33b6147b"
+                    },
+                    {
+                      "id": "e6e28332-bd9b-4f14-be5b-377649894c1c",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"group_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group_analysts/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group_analysts",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:36.000Z",
+                      "updatedAt": "2026-07-28T03:13:36.000Z",
+                      "uid": "35240-e6e28332-bd9b-4f14-be5b-377649894c1c"
+                    },
+                    {
+                      "id": "f49ca657-6f17-4a0a-86bc-8aa3a42d7c8c",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"group_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group_analysts/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group_analysts",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:36.000Z",
+                      "updatedAt": "2026-07-28T03:13:36.000Z",
+                      "uid": "35240-f49ca657-6f17-4a0a-86bc-8aa3a42d7c8c"
+                    },
+                    {
+                      "id": "ad6faab6-9361-4ef9-ae43-5806e6832fe0",
+                      "name": "Unable to process request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"group_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/group_analysts/:user_id/groups",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "group_analysts",
+                            ":user_id",
+                            "groups"
+                          ],
+                          "variable": [
+                            {
+                              "key": "user_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:13:36.000Z",
+                      "updatedAt": "2026-07-28T03:13:36.000Z",
+                      "uid": "35240-ad6faab6-9361-4ef9-ae43-5806e6832fe0"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:36.000Z",
+                  "updatedAt": "2026-07-28T03:13:36.000Z",
+                  "uid": "35240-ddd97eb9-76f3-477b-9000-65a394198709"
+                }
+              ],
+              "id": "45714510-d41f-422f-9411-830eab804549",
+              "createdAt": "2026-07-28T03:13:36.000Z",
+              "updatedAt": "2026-07-28T03:13:36.000Z",
+              "uid": "35240-45714510-d41f-422f-9411-830eab804549"
+            }
+          ],
+          "id": "a5e38681-45fa-4d43-910d-d5bb4c46e03c",
+          "createdAt": "2026-07-28T03:13:36.000Z",
+          "updatedAt": "2026-07-28T03:13:36.000Z",
+          "uid": "35240-a5e38681-45fa-4d43-910d-d5bb4c46e03c"
+        }
+      ],
+      "id": "e8023bc2-e6f4-46c5-80e2-216b4281ad77",
+      "createdAt": "2026-07-28T03:13:36.000Z",
+      "updatedAt": "2026-07-28T03:13:36.000Z",
+      "uid": "35240-e8023bc2-e6f4-46c5-80e2-216b4281ad77"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

@@ -1,0 +1,1064 @@
+{
+  "info": {
+    "_postman_id": "db76a0bb-fcc9-4ebf-abe1-116d3b9f9f09",
+    "name": "Thinkific Admin Bundles Instructors API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:38.000Z",
+    "updatedAt": "2026-07-28T03:13:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-db76a0bb-fcc9-4ebf-abe1-116d3b9f9f09"
+  },
+  "item": [
+    {
+      "name": "instructors",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Instructor by ID",
+              "id": "57ef196d-6f0d-4336-b116-946b1f0c1a6f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/instructors/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "21f0fbeb-1ce9-4a5c-864e-b9562f4e40e2",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Instructor in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Returns the Instructor identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "e1ea3274-350e-431c-9a85-5e08ccf5b50e",
+                  "name": "Instructor response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"created_at\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"id\": \"<number>\",\n  \"last_name\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-e1ea3274-350e-431c-9a85-5e08ccf5b50e"
+                },
+                {
+                  "id": "ecbcf1a9-7967-4fd5-8606-f74a904df41e",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-ecbcf1a9-7967-4fd5-8606-f74a904df41e"
+                },
+                {
+                  "id": "18ddd397-a173-4a9b-a00c-dbf0855d6174",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-18ddd397-a173-4a9b-a00c-dbf0855d6174"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-57ef196d-6f0d-4336-b116-946b1f0c1a6f"
+            },
+            {
+              "name": "Update instructor",
+              "id": "ba780f65-4a3c-43bb-89ac-a81f3c91ede0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/instructors/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a393397c-ceee-415d-83f8-018d2e988876",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Instructor in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Updates the Instructor identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "dbd5f559-4120-4dba-83e3-b275fb2b5a55",
+                  "name": "Instructor Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-dbd5f559-4120-4dba-83e3-b275fb2b5a55"
+                },
+                {
+                  "id": "22e8c621-1d91-4acf-8480-465a6b4e1461",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-22e8c621-1d91-4acf-8480-465a6b4e1461"
+                },
+                {
+                  "id": "ce9c8042-a2c3-4a27-b2bb-aaff5de20d9e",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-ce9c8042-a2c3-4a27-b2bb-aaff5de20d9e"
+                },
+                {
+                  "id": "8367c6d3-cdc0-4ad8-b43d-35bcea9a32c3",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-8367c6d3-cdc0-4ad8-b43d-35bcea9a32c3"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-ba780f65-4a3c-43bb-89ac-a81f3c91ede0"
+            },
+            {
+              "name": "Delete instructor",
+              "id": "6618ada4-effc-4170-94e7-9113273c6ae2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/instructors/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "35ecf750-9b5a-4143-889f-0767f6d389b4",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Instructor in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Delete the Instructor identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "955b3dcd-c20d-4811-9a50-e77209c15f75",
+                  "name": "Instructor deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-955b3dcd-c20d-4811-9a50-e77209c15f75"
+                },
+                {
+                  "id": "c811d7d1-3d31-4691-a488-0432ec528881",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-c811d7d1-3d31-4691-a488-0432ec528881"
+                },
+                {
+                  "id": "f4acef6b-8fb4-4365-9df0-1208aca43f0d",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/instructors/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instructors",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:39.000Z",
+                  "updatedAt": "2026-07-28T03:13:39.000Z",
+                  "uid": "35240-f4acef6b-8fb4-4365-9df0-1208aca43f0d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-6618ada4-effc-4170-94e7-9113273c6ae2"
+            }
+          ],
+          "id": "a6a2c662-9f12-4c11-8f1f-dac8d0e5b02e",
+          "createdAt": "2026-07-28T03:13:39.000Z",
+          "updatedAt": "2026-07-28T03:13:39.000Z",
+          "uid": "35240-a6a2c662-9f12-4c11-8f1f-dac8d0e5b02e"
+        },
+        {
+          "name": "Get Instructors",
+          "id": "ff19fd29-4d0e-40e2-8191-601e37b6e821",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/instructors?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "instructors"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned.",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve a list of Instructors"
+          },
+          "response": [
+            {
+              "id": "7a153144-6223-4471-a31d-33b5fce1e67a",
+              "name": "Instructors response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/instructors?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"created_at\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<number>\",\n      \"last_name\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"title\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"avatar_url\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    {\n      \"created_at\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"id\": \"<number>\",\n      \"last_name\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"title\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"avatar_url\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-7a153144-6223-4471-a31d-33b5fce1e67a"
+            },
+            {
+              "id": "12fe3cb4-4ea0-486a-a85f-0e7b5cecbff0",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/instructors?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-12fe3cb4-4ea0-486a-a85f-0e7b5cecbff0"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:39.000Z",
+          "updatedAt": "2026-07-28T03:13:39.000Z",
+          "uid": "35240-ff19fd29-4d0e-40e2-8191-601e37b6e821"
+        },
+        {
+          "name": "Create instructor",
+          "id": "e7bb2c48-4a1f-4048-86d7-d4f5e930fad3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/instructors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "instructors"
+              ]
+            },
+            "description": "Creates a new Instructor "
+          },
+          "response": [
+            {
+              "id": "117868cd-eeca-4e71-bae7-1882d8edc2a2",
+              "name": "Instructor response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/instructors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"created_at\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"id\": \"<number>\",\n  \"last_name\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-117868cd-eeca-4e71-bae7-1882d8edc2a2"
+            },
+            {
+              "id": "78b2a71b-4025-4218-9e87-0ac9aa921d51",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/instructors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-78b2a71b-4025-4218-9e87-0ac9aa921d51"
+            },
+            {
+              "id": "4e592b58-a650-4dd7-8231-04e3df665691",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"title\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"avatar_url\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/instructors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instructors"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:39.000Z",
+              "updatedAt": "2026-07-28T03:13:39.000Z",
+              "uid": "35240-4e592b58-a650-4dd7-8231-04e3df665691"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:39.000Z",
+          "updatedAt": "2026-07-28T03:13:39.000Z",
+          "uid": "35240-e7bb2c48-4a1f-4048-86d7-d4f5e930fad3"
+        }
+      ],
+      "id": "5134a938-0dac-41e4-8746-09ad1b8423f9",
+      "createdAt": "2026-07-28T03:13:39.000Z",
+      "updatedAt": "2026-07-28T03:13:39.000Z",
+      "uid": "35240-5134a938-0dac-41e4-8746-09ad1b8423f9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

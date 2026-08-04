@@ -1,0 +1,232 @@
+{
+  "info": {
+    "_postman_id": "015a8618-5397-471a-921c-e39d6b265560",
+    "name": "Thinkific Admin Bundles Contents API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:21.000Z",
+    "updatedAt": "2026-07-28T03:13:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-015a8618-5397-471a-921c-e39d6b265560"
+  },
+  "item": [
+    {
+      "name": "contents",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Contents by Id",
+              "id": "39e43eb6-db02-4384-b32c-f344eb512346",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/contents/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "contents",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c3756659-e8f4-403c-9669-5bb1f2781536",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Content in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Retrieves a Content"
+              },
+              "response": [
+                {
+                  "id": "f707d17e-7104-4777-b789-e9c03374951c",
+                  "name": "Content response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"chapter_id\": \"<number>\",\n  \"contentable_type\": \"LiveLesson\",\n  \"free\": \"<boolean>\",\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"position\": \"<number>\",\n  \"take_url\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:21.000Z",
+                  "updatedAt": "2026-07-28T03:13:21.000Z",
+                  "uid": "35240-f707d17e-7104-4777-b789-e9c03374951c"
+                },
+                {
+                  "id": "7f23dc9f-795e-4d92-9062-802cd50be5e8",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:21.000Z",
+                  "updatedAt": "2026-07-28T03:13:21.000Z",
+                  "uid": "35240-7f23dc9f-795e-4d92-9062-802cd50be5e8"
+                },
+                {
+                  "id": "b2b022d1-092c-4d0e-90d8-760e1702a501",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/contents/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "contents",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:21.000Z",
+                  "updatedAt": "2026-07-28T03:13:21.000Z",
+                  "uid": "35240-b2b022d1-092c-4d0e-90d8-760e1702a501"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:21.000Z",
+              "updatedAt": "2026-07-28T03:13:21.000Z",
+              "uid": "35240-39e43eb6-db02-4384-b32c-f344eb512346"
+            }
+          ],
+          "id": "88c98e14-ba99-42d3-999e-c786a88e8dd4",
+          "createdAt": "2026-07-28T03:13:21.000Z",
+          "updatedAt": "2026-07-28T03:13:21.000Z",
+          "uid": "35240-88c98e14-ba99-42d3-999e-c786a88e8dd4"
+        }
+      ],
+      "id": "1e1ff0e2-1223-485c-a418-c1beacd68e29",
+      "createdAt": "2026-07-28T03:13:21.000Z",
+      "updatedAt": "2026-07-28T03:13:21.000Z",
+      "uid": "35240-1e1ff0e2-1223-485c-a418-c1beacd68e29"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

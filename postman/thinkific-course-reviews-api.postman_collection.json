@@ -1,0 +1,717 @@
+{
+  "info": {
+    "_postman_id": "a42153ef-6567-434d-b815-87572384cd0c",
+    "name": "Thinkific Admin Bundles Course Reviews API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:30.000Z",
+    "updatedAt": "2026-07-28T03:13:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a42153ef-6567-434d-b815-87572384cd0c"
+  },
+  "item": [
+    {
+      "name": "course_reviews",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Course Reviews By ID",
+              "id": "6e435cb1-f262-44eb-8c51-126d9753e5b1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d3932985-fed6-4619-a83f-80e218042760",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Course Review in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Retrieve a Course Review identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "65765ab5-898f-456a-a67f-02ff444be4ba",
+                  "name": "CourseReviewByID",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/course_reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "course_reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"approved\": \"<boolean>\",\n  \"course_id\": \"<number>\",\n  \"id\": \"<number>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"created_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:13:30.000Z",
+                  "updatedAt": "2026-07-28T03:13:30.000Z",
+                  "uid": "35240-65765ab5-898f-456a-a67f-02ff444be4ba"
+                },
+                {
+                  "id": "bd591c83-9d3d-480c-8560-13992169c04f",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/course_reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "course_reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:30.000Z",
+                  "updatedAt": "2026-07-28T03:13:30.000Z",
+                  "uid": "35240-bd591c83-9d3d-480c-8560-13992169c04f"
+                },
+                {
+                  "id": "a081c32b-cb23-433c-9c31-3649c7110717",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/course_reviews/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "course_reviews",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:30.000Z",
+                  "updatedAt": "2026-07-28T03:13:30.000Z",
+                  "uid": "35240-a081c32b-cb23-433c-9c31-3649c7110717"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-6e435cb1-f262-44eb-8c51-126d9753e5b1"
+            }
+          ],
+          "id": "efb087f1-c405-45d4-9d30-c1a3c9a37af1",
+          "createdAt": "2026-07-28T03:13:30.000Z",
+          "updatedAt": "2026-07-28T03:13:30.000Z",
+          "uid": "35240-efb087f1-c405-45d4-9d30-c1a3c9a37af1"
+        },
+        {
+          "name": "Get Course Reviews",
+          "id": "91db7b37-31ce-4644-b871-3c927cf5d74b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/course_reviews?course_id=<number>&page=1&limit=25&approved=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "course_reviews"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ID of the Course in the form of an integer.",
+                  "key": "course_id",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "If true, returns only approved Course Reviews.",
+                  "key": "approved",
+                  "value": "<boolean>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of Course Reviews"
+          },
+          "response": [
+            {
+              "id": "4b5cccf0-ae1d-415b-8c46-d329431a8480",
+              "name": "CourseReviews",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews?course_id=<number>&page=1&limit=25&approved=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Course in the form of an integer.",
+                      "key": "course_id",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "If true, returns only approved Course Reviews.",
+                      "key": "approved",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"approved\": \"<boolean>\",\n      \"course_id\": \"<number>\",\n      \"id\": \"<number>\",\n      \"rating\": \"<number>\",\n      \"review_text\": \"<string>\",\n      \"title\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"approved\": \"<boolean>\",\n      \"course_id\": \"<number>\",\n      \"id\": \"<number>\",\n      \"rating\": \"<number>\",\n      \"review_text\": \"<string>\",\n      \"title\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-4b5cccf0-ae1d-415b-8c46-d329431a8480"
+            },
+            {
+              "id": "f102a7d5-6b19-471d-9e63-bd49092bbd67",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews?course_id=<number>&page=1&limit=25&approved=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Course in the form of an integer.",
+                      "key": "course_id",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "If true, returns only approved Course Reviews.",
+                      "key": "approved",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-f102a7d5-6b19-471d-9e63-bd49092bbd67"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:30.000Z",
+          "updatedAt": "2026-07-28T03:13:30.000Z",
+          "uid": "35240-91db7b37-31ce-4644-b871-3c927cf5d74b"
+        },
+        {
+          "name": "Create a course review",
+          "id": "3ca1363b-27e9-493f-a6c5-d363b5dc674c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"approved\": \"<boolean>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/course_reviews?course_id=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "course_reviews"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ID of the Course for which the review needs to be created for.",
+                  "key": "course_id",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Create a course review"
+          },
+          "response": [
+            {
+              "id": "b1293193-504c-4e09-bef8-2b8cf870779c",
+              "name": "Course Review Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"approved\": \"<boolean>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews?course_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Course for which the review needs to be created for.",
+                      "key": "course_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"approved\": \"<boolean>\",\n  \"course_id\": \"<number>\",\n  \"id\": \"<number>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"created_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-b1293193-504c-4e09-bef8-2b8cf870779c"
+            },
+            {
+              "id": "0e4a13ba-5889-40f9-9d38-310df90a7dea",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"approved\": \"<boolean>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews?course_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Course for which the review needs to be created for.",
+                      "key": "course_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-0e4a13ba-5889-40f9-9d38-310df90a7dea"
+            },
+            {
+              "id": "d3f1356d-2b32-4043-8165-c6c39273a3fe",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"approved\": \"<boolean>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews?course_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Course for which the review needs to be created for.",
+                      "key": "course_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-d3f1356d-2b32-4043-8165-c6c39273a3fe"
+            },
+            {
+              "id": "d70ea29e-e877-48e4-8a3e-88d03f78179b",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"approved\": \"<boolean>\",\n  \"rating\": \"<number>\",\n  \"review_text\": \"<string>\",\n  \"title\": \"<string>\",\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/course_reviews?course_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "course_reviews"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Course for which the review needs to be created for.",
+                      "key": "course_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:30.000Z",
+              "updatedAt": "2026-07-28T03:13:30.000Z",
+              "uid": "35240-d70ea29e-e877-48e4-8a3e-88d03f78179b"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:30.000Z",
+          "updatedAt": "2026-07-28T03:13:30.000Z",
+          "uid": "35240-3ca1363b-27e9-493f-a6c5-d363b5dc674c"
+        }
+      ],
+      "id": "9170f479-f2a4-4616-a50f-f964e4c3172a",
+      "createdAt": "2026-07-28T03:13:30.000Z",
+      "updatedAt": "2026-07-28T03:13:30.000Z",
+      "uid": "35240-9170f479-f2a4-4616-a50f-f964e4c3172a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

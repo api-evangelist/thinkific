@@ -1,0 +1,567 @@
+{
+  "info": {
+    "_postman_id": "c513638f-40b0-4687-962a-8823106d5196",
+    "name": "Thinkific Admin Bundles Courses API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:31.000Z",
+    "updatedAt": "2026-07-28T03:13:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c513638f-40b0-4687-962a-8823106d5196"
+  },
+  "item": [
+    {
+      "name": "courses",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "chapters",
+              "item": [
+                {
+                  "name": "Get Chapters by Course ID",
+                  "id": "e1fd0303-037f-47ac-aa13-cf75519c1bb8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/courses/:id/chapters?page=1&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "courses",
+                        ":id",
+                        "chapters"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page within the collection to fetch.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "The number of items to be returned.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a2700ad-0083-49a9-a9d8-4d0dee24d120",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) ID of the Chapter in the form of an integer."
+                        }
+                      ]
+                    },
+                    "description": "Returns the Chapter of the course identified by the provided id."
+                  },
+                  "response": [
+                    {
+                      "id": "1e6ef285-fd59-4105-b4d2-9d11e33cc5de",
+                      "name": "Chapter of a course response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/courses/:id/chapters?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "courses",
+                            ":id",
+                            "chapters"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"content_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"position\": \"<number>\",\n      \"description\": \"<string>\",\n      \"duration_in_seconds\": \"<number>\"\n    },\n    {\n      \"content_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"position\": \"<number>\",\n      \"description\": \"<string>\",\n      \"duration_in_seconds\": \"<number>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:13:31.000Z",
+                      "updatedAt": "2026-07-28T03:13:31.000Z",
+                      "uid": "35240-1e6ef285-fd59-4105-b4d2-9d11e33cc5de"
+                    },
+                    {
+                      "id": "fd9e394b-8c7e-41da-8a2e-310ef4dc2a93",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/courses/:id/chapters?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "courses",
+                            ":id",
+                            "chapters"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:31.000Z",
+                      "updatedAt": "2026-07-28T03:13:31.000Z",
+                      "uid": "35240-fd9e394b-8c7e-41da-8a2e-310ef4dc2a93"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:31.000Z",
+                  "updatedAt": "2026-07-28T03:13:31.000Z",
+                  "uid": "35240-e1fd0303-037f-47ac-aa13-cf75519c1bb8"
+                }
+              ],
+              "id": "b1e29798-c9e0-4dc3-83c1-8b38b0dbe580",
+              "createdAt": "2026-07-28T03:13:31.000Z",
+              "updatedAt": "2026-07-28T03:13:31.000Z",
+              "uid": "35240-b1e29798-c9e0-4dc3-83c1-8b38b0dbe580"
+            },
+            {
+              "name": "Get courses by ID",
+              "id": "bb80b344-69b4-400a-806d-25b0b35450c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/courses/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "courses",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d0b07e66-4aff-4a0c-9017-601a808b56bb",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Course in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Returns the Course identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "dfe3526c-8b4c-43aa-b0b7-a719cac8d98b",
+                  "name": "Courses response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/courses/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "courses",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"chapter_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"id\": \"<number>\",\n  \"instructor_id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"product_id\": \"<number>\",\n  \"reviews_enabled\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"subtitle\": \"<string>\",\n  \"description\": \"<string>\",\n  \"course_card_text\": \"<string>\",\n  \"intro_video_youtube\": \"<string>\",\n  \"contact_information\": \"<string>\",\n  \"keywords\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"banner_image_url\": \"<string>\",\n  \"course_card_image_url\": \"<string>\",\n  \"intro_video_wistia_identifier\": \"<string>\",\n  \"administrator_user_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"user_id\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T03:13:31.000Z",
+                  "updatedAt": "2026-07-28T03:13:31.000Z",
+                  "uid": "35240-dfe3526c-8b4c-43aa-b0b7-a719cac8d98b"
+                },
+                {
+                  "id": "55cd8be6-0983-43a9-9c1c-e6d29aa459de",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/courses/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "courses",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:31.000Z",
+                  "updatedAt": "2026-07-28T03:13:31.000Z",
+                  "uid": "35240-55cd8be6-0983-43a9-9c1c-e6d29aa459de"
+                },
+                {
+                  "id": "655b04f8-2497-414f-8b25-22af9ce8e292",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/courses/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "courses",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:31.000Z",
+                  "updatedAt": "2026-07-28T03:13:31.000Z",
+                  "uid": "35240-655b04f8-2497-414f-8b25-22af9ce8e292"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:31.000Z",
+              "updatedAt": "2026-07-28T03:13:31.000Z",
+              "uid": "35240-bb80b344-69b4-400a-806d-25b0b35450c2"
+            }
+          ],
+          "id": "0e5df7bb-df61-4a98-8c85-36303a05348c",
+          "createdAt": "2026-07-28T03:13:31.000Z",
+          "updatedAt": "2026-07-28T03:13:31.000Z",
+          "uid": "35240-0e5df7bb-df61-4a98-8c85-36303a05348c"
+        },
+        {
+          "name": "Get Courses",
+          "id": "46eb318f-f81f-48c8-bb24-4729fa1bfb97",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/courses?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "courses"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve a list of Courses"
+          },
+          "response": [
+            {
+              "id": "b990f9d1-521e-4484-94dd-79a5b4b7fa3b",
+              "name": "Courses Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/courses?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "courses"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"chapter_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"id\": \"<number>\",\n      \"instructor_id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"product_id\": \"<number>\",\n      \"reviews_enabled\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"subtitle\": \"<string>\",\n      \"description\": \"<string>\",\n      \"course_card_text\": \"<string>\",\n      \"intro_video_youtube\": \"<string>\",\n      \"contact_information\": \"<string>\",\n      \"keywords\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"banner_image_url\": \"<string>\",\n      \"course_card_image_url\": \"<string>\",\n      \"intro_video_wistia_identifier\": \"<string>\",\n      \"administrator_user_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"user_id\": \"<number>\"\n    },\n    {\n      \"chapter_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"id\": \"<number>\",\n      \"instructor_id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"product_id\": \"<number>\",\n      \"reviews_enabled\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"subtitle\": \"<string>\",\n      \"description\": \"<string>\",\n      \"course_card_text\": \"<string>\",\n      \"intro_video_youtube\": \"<string>\",\n      \"contact_information\": \"<string>\",\n      \"keywords\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"banner_image_url\": \"<string>\",\n      \"course_card_image_url\": \"<string>\",\n      \"intro_video_wistia_identifier\": \"<string>\",\n      \"administrator_user_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"user_id\": \"<number>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:31.000Z",
+              "updatedAt": "2026-07-28T03:13:31.000Z",
+              "uid": "35240-b990f9d1-521e-4484-94dd-79a5b4b7fa3b"
+            },
+            {
+              "id": "b4f3a5f0-46f8-4762-b8ed-0279b6ae9eb9",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/courses?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "courses"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:31.000Z",
+              "updatedAt": "2026-07-28T03:13:31.000Z",
+              "uid": "35240-b4f3a5f0-46f8-4762-b8ed-0279b6ae9eb9"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:31.000Z",
+          "updatedAt": "2026-07-28T03:13:31.000Z",
+          "uid": "35240-46eb318f-f81f-48c8-bb24-4729fa1bfb97"
+        }
+      ],
+      "id": "b09dfb33-0871-44b6-9897-410399d732d6",
+      "createdAt": "2026-07-28T03:13:31.000Z",
+      "updatedAt": "2026-07-28T03:13:31.000Z",
+      "uid": "35240-b09dfb33-0871-44b6-9897-410399d732d6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

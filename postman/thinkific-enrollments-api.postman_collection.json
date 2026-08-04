@@ -1,0 +1,1129 @@
+{
+  "info": {
+    "_postman_id": "769e967e-19ba-4ef9-9289-2e39ed0a0e80",
+    "name": "Thinkific Admin Bundles Enrollments API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:32.000Z",
+    "updatedAt": "2026-07-28T03:13:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-769e967e-19ba-4ef9-9289-2e39ed0a0e80"
+  },
+  "item": [
+    {
+      "name": "enrollments",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get enrollments by ID",
+              "id": "d79abb93-252b-42de-8c27-256cc8c9f5f7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "83c1c2d3-8b81-4d6d-b0c2-15ad349ddfa2",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Enrollment in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Returns the Enrollment identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "1c58c7a2-fa76-4119-880e-c142608b94ee",
+                  "name": "Enrollment response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"activated_at\": \"<dateTime>\",\n  \"completed\": \"<boolean>\",\n  \"completed_at\": \"<dateTime>\",\n  \"course_id\": \"<number>\",\n  \"course_name\": \"<string>\",\n  \"expired\": \"<boolean>\",\n  \"expiry_date\": \"<dateTime>\",\n  \"id\": \"<number>\",\n  \"is_free_trial\": \"<boolean>\",\n  \"percentage_completed\": \"<number>\",\n  \"started_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"user_email\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"user_name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-1c58c7a2-fa76-4119-880e-c142608b94ee"
+                },
+                {
+                  "id": "0ca3a97b-f8c8-41ab-afe0-581826d42514",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-0ca3a97b-f8c8-41ab-afe0-581826d42514"
+                },
+                {
+                  "id": "d6af3b5c-ad62-41e8-a08a-ef4331e9292e",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-d6af3b5c-ad62-41e8-a08a-ef4331e9292e"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-d79abb93-252b-42de-8c27-256cc8c9f5f7"
+            },
+            {
+              "name": "Update enrollment",
+              "id": "86141fe4-e4fa-4bfa-9446-ba65fe4d6727",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cbc09cc9-feab-4e5b-9e24-8b571bc7e68e",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Enrollment in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Updates a Enrollment for specified student in specified course"
+              },
+              "response": [
+                {
+                  "id": "84b853ad-2eb8-4367-8be3-d646ceebf284",
+                  "name": "Enrollment Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-84b853ad-2eb8-4367-8be3-d646ceebf284"
+                },
+                {
+                  "id": "a672d84d-55d5-4d5b-b5c5-7472ab677ff2",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-a672d84d-55d5-4d5b-b5c5-7472ab677ff2"
+                },
+                {
+                  "id": "137722f7-aff7-41d7-8df6-f331b32df83c",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-137722f7-aff7-41d7-8df6-f331b32df83c"
+                },
+                {
+                  "id": "73822d87-7b0b-45d3-9f60-29c7fbb24b27",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/enrollments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "enrollments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:33.000Z",
+                  "updatedAt": "2026-07-28T03:13:33.000Z",
+                  "uid": "35240-73822d87-7b0b-45d3-9f60-29c7fbb24b27"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-86141fe4-e4fa-4bfa-9446-ba65fe4d6727"
+            }
+          ],
+          "id": "641bc4de-2fc7-48f8-b4cd-496a2b54eb0d",
+          "createdAt": "2026-07-28T03:13:33.000Z",
+          "updatedAt": "2026-07-28T03:13:33.000Z",
+          "uid": "35240-641bc4de-2fc7-48f8-b4cd-496a2b54eb0d"
+        },
+        {
+          "name": "Get Enrollments",
+          "id": "94dd512e-f67d-4481-affd-21c22a98cb78",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/enrollments?page=1&limit=25&query[user_id]=<number>&query[course_id]=<number>&query[email]=<string>&query[free_trial]=<boolean>&query[full]=<boolean>&query[completed]=<boolean>&query[expired]=<boolean>&query[created_on]=<dateTime>&query[created_before]=<dateTime>&query[created_on_or_before]=<dateTime>&query[created_after]=<dateTime>&query[created_on_or_after]=<dateTime>&query[updated_on]=<dateTime>&query[updated_before]=<dateTime>&query[updated_on_or_before]=<dateTime>&query[updated_after]=<dateTime>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "enrollments"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Search Enrollments by User ID.",
+                  "key": "query[user_id]",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Search Enrollments by Course ID.",
+                  "key": "query[course_id]",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Search Enrollments by User email.",
+                  "key": "query[email]",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for only Free Trial Enrollments when set to true.",
+                  "key": "query[free_trial]",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter for only full Enrollments when set to true.",
+                  "key": "query[full]",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter for only completed Enrollments when set to true.",
+                  "key": "query[completed]",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter for only expired Enrollments when set to true.",
+                  "key": "query[expired]",
+                  "value": "<boolean>"
+                },
+                {
+                  "description": "Filter for only Enrollments created on the date specified.",
+                  "key": "query[created_on]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments created before the date specified.",
+                  "key": "query[created_before]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments created on or before the date specified.",
+                  "key": "query[created_on_or_before]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments created after the date specified.",
+                  "key": "query[created_after]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments created on or after the date specified.",
+                  "key": "query[created_on_or_after]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments updated on the date specified.",
+                  "key": "query[updated_on]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments updated before the date specified.",
+                  "key": "query[updated_before]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments updated on or before the date specified.",
+                  "key": "query[updated_on_or_before]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Filter for only Enrollments updated after the date specified.",
+                  "key": "query[updated_after]",
+                  "value": "<dateTime>"
+                }
+              ]
+            },
+            "description": "Returns a list of enrollments"
+          },
+          "response": [
+            {
+              "id": "2e55a1ec-791f-48cb-a5b8-3941e3132d67",
+              "name": "Enrollments response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments?page=1&limit=25&query[user_id]=<number>&query[course_id]=<number>&query[email]=<string>&query[free_trial]=<boolean>&query[full]=<boolean>&query[completed]=<boolean>&query[expired]=<boolean>&query[created_on]=<dateTime>&query[created_before]=<dateTime>&query[created_on_or_before]=<dateTime>&query[created_after]=<dateTime>&query[created_on_or_after]=<dateTime>&query[updated_on]=<dateTime>&query[updated_before]=<dateTime>&query[updated_on_or_before]=<dateTime>&query[updated_after]=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Search Enrollments by User ID.",
+                      "key": "query[user_id]",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Search Enrollments by Course ID.",
+                      "key": "query[course_id]",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Search Enrollments by User email.",
+                      "key": "query[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter for only Free Trial Enrollments when set to true.",
+                      "key": "query[free_trial]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only full Enrollments when set to true.",
+                      "key": "query[full]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only completed Enrollments when set to true.",
+                      "key": "query[completed]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only expired Enrollments when set to true.",
+                      "key": "query[expired]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created on the date specified.",
+                      "key": "query[created_on]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created before the date specified.",
+                      "key": "query[created_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created on or before the date specified.",
+                      "key": "query[created_on_or_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created after the date specified.",
+                      "key": "query[created_after]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created on or after the date specified.",
+                      "key": "query[created_on_or_after]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated on the date specified.",
+                      "key": "query[updated_on]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated before the date specified.",
+                      "key": "query[updated_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated on or before the date specified.",
+                      "key": "query[updated_on_or_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated after the date specified.",
+                      "key": "query[updated_after]",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"activated_at\": \"<dateTime>\",\n      \"completed\": \"<boolean>\",\n      \"completed_at\": \"<dateTime>\",\n      \"course_id\": \"<number>\",\n      \"course_name\": \"<string>\",\n      \"expired\": \"<boolean>\",\n      \"expiry_date\": \"<dateTime>\",\n      \"id\": \"<number>\",\n      \"is_free_trial\": \"<boolean>\",\n      \"percentage_completed\": \"<number>\",\n      \"started_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"user_email\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"user_name\": \"<string>\"\n    },\n    {\n      \"activated_at\": \"<dateTime>\",\n      \"completed\": \"<boolean>\",\n      \"completed_at\": \"<dateTime>\",\n      \"course_id\": \"<number>\",\n      \"course_name\": \"<string>\",\n      \"expired\": \"<boolean>\",\n      \"expiry_date\": \"<dateTime>\",\n      \"id\": \"<number>\",\n      \"is_free_trial\": \"<boolean>\",\n      \"percentage_completed\": \"<number>\",\n      \"started_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"user_email\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"user_name\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-2e55a1ec-791f-48cb-a5b8-3941e3132d67"
+            },
+            {
+              "id": "5b18a9f7-9e9c-43c0-a376-e6c940014237",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments?page=1&limit=25&query[user_id]=<number>&query[course_id]=<number>&query[email]=<string>&query[free_trial]=<boolean>&query[full]=<boolean>&query[completed]=<boolean>&query[expired]=<boolean>&query[created_on]=<dateTime>&query[created_before]=<dateTime>&query[created_on_or_before]=<dateTime>&query[created_after]=<dateTime>&query[created_on_or_after]=<dateTime>&query[updated_on]=<dateTime>&query[updated_before]=<dateTime>&query[updated_on_or_before]=<dateTime>&query[updated_after]=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Search Enrollments by User ID.",
+                      "key": "query[user_id]",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Search Enrollments by Course ID.",
+                      "key": "query[course_id]",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Search Enrollments by User email.",
+                      "key": "query[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter for only Free Trial Enrollments when set to true.",
+                      "key": "query[free_trial]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only full Enrollments when set to true.",
+                      "key": "query[full]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only completed Enrollments when set to true.",
+                      "key": "query[completed]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only expired Enrollments when set to true.",
+                      "key": "query[expired]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created on the date specified.",
+                      "key": "query[created_on]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created before the date specified.",
+                      "key": "query[created_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created on or before the date specified.",
+                      "key": "query[created_on_or_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created after the date specified.",
+                      "key": "query[created_after]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments created on or after the date specified.",
+                      "key": "query[created_on_or_after]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated on the date specified.",
+                      "key": "query[updated_on]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated before the date specified.",
+                      "key": "query[updated_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated on or before the date specified.",
+                      "key": "query[updated_on_or_before]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Filter for only Enrollments updated after the date specified.",
+                      "key": "query[updated_after]",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-5b18a9f7-9e9c-43c0-a376-e6c940014237"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:33.000Z",
+          "updatedAt": "2026-07-28T03:13:33.000Z",
+          "uid": "35240-94dd512e-f67d-4481-affd-21c22a98cb78"
+        },
+        {
+          "name": "Create enrollment",
+          "id": "62a9ed24-9616-4159-994f-212973cbe352",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"course_id\": \"<number>\",\n  \"user_id\": \"<number>\",\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/enrollments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "enrollments"
+              ]
+            },
+            "description": "Creates a new Enrollment for specified student in specified course"
+          },
+          "response": [
+            {
+              "id": "e6120eb2-cd47-4b71-91a5-7e109801ecc8",
+              "name": "Enrollment response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"course_id\": \"<number>\",\n  \"user_id\": \"<number>\",\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"activated_at\": \"<dateTime>\",\n  \"completed\": \"<boolean>\",\n  \"completed_at\": \"<dateTime>\",\n  \"course_id\": \"<number>\",\n  \"course_name\": \"<string>\",\n  \"expired\": \"<boolean>\",\n  \"expiry_date\": \"<dateTime>\",\n  \"id\": \"<number>\",\n  \"is_free_trial\": \"<boolean>\",\n  \"percentage_completed\": \"<number>\",\n  \"started_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"user_email\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"user_name\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-e6120eb2-cd47-4b71-91a5-7e109801ecc8"
+            },
+            {
+              "id": "6d5ba8e1-4fb5-4be7-8ad8-8a2e1409234e",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"course_id\": \"<number>\",\n  \"user_id\": \"<number>\",\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-6d5ba8e1-4fb5-4be7-8ad8-8a2e1409234e"
+            },
+            {
+              "id": "5aacea61-a5c6-4718-9dae-9faf714de925",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"course_id\": \"<number>\",\n  \"user_id\": \"<number>\",\n  \"activated_at\": \"<dateTime>\",\n  \"expiry_date\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/enrollments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "enrollments"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:33.000Z",
+              "updatedAt": "2026-07-28T03:13:33.000Z",
+              "uid": "35240-5aacea61-a5c6-4718-9dae-9faf714de925"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:33.000Z",
+          "updatedAt": "2026-07-28T03:13:33.000Z",
+          "uid": "35240-62a9ed24-9616-4159-994f-212973cbe352"
+        }
+      ],
+      "id": "29a64504-5d57-4a59-9455-37d24c7605a0",
+      "createdAt": "2026-07-28T03:13:33.000Z",
+      "updatedAt": "2026-07-28T03:13:33.000Z",
+      "uid": "35240-29a64504-5d57-4a59-9455-37d24c7605a0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

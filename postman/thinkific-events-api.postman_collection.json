@@ -1,0 +1,184 @@
+{
+  "info": {
+    "_postman_id": "e4497313-6e54-4953-a361-b5b3a4f5bc31",
+    "name": "Thinkific Admin Bundles Events API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:33.000Z",
+    "updatedAt": "2026-07-28T03:13:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e4497313-6e54-4953-a361-b5b3a4f5bc31"
+  },
+  "item": [
+    {
+      "name": "events",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Event by ID",
+              "id": "ea133df6-d017-46b8-aecf-0e7e70417242",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4cd642f6-a087-4710-9fb7-57ff8d54468d",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) ID of the Event in the form of an string."
+                    }
+                  ]
+                },
+                "description": "This endpoint returns the Event identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "dcbd74a2-7afd-4863-bc5d-400743279712",
+                  "name": "Event Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"resource\": \"<string>\",\n  \"action\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"payload\": {}\n}",
+                  "createdAt": "2026-07-28T03:13:34.000Z",
+                  "updatedAt": "2026-07-28T03:13:34.000Z",
+                  "uid": "35240-dcbd74a2-7afd-4863-bc5d-400743279712"
+                },
+                {
+                  "id": "2a9df79c-49e8-4e43-b3a4-87d0b7229eb7",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T03:13:34.000Z",
+                  "updatedAt": "2026-07-28T03:13:34.000Z",
+                  "uid": "35240-2a9df79c-49e8-4e43-b3a4-87d0b7229eb7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:34.000Z",
+              "updatedAt": "2026-07-28T03:13:34.000Z",
+              "uid": "35240-ea133df6-d017-46b8-aecf-0e7e70417242"
+            }
+          ],
+          "id": "6e1592a2-f05d-4987-97a4-b84fa49ba113",
+          "createdAt": "2026-07-28T03:13:34.000Z",
+          "updatedAt": "2026-07-28T03:13:34.000Z",
+          "uid": "35240-6e1592a2-f05d-4987-97a4-b84fa49ba113"
+        }
+      ],
+      "id": "e3d663aa-8bef-4b37-8c4b-c38ff0240ee9",
+      "createdAt": "2026-07-28T03:13:34.000Z",
+      "updatedAt": "2026-07-28T03:13:34.000Z",
+      "uid": "35240-e3d663aa-8bef-4b37-8c4b-c38ff0240ee9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

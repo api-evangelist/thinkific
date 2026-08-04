@@ -1,0 +1,1361 @@
+{
+  "info": {
+    "_postman_id": "bbeda4b3-3bec-470e-9955-d6ecf74015da",
+    "name": "Thinkific Admin Bundles Coupons API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:29.000Z",
+    "updatedAt": "2026-07-28T03:13:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bbeda4b3-3bec-470e-9955-d6ecf74015da"
+  },
+  "item": [
+    {
+      "name": "coupons",
+      "item": [
+        {
+          "name": "bulk_create",
+          "item": [
+            {
+              "name": "Bulk Create Coupons",
+              "id": "519860b6-b1fd-4d13-9804-ccbcf35ed5d5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bulk_quantity_per_coupon\": \"<number>\",\n  \"bulk_coupon_code_length\": \"<number>\",\n  \"bulk_quantity\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/coupons/bulk_create?promotion_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons",
+                    "bulk_create"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The ID of the Promotion for which to bulk create the Coupons.",
+                      "key": "promotion_id",
+                      "value": "<number>"
+                    }
+                  ]
+                },
+                "description": "Bulk Create Coupons"
+              },
+              "response": [
+                {
+                  "id": "3e2d001a-1488-411e-8ba0-0b6d9c491886",
+                  "name": "Create Coupon Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"bulk_quantity_per_coupon\": \"<number>\",\n  \"bulk_coupon_code_length\": \"<number>\",\n  \"bulk_quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/bulk_create?promotion_id=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        "bulk_create"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID of the Promotion for which to bulk create the Coupons.",
+                          "key": "promotion_id",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"id\": \"<number>\",\n      \"note\": \"<string>\",\n      \"promotion_id\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"quantity_used\": \"<number>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"id\": \"<number>\",\n      \"note\": \"<string>\",\n      \"promotion_id\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"quantity_used\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-3e2d001a-1488-411e-8ba0-0b6d9c491886"
+                },
+                {
+                  "id": "0bcf681f-2b99-4a54-920d-a9b5f5cc647a",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"bulk_quantity_per_coupon\": \"<number>\",\n  \"bulk_coupon_code_length\": \"<number>\",\n  \"bulk_quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/bulk_create?promotion_id=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        "bulk_create"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID of the Promotion for which to bulk create the Coupons.",
+                          "key": "promotion_id",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-0bcf681f-2b99-4a54-920d-a9b5f5cc647a"
+                },
+                {
+                  "id": "bec27594-34af-44fa-b509-102a316f2ef4",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"bulk_quantity_per_coupon\": \"<number>\",\n  \"bulk_coupon_code_length\": \"<number>\",\n  \"bulk_quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/bulk_create?promotion_id=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        "bulk_create"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ID of the Promotion for which to bulk create the Coupons.",
+                          "key": "promotion_id",
+                          "value": "<number>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-bec27594-34af-44fa-b509-102a316f2ef4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-519860b6-b1fd-4d13-9804-ccbcf35ed5d5"
+            }
+          ],
+          "id": "cea0f61b-2bac-4ee9-bcd9-045ffafa89d4",
+          "createdAt": "2026-07-28T03:13:29.000Z",
+          "updatedAt": "2026-07-28T03:13:29.000Z",
+          "uid": "35240-cea0f61b-2bac-4ee9-bcd9-045ffafa89d4"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get a Coupon by ID",
+              "id": "43d54409-fd67-43fb-9295-b5327809a6b0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/coupons/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "30b15346-c247-4d40-a413-0b550b03966c",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) The ID of the Coupon in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Retrieve a Coupon"
+              },
+              "response": [
+                {
+                  "id": "db62f903-afd7-4bf1-bf74-4c77c7003ee0",
+                  "name": "Coupon Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"id\": \"<number>\",\n  \"note\": \"<string>\",\n  \"promotion_id\": \"<number>\",\n  \"quantity\": \"<number>\",\n  \"quantity_used\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-db62f903-afd7-4bf1-bf74-4c77c7003ee0"
+                },
+                {
+                  "id": "bb7846e9-dacb-4a57-9b59-51ed318051d6",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-bb7846e9-dacb-4a57-9b59-51ed318051d6"
+                },
+                {
+                  "id": "299dadac-8f68-43d5-ace9-9c41a1aa4cbc",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-299dadac-8f68-43d5-ace9-9c41a1aa4cbc"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-43d54409-fd67-43fb-9295-b5327809a6b0"
+            },
+            {
+              "name": "Update a Coupon",
+              "id": "887390c0-e4cc-42f7-a475-30c4cc139876",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity_used\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/coupons/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3cc1b4db-6398-40d8-a164-054a4cfb98d0",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) The ID of the Coupon in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Update an existing Coupon"
+              },
+              "response": [
+                {
+                  "id": "f1022f2f-3bd2-4ba1-9d18-0cce7de65835",
+                  "name": "Coupon Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity_used\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-f1022f2f-3bd2-4ba1-9d18-0cce7de65835"
+                },
+                {
+                  "id": "f38a0d6b-60f1-4379-86d8-ded877803936",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity_used\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-f38a0d6b-60f1-4379-86d8-ded877803936"
+                },
+                {
+                  "id": "9b4d698a-5aed-4b29-a75d-c3edd7a9092b",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity_used\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-9b4d698a-5aed-4b29-a75d-c3edd7a9092b"
+                },
+                {
+                  "id": "5300c9ac-4e3b-4b28-92c5-dac106251d77",
+                  "name": "Unprocessable Entity",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity_used\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-5300c9ac-4e3b-4b28-92c5-dac106251d77"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-887390c0-e4cc-42f7-a475-30c4cc139876"
+            },
+            {
+              "name": "Delete Coupon by ID",
+              "id": "277c3ea8-c6c1-4bd9-811f-5f4200ab20fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/coupons/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6186ea9c-eb99-4ad2-b38a-2242e41be4ce",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) The ID of the Coupon in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Deletes a coupon identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "b23ecebf-a80d-4257-b129-af9f0b9602df",
+                  "name": "Coupon Deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-b23ecebf-a80d-4257-b129-af9f0b9602df"
+                },
+                {
+                  "id": "1a5a1803-9e87-4203-83ff-6078b7ade9f6",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-1a5a1803-9e87-4203-83ff-6078b7ade9f6"
+                },
+                {
+                  "id": "9d5926b9-ef21-4947-8b39-a5521ee0b5ac",
+                  "name": "NotFound",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/coupons/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "coupons",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:29.000Z",
+                  "updatedAt": "2026-07-28T03:13:29.000Z",
+                  "uid": "35240-9d5926b9-ef21-4947-8b39-a5521ee0b5ac"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-277c3ea8-c6c1-4bd9-811f-5f4200ab20fc"
+            }
+          ],
+          "id": "f92ee74a-0a1a-4512-a360-3f471c7e3939",
+          "createdAt": "2026-07-28T03:13:29.000Z",
+          "updatedAt": "2026-07-28T03:13:29.000Z",
+          "uid": "35240-f92ee74a-0a1a-4512-a360-3f471c7e3939"
+        },
+        {
+          "name": "Get Coupons",
+          "id": "ccc8b037-72cb-47a7-b5a6-2f66bb9fdbc9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/coupons?promotion_id=<number>&page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "coupons"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The ID of the Promotion for which to get the Coupons in the form of an integer.",
+                  "key": "promotion_id",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve a list of all Coupons"
+          },
+          "response": [
+            {
+              "id": "17ffbe5d-5f39-4546-8f06-0db20f98cee6",
+              "name": "Coupon Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/coupons?promotion_id=<number>&page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The ID of the Promotion for which to get the Coupons in the form of an integer.",
+                      "key": "promotion_id",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"id\": \"<number>\",\n      \"note\": \"<string>\",\n      \"promotion_id\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"quantity_used\": \"<number>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"id\": \"<number>\",\n      \"note\": \"<string>\",\n      \"promotion_id\": \"<number>\",\n      \"quantity\": \"<number>\",\n      \"quantity_used\": \"<number>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-17ffbe5d-5f39-4546-8f06-0db20f98cee6"
+            },
+            {
+              "id": "a62f09f0-7e15-440f-b4f2-98b22fff2435",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/coupons?promotion_id=<number>&page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The ID of the Promotion for which to get the Coupons in the form of an integer.",
+                      "key": "promotion_id",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-a62f09f0-7e15-440f-b4f2-98b22fff2435"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:29.000Z",
+          "updatedAt": "2026-07-28T03:13:29.000Z",
+          "uid": "35240-ccc8b037-72cb-47a7-b5a6-2f66bb9fdbc9"
+        },
+        {
+          "name": "Create a Coupon",
+          "id": "2bb1460f-4643-47c3-8e96-53b173a48777",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/coupons?promotion_id=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "coupons"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ID of the Promotion to add the Coupon to in the form of an integer.",
+                  "key": "promotion_id",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Create a Coupon"
+          },
+          "response": [
+            {
+              "id": "10ae85e4-d4b7-4510-9488-1bdc8966f03d",
+              "name": "Create Coupon Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/coupons?promotion_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Promotion to add the Coupon to in the form of an integer.",
+                      "key": "promotion_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"id\": \"<number>\",\n  \"note\": \"<string>\",\n  \"promotion_id\": \"<number>\",\n  \"quantity\": \"<number>\",\n  \"quantity_used\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-10ae85e4-d4b7-4510-9488-1bdc8966f03d"
+            },
+            {
+              "id": "feadc3ae-52eb-4b65-bb3e-dc1eb00605e7",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/coupons?promotion_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Promotion to add the Coupon to in the form of an integer.",
+                      "key": "promotion_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-feadc3ae-52eb-4b65-bb3e-dc1eb00605e7"
+            },
+            {
+              "id": "5713f4c8-c995-4e73-b5aa-5e43b60f1f87",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"note\": \"<string>\",\n  \"quantity\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/coupons?promotion_id=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "coupons"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ID of the Promotion to add the Coupon to in the form of an integer.",
+                      "key": "promotion_id",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:29.000Z",
+              "updatedAt": "2026-07-28T03:13:29.000Z",
+              "uid": "35240-5713f4c8-c995-4e73-b5aa-5e43b60f1f87"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:29.000Z",
+          "updatedAt": "2026-07-28T03:13:29.000Z",
+          "uid": "35240-2bb1460f-4643-47c3-8e96-53b173a48777"
+        }
+      ],
+      "id": "4c57c895-9adc-4807-95da-6edf2b3e9261",
+      "createdAt": "2026-07-28T03:13:29.000Z",
+      "updatedAt": "2026-07-28T03:13:29.000Z",
+      "uid": "35240-4c57c895-9adc-4807-95da-6edf2b3e9261"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

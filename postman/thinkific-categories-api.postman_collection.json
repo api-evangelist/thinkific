@@ -1,0 +1,1309 @@
+{
+  "info": {
+    "_postman_id": "05e4d562-6921-436f-891d-d28582bf11bd",
+    "name": "Thinkific Admin Bundles Categories API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:12.000Z",
+    "updatedAt": "2026-07-28T03:13:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-05e4d562-6921-436f-891d-d28582bf11bd"
+  },
+  "item": [
+    {
+      "name": "collections",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "products",
+              "item": [
+                {
+                  "name": "Get products by Collections id",
+                  "id": "83489a30-d789-4ca5-a068-b052e92fe5c9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id/products?page=1&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id",
+                        "products"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page within the collection to fetch",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "The number of items to be returned",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "229f2fe4-6b1a-466c-9690-118c5cb07590",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) ID of the Chapter in the form of an integer"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves Products within the Category identified by the provided id"
+                  },
+                  "response": [
+                    {
+                      "id": "98d3a9c1-55d3-4f4b-a83d-e750526a14ab",
+                      "name": "Products response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:id/products?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":id",
+                            "products"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"productable_id\": \"<number>\",\n      \"productable_type\": \"<string>\",\n      \"price\": \"<number>\",\n      \"position\": \"<number>\",\n      \"status\": \"<string>\",\n      \"name\": \"<string>\",\n      \"private\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"subscription\": \"<boolean>\",\n      \"days_until_expiry\": \"<number>\",\n      \"has_certificate\": \"<boolean>\",\n      \"keywords\": \"<string>\",\n      \"seo_title\": \"<string>\",\n      \"seo_description\": \"<string>\",\n      \"collection_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"related_product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"description\": \"<string>\",\n      \"card_image_url\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"product_prices\": [\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"free\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"productable_id\": \"<number>\",\n      \"productable_type\": \"<string>\",\n      \"price\": \"<number>\",\n      \"position\": \"<number>\",\n      \"status\": \"<string>\",\n      \"name\": \"<string>\",\n      \"private\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"subscription\": \"<boolean>\",\n      \"days_until_expiry\": \"<number>\",\n      \"has_certificate\": \"<boolean>\",\n      \"keywords\": \"<string>\",\n      \"seo_title\": \"<string>\",\n      \"seo_description\": \"<string>\",\n      \"collection_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"related_product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"description\": \"<string>\",\n      \"card_image_url\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"product_prices\": [\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"payment-plan\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"month\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"free\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"month\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"month\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-98d3a9c1-55d3-4f4b-a83d-e750526a14ab"
+                    },
+                    {
+                      "id": "51502296-bba0-46f2-bd9f-1f088ff57137",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:id/products?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":id",
+                            "products"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-51502296-bba0-46f2-bd9f-1f088ff57137"
+                    },
+                    {
+                      "id": "df6a4a67-1f40-4dc7-8121-86382b668a68",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:id/products?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":id",
+                            "products"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:13.000Z",
+                      "updatedAt": "2026-07-28T03:13:13.000Z",
+                      "uid": "35240-df6a4a67-1f40-4dc7-8121-86382b668a68"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-83489a30-d789-4ca5-a068-b052e92fe5c9"
+                }
+              ],
+              "id": "6b524368-620c-4d89-9823-c99ec6afa457",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-6b524368-620c-4d89-9823-c99ec6afa457"
+            },
+            {
+              "name": "Get Collections by Id",
+              "id": "64f836fe-ad0a-4d31-aa9b-de2804be34fd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "94f1f315-7a4d-4bf4-aae3-fdccb2ac6ef5",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Category in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Retrieves a Collection"
+              },
+              "response": [
+                {
+                  "id": "3a30598c-7749-4608-9036-112e1b389f33",
+                  "name": "Collection response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"created_at\": \"<dateTime>\",\n  \"default\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"slug\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-3a30598c-7749-4608-9036-112e1b389f33"
+                },
+                {
+                  "id": "e7f59e04-de7a-4faa-942b-3b2cdac63dd6",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-e7f59e04-de7a-4faa-942b-3b2cdac63dd6"
+                },
+                {
+                  "id": "34775cb6-8fcc-4d5a-944c-68b4da8331c5",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-34775cb6-8fcc-4d5a-944c-68b4da8331c5"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-64f836fe-ad0a-4d31-aa9b-de2804be34fd"
+            },
+            {
+              "name": "Update collection by ID",
+              "id": "eafe4f04-6ced-4175-99bf-9b880781b3ce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collections/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b06e7d2a-2a1a-42ef-9f0c-da853eecc082",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Category in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Updates the Category identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "8c105424-b1d9-4451-8431-a60c302293e2",
+                  "name": "Collection Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-8c105424-b1d9-4451-8431-a60c302293e2"
+                },
+                {
+                  "id": "8013af8f-99fd-4c43-a8d9-a54ac16c7a30",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-8013af8f-99fd-4c43-a8d9-a54ac16c7a30"
+                },
+                {
+                  "id": "711e62aa-5beb-4de6-9bff-b34b7ebfac6e",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-711e62aa-5beb-4de6-9bff-b34b7ebfac6e"
+                },
+                {
+                  "id": "ce528872-c96f-49c4-b44c-c9272a45a622",
+                  "name": "Unprocessable Entity",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-ce528872-c96f-49c4-b44c-c9272a45a622"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-eafe4f04-6ced-4175-99bf-9b880781b3ce"
+            },
+            {
+              "name": "Delete collection by ID",
+              "id": "e1bcdba0-f8af-44d8-9803-22b707d5d8a3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6ee04625-a26b-492a-9857-2ba853928550",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Category in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Deletes the Category identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "df83f495-310f-45c5-9c4b-9f208002bcdc",
+                  "name": "Collection deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-df83f495-310f-45c5-9c4b-9f208002bcdc"
+                },
+                {
+                  "id": "171839dc-df27-49e8-9357-963dfddd39bb",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-171839dc-df27-49e8-9357-963dfddd39bb"
+                },
+                {
+                  "id": "7954c3ab-14a6-443a-a197-b264a3f5df64",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:13.000Z",
+                  "updatedAt": "2026-07-28T03:13:13.000Z",
+                  "uid": "35240-7954c3ab-14a6-443a-a197-b264a3f5df64"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-e1bcdba0-f8af-44d8-9803-22b707d5d8a3"
+            }
+          ],
+          "id": "c01d3549-d05f-4a45-b2b7-eb9132f4491a",
+          "createdAt": "2026-07-28T03:13:13.000Z",
+          "updatedAt": "2026-07-28T03:13:13.000Z",
+          "uid": "35240-c01d3549-d05f-4a45-b2b7-eb9132f4491a"
+        },
+        {
+          "name": "Get Collections",
+          "id": "73d5b23d-08f1-4dfc-9af9-1c648058e896",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/collections?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collections"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieves a list of Collections **NOTE: This endpoint will be renamed to /categories in future API versions.**"
+          },
+          "response": [
+            {
+              "id": "33508489-8bcc-4bdd-803d-db441cd2cfbf",
+              "name": "Collections response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"created_at\": \"<dateTime>\",\n      \"default\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"slug\": \"<string>\"\n    },\n    {\n      \"created_at\": \"<dateTime>\",\n      \"default\": \"<boolean>\",\n      \"description\": \"<string>\",\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"slug\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-33508489-8bcc-4bdd-803d-db441cd2cfbf"
+            },
+            {
+              "id": "9f4888b8-5aa1-40a5-afd2-89395ac6a0e6",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-9f4888b8-5aa1-40a5-afd2-89395ac6a0e6"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:13.000Z",
+          "updatedAt": "2026-07-28T03:13:13.000Z",
+          "uid": "35240-73d5b23d-08f1-4dfc-9af9-1c648058e896"
+        },
+        {
+          "name": "Create a new Category",
+          "id": "2b41bb07-c8f7-43bd-a526-672114737b58",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/collections",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collections"
+              ]
+            },
+            "description": "Creates a new Category"
+          },
+          "response": [
+            {
+              "id": "0233a83b-4712-4130-9cca-c3ed81f357d5",
+              "name": "Collection response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"created_at\": \"<dateTime>\",\n  \"default\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"slug\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-0233a83b-4712-4130-9cca-c3ed81f357d5"
+            },
+            {
+              "id": "b73d7c3f-b30e-4381-92ba-3cd6a72d7123",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-b73d7c3f-b30e-4381-92ba-3cd6a72d7123"
+            },
+            {
+              "id": "8cf6c271-5bb1-4560-8a4c-a230ce310af5",
+              "name": " Unprocessable Entity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:13.000Z",
+              "updatedAt": "2026-07-28T03:13:13.000Z",
+              "uid": "35240-8cf6c271-5bb1-4560-8a4c-a230ce310af5"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:13.000Z",
+          "updatedAt": "2026-07-28T03:13:13.000Z",
+          "uid": "35240-2b41bb07-c8f7-43bd-a526-672114737b58"
+        }
+      ],
+      "id": "b9687827-6237-4006-826c-87d099bb57ce",
+      "createdAt": "2026-07-28T03:13:13.000Z",
+      "updatedAt": "2026-07-28T03:13:13.000Z",
+      "uid": "35240-b9687827-6237-4006-826c-87d099bb57ce"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

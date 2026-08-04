@@ -1,0 +1,190 @@
+{
+  "info": {
+    "_postman_id": "4eaaa258-3a9f-4054-8b7c-bef784d81b79",
+    "name": "Thinkific Admin Bundles Custom Profile Field Definitions API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:32.000Z",
+    "updatedAt": "2026-07-28T03:13:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4eaaa258-3a9f-4054-8b7c-bef784d81b79"
+  },
+  "item": [
+    {
+      "name": "custom_profile_field_definitions",
+      "item": [
+        {
+          "name": "Get Custom profile field definition",
+          "id": "77cd66b7-64ff-4e93-8878-e5b11eeb6c66",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/custom_profile_field_definitions?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "custom_profile_field_definitions"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned.",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve a list of Custom Profile Field Definitions"
+          },
+          "response": [
+            {
+              "id": "7a0c3e6f-84ba-4191-baa2-8ba812838f8c",
+              "name": "Custom Profile Field Definitions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/custom_profile_field_definitions?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_profile_field_definitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"field_type\": \"<string>\",\n      \"id\": \"<number>\",\n      \"label\": \"<string>\",\n      \"required\": \"<boolean>\"\n    },\n    {\n      \"field_type\": \"<string>\",\n      \"id\": \"<number>\",\n      \"label\": \"<string>\",\n      \"required\": \"<boolean>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:32.000Z",
+              "updatedAt": "2026-07-28T03:13:32.000Z",
+              "uid": "35240-7a0c3e6f-84ba-4191-baa2-8ba812838f8c"
+            },
+            {
+              "id": "e92a7ff4-780c-4e97-9ff6-a4b7707ea34a",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/custom_profile_field_definitions?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "custom_profile_field_definitions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:32.000Z",
+              "updatedAt": "2026-07-28T03:13:32.000Z",
+              "uid": "35240-e92a7ff4-780c-4e97-9ff6-a4b7707ea34a"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:32.000Z",
+          "updatedAt": "2026-07-28T03:13:32.000Z",
+          "uid": "35240-77cd66b7-64ff-4e93-8878-e5b11eeb6c66"
+        }
+      ],
+      "id": "10a11edc-8885-4f3d-8a4d-20aafada9b27",
+      "createdAt": "2026-07-28T03:13:32.000Z",
+      "updatedAt": "2026-07-28T03:13:32.000Z",
+      "uid": "35240-10a11edc-8885-4f3d-8a4d-20aafada9b27"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

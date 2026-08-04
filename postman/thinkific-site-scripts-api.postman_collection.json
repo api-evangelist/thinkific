@@ -1,0 +1,1064 @@
+{
+  "info": {
+    "_postman_id": "c804e191-cfca-4e8b-b732-5f9b7a67b72d",
+    "name": "Thinkific Admin Bundles Site Scripts API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:43.000Z",
+    "updatedAt": "2026-07-28T03:13:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c804e191-cfca-4e8b-b732-5f9b7a67b72d"
+  },
+  "item": [
+    {
+      "name": "site_scripts",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Site Script by ID",
+              "id": "24b6ac71-d167-489f-a579-964760d3ac16",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0691c08b-07b4-420b-a7ad-872932291d52",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "description": "Retrieves a Site Script identified by the provided ID"
+              },
+              "response": [
+                {
+                  "id": "990173f8-e107-4ae7-a0e8-0cebbdb8bf2c",
+                  "name": "Site Script Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"content\": \"<string>\",\n  \"src\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"page_template\",\n    \"page_template\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"functional\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-990173f8-e107-4ae7-a0e8-0cebbdb8bf2c"
+                },
+                {
+                  "id": "6d5fcbd7-f206-47d8-9770-8d30d5614b89",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-6d5fcbd7-f206-47d8-9770-8d30d5614b89"
+                },
+                {
+                  "id": "f143e1c1-c73a-4206-a689-49aea2f532c9",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-f143e1c1-c73a-4206-a689-49aea2f532c9"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-24b6ac71-d167-489f-a579-964760d3ac16"
+            },
+            {
+              "name": "Update Site Script by ID",
+              "id": "18cbf90b-de1c-42c0-8d2e-50c7cc005054",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "362d57f1-eeef-41fa-8276-b3a348dfeb91",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "description": "Updates the Site Script specified by the provided ID"
+              },
+              "response": [
+                {
+                  "id": "29549724-5c26-40a8-9530-0ecd517d7bf8",
+                  "name": "Site Script Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-29549724-5c26-40a8-9530-0ecd517d7bf8"
+                },
+                {
+                  "id": "02f3bb86-ce3e-4c1e-8046-606207633801",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-02f3bb86-ce3e-4c1e-8046-606207633801"
+                },
+                {
+                  "id": "3ba613e0-c8c9-40a9-96fc-9935bf74a463",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-3ba613e0-c8c9-40a9-96fc-9935bf74a463"
+                },
+                {
+                  "id": "837ee18d-6b1a-4053-8d6f-7c1e3a6f5a30",
+                  "name": "UnprocessableEntity",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-837ee18d-6b1a-4053-8d6f-7c1e3a6f5a30"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-18cbf90b-de1c-42c0-8d2e-50c7cc005054"
+            },
+            {
+              "name": "Delete Site Script by ID",
+              "id": "bc21f1b5-f776-4c00-84a8-0dc53796e672",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fd92b540-686f-4539-8456-465325093369",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "description": "Deletes a Site Script identified by the provided ID"
+              },
+              "response": [
+                {
+                  "id": "cd6eaad2-5d9f-4420-95b9-3b03298f2946",
+                  "name": "Site Script Deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-cd6eaad2-5d9f-4420-95b9-3b03298f2946"
+                },
+                {
+                  "id": "b72d432b-d5b2-4b77-9f33-09efa5540267",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-b72d432b-d5b2-4b77-9f33-09efa5540267"
+                },
+                {
+                  "id": "a4c21cef-0655-48ac-9b08-abad2c92b1da",
+                  "name": "NotFound",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/site_scripts/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "site_scripts",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:43.000Z",
+                  "updatedAt": "2026-07-28T03:13:43.000Z",
+                  "uid": "35240-a4c21cef-0655-48ac-9b08-abad2c92b1da"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-bc21f1b5-f776-4c00-84a8-0dc53796e672"
+            }
+          ],
+          "id": "1ea3eded-9eee-4d7e-9289-3c781646ef75",
+          "createdAt": "2026-07-28T03:13:43.000Z",
+          "updatedAt": "2026-07-28T03:13:43.000Z",
+          "uid": "35240-1ea3eded-9eee-4d7e-9289-3c781646ef75"
+        },
+        {
+          "name": "List Site Scripts",
+          "id": "8ccfb904-962e-4b49-9642-8126267d9789",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/site_scripts?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "site_scripts"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve a list of site scripts"
+          },
+          "response": [
+            {
+              "id": "ac6f2436-a035-4c43-9406-90b36e1475d1",
+              "name": "Site Scripts response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<string>\",\n      \"content\": \"<string>\",\n      \"src\": \"<uri>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"page_scopes\": [\n        \"checkout\",\n        \"learning_experience\"\n      ],\n      \"location\": \"footer\",\n      \"load_method\": \"default\",\n      \"category\": \"functional\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"content\": \"<string>\",\n      \"src\": \"<uri>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"page_scopes\": [\n        \"learning_experience\",\n        \"checkout_thankyou_page\"\n      ],\n      \"location\": \"footer\",\n      \"load_method\": \"defer\",\n      \"category\": \"marketing\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-ac6f2436-a035-4c43-9406-90b36e1475d1"
+            },
+            {
+              "id": "47f4f2e4-69e5-4336-a06d-7b90b62bab21",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-47f4f2e4-69e5-4336-a06d-7b90b62bab21"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:43.000Z",
+          "updatedAt": "2026-07-28T03:13:43.000Z",
+          "uid": "35240-8ccfb904-962e-4b49-9642-8126267d9789"
+        },
+        {
+          "name": "Create Site Script",
+          "id": "9c640dcf-6fb1-42e1-a8cd-b49a3c4ae8df",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/site_scripts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "site_scripts"
+              ]
+            },
+            "description": "Create a new Site Script"
+          },
+          "response": [
+            {
+              "id": "f8cf9e15-dc54-43cc-8422-6f30234adec8",
+              "name": "Site Script created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"content\": \"<string>\",\n  \"src\": \"<uri>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"page_template\",\n    \"page_template\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"functional\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-f8cf9e15-dc54-43cc-8422-6f30234adec8"
+            },
+            {
+              "id": "aa9f976b-2930-41f5-9a34-1c2f52c198c8",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-aa9f976b-2930-41f5-9a34-1c2f52c198c8"
+            },
+            {
+              "id": "605f372b-08cc-4501-a823-4e660b51e05f",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"student_dashboard\",\n    \"landing_pages\"\n  ],\n  \"category\": \"marketing\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/site_scripts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "site_scripts"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:43.000Z",
+              "updatedAt": "2026-07-28T03:13:43.000Z",
+              "uid": "35240-605f372b-08cc-4501-a823-4e660b51e05f"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:43.000Z",
+          "updatedAt": "2026-07-28T03:13:43.000Z",
+          "uid": "35240-9c640dcf-6fb1-42e1-a8cd-b49a3c4ae8df"
+        }
+      ],
+      "id": "7596b9b8-daae-43ba-a789-35fb5ddf9c24",
+      "createdAt": "2026-07-28T03:13:43.000Z",
+      "updatedAt": "2026-07-28T03:13:43.000Z",
+      "uid": "35240-7596b9b8-daae-43ba-a789-35fb5ddf9c24"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

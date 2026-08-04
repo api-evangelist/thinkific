@@ -1,0 +1,627 @@
+{
+  "info": {
+    "_postman_id": "95f092a3-3482-4b13-a9b4-9cc8109f0e1c",
+    "name": "Thinkific Admin Bundles Products API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:41.000Z",
+    "updatedAt": "2026-07-28T03:13:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-95f092a3-3482-4b13-a9b4-9cc8109f0e1c"
+  },
+  "item": [
+    {
+      "name": "products",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "related",
+              "item": [
+                {
+                  "name": "Get related products",
+                  "id": "ff078190-0bf3-4fa5-9c95-18adf62b5b51",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id/related?page=1&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id",
+                        "related"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page within the collection to fetch",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "The number of items to be returned",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "98614ae4-6c87-4376-a656-920a0fef224a",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) Id of the product in the form of an integer"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of products that are related to the Product identified by the provided id."
+                  },
+                  "response": [
+                    {
+                      "id": "240be2ab-bb97-48e2-91b4-de3e5e72f1f1",
+                      "name": "Products response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/related?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "related"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"productable_id\": \"<number>\",\n      \"productable_type\": \"<string>\",\n      \"price\": \"<number>\",\n      \"position\": \"<number>\",\n      \"status\": \"<string>\",\n      \"name\": \"<string>\",\n      \"private\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"subscription\": \"<boolean>\",\n      \"days_until_expiry\": \"<number>\",\n      \"has_certificate\": \"<boolean>\",\n      \"keywords\": \"<string>\",\n      \"seo_title\": \"<string>\",\n      \"seo_description\": \"<string>\",\n      \"collection_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"related_product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"description\": \"<string>\",\n      \"card_image_url\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"product_prices\": [\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"productable_id\": \"<number>\",\n      \"productable_type\": \"<string>\",\n      \"price\": \"<number>\",\n      \"position\": \"<number>\",\n      \"status\": \"<string>\",\n      \"name\": \"<string>\",\n      \"private\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"subscription\": \"<boolean>\",\n      \"days_until_expiry\": \"<number>\",\n      \"has_certificate\": \"<boolean>\",\n      \"keywords\": \"<string>\",\n      \"seo_title\": \"<string>\",\n      \"seo_description\": \"<string>\",\n      \"collection_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"related_product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"description\": \"<string>\",\n      \"card_image_url\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"product_prices\": [\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:13:41.000Z",
+                      "updatedAt": "2026-07-28T03:13:41.000Z",
+                      "uid": "35240-240be2ab-bb97-48e2-91b4-de3e5e72f1f1"
+                    },
+                    {
+                      "id": "5154d469-2303-4d28-ab96-bbc1fa8375a9",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/related?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "related"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:41.000Z",
+                      "updatedAt": "2026-07-28T03:13:41.000Z",
+                      "uid": "35240-5154d469-2303-4d28-ab96-bbc1fa8375a9"
+                    },
+                    {
+                      "id": "b3c77921-1891-4c4b-b151-f31bbf89d204",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:id/related?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":id",
+                            "related"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:41.000Z",
+                      "updatedAt": "2026-07-28T03:13:41.000Z",
+                      "uid": "35240-b3c77921-1891-4c4b-b151-f31bbf89d204"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:41.000Z",
+                  "updatedAt": "2026-07-28T03:13:41.000Z",
+                  "uid": "35240-ff078190-0bf3-4fa5-9c95-18adf62b5b51"
+                }
+              ],
+              "id": "dc581d7f-a8f7-4b2f-9e61-c961e0887410",
+              "createdAt": "2026-07-28T03:13:41.000Z",
+              "updatedAt": "2026-07-28T03:13:41.000Z",
+              "uid": "35240-dc581d7f-a8f7-4b2f-9e61-c961e0887410"
+            },
+            {
+              "name": "Get product by ID",
+              "id": "81b29be2-3a7f-4658-a522-4a2408ca8f7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1c4c8a23-21b8-4b7c-b0d5-ea180d36711c",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "description": "Returns the Product identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "2c4e4c2e-f5cd-4bd2-a5b8-d5dbfebf714f",
+                  "name": "Products response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<number>\",\n  \"created_at\": \"<dateTime>\",\n  \"productable_id\": \"<number>\",\n  \"productable_type\": \"<string>\",\n  \"price\": \"<number>\",\n  \"position\": \"<number>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"hidden\": \"<boolean>\",\n  \"subscription\": \"<boolean>\",\n  \"days_until_expiry\": \"<number>\",\n  \"has_certificate\": \"<boolean>\",\n  \"keywords\": \"<string>\",\n  \"seo_title\": \"<string>\",\n  \"seo_description\": \"<string>\",\n  \"collection_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"related_product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"description\": \"<string>\",\n  \"card_image_url\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"product_prices\": [\n    {\n      \"id\": \"<number>\",\n      \"is_primary\": false,\n      \"payment_type\": \"one-time\",\n      \"label\": null,\n      \"price\": \"<string>\",\n      \"days_until_expiry\": \"<string>\",\n      \"pay_button_text\": \"<string>\",\n      \"number_of_payments\": \"<string>\",\n      \"interval\": \"month\",\n      \"interval_count\": \"<string>\",\n      \"trial_interval\": \"month\",\n      \"trial_interval_count\": \"<string>\",\n      \"custom_first_price\": \"<string>\",\n      \"price_name\": \"<string>\",\n      \"currency\": \"usd\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"is_primary\": false,\n      \"payment_type\": \"subscription\",\n      \"label\": null,\n      \"price\": \"<string>\",\n      \"days_until_expiry\": \"<string>\",\n      \"pay_button_text\": \"<string>\",\n      \"number_of_payments\": \"<string>\",\n      \"interval\": \"year\",\n      \"interval_count\": \"<string>\",\n      \"trial_interval\": \"month\",\n      \"trial_interval_count\": \"<string>\",\n      \"custom_first_price\": \"<string>\",\n      \"price_name\": \"<string>\",\n      \"currency\": \"usd\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:41.000Z",
+                  "updatedAt": "2026-07-28T03:13:41.000Z",
+                  "uid": "35240-2c4e4c2e-f5cd-4bd2-a5b8-d5dbfebf714f"
+                },
+                {
+                  "id": "32e25ccf-e9b8-4301-950a-5ee9e6e40533",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:41.000Z",
+                  "updatedAt": "2026-07-28T03:13:41.000Z",
+                  "uid": "35240-32e25ccf-e9b8-4301-950a-5ee9e6e40533"
+                },
+                {
+                  "id": "f25c4287-d281-4c59-be4f-eb176f5352be",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:41.000Z",
+                  "updatedAt": "2026-07-28T03:13:41.000Z",
+                  "uid": "35240-f25c4287-d281-4c59-be4f-eb176f5352be"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:41.000Z",
+              "updatedAt": "2026-07-28T03:13:41.000Z",
+              "uid": "35240-81b29be2-3a7f-4658-a522-4a2408ca8f7b"
+            }
+          ],
+          "id": "734f09a7-4adb-4d76-afb3-b1571716d991",
+          "createdAt": "2026-07-28T03:13:41.000Z",
+          "updatedAt": "2026-07-28T03:13:41.000Z",
+          "uid": "35240-734f09a7-4adb-4d76-afb3-b1571716d991"
+        },
+        {
+          "name": "List products",
+          "id": "c7d6041c-9de0-4f91-a8a9-539913b3fb96",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/products?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "309e7d41-bf55-47c2-aaf4-4eae2771b2aa",
+              "name": "Products response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"productable_id\": \"<number>\",\n      \"productable_type\": \"<string>\",\n      \"price\": \"<number>\",\n      \"position\": \"<number>\",\n      \"status\": \"<string>\",\n      \"name\": \"<string>\",\n      \"private\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"subscription\": \"<boolean>\",\n      \"days_until_expiry\": \"<number>\",\n      \"has_certificate\": \"<boolean>\",\n      \"keywords\": \"<string>\",\n      \"seo_title\": \"<string>\",\n      \"seo_description\": \"<string>\",\n      \"collection_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"related_product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"description\": \"<string>\",\n      \"card_image_url\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"product_prices\": [\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"productable_id\": \"<number>\",\n      \"productable_type\": \"<string>\",\n      \"price\": \"<number>\",\n      \"position\": \"<number>\",\n      \"status\": \"<string>\",\n      \"name\": \"<string>\",\n      \"private\": \"<boolean>\",\n      \"hidden\": \"<boolean>\",\n      \"subscription\": \"<boolean>\",\n      \"days_until_expiry\": \"<number>\",\n      \"has_certificate\": \"<boolean>\",\n      \"keywords\": \"<string>\",\n      \"seo_title\": \"<string>\",\n      \"seo_description\": \"<string>\",\n      \"collection_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"related_product_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"description\": \"<string>\",\n      \"card_image_url\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"product_prices\": [\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"is_primary\": false,\n          \"payment_type\": \"one-time\",\n          \"label\": null,\n          \"price\": \"<string>\",\n          \"days_until_expiry\": \"<string>\",\n          \"pay_button_text\": \"<string>\",\n          \"number_of_payments\": \"<string>\",\n          \"interval\": \"year\",\n          \"interval_count\": \"<string>\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"<string>\",\n          \"custom_first_price\": \"<string>\",\n          \"price_name\": \"<string>\",\n          \"currency\": \"usd\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:41.000Z",
+              "updatedAt": "2026-07-28T03:13:41.000Z",
+              "uid": "35240-309e7d41-bf55-47c2-aaf4-4eae2771b2aa"
+            },
+            {
+              "id": "b2206a2e-b035-4f38-8b56-ceabd5464f06",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:41.000Z",
+              "updatedAt": "2026-07-28T03:13:41.000Z",
+              "uid": "35240-b2206a2e-b035-4f38-8b56-ceabd5464f06"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:41.000Z",
+          "updatedAt": "2026-07-28T03:13:41.000Z",
+          "uid": "35240-c7d6041c-9de0-4f91-a8a9-539913b3fb96"
+        }
+      ],
+      "id": "44c07839-c351-4c9d-87e2-a21ca49cc274",
+      "createdAt": "2026-07-28T03:13:41.000Z",
+      "updatedAt": "2026-07-28T03:13:41.000Z",
+      "uid": "35240-44c07839-c351-4c9d-87e2-a21ca49cc274"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "info": {
+    "_postman_id": "a866339f-3617-4414-92b3-fad45b7855a1",
+    "name": "Thinkific Admin Bundles Orders API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:39.000Z",
+    "updatedAt": "2026-07-28T03:13:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a866339f-3617-4414-92b3-fad45b7855a1"
+  },
+  "item": [
+    {
+      "name": "orders",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get orders by ID",
+              "id": "7a25ba3c-3c8b-40e6-9650-1f772423313d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1226e284-7f66-45e1-9309-e1576f53d2d6",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Orders in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Returns the orders identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "58118b97-d1e3-4906-9e18-a69264ba09ef",
+                  "name": "Orders response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"amount_cents\": \"<number>\",\n  \"amount_dollars\": \"<string>\",\n  \"id\": \"<number>\",\n  \"product_id\": \"<number>\",\n  \"product_name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"subscription\": \"<boolean>\",\n  \"user_email\": \"<string>\",\n  \"user_id\": \"<number>\",\n  \"user_name\": \"<string>\",\n  \"coupon_code\": \"<string>\",\n  \"coupon_id\": \"<number>\",\n  \"items\": [\n    {\n      \"product_id\": \"<number>\",\n      \"product_name\": \"<string>\",\n      \"amount_dollars\": \"<number>\",\n      \"amount_cents\": \"<number>\"\n    },\n    {\n      \"product_id\": \"<number>\",\n      \"product_name\": \"<string>\",\n      \"amount_dollars\": \"<number>\",\n      \"amount_cents\": \"<number>\"\n    }\n  ],\n  \"affiliate_referral_code\": \"<string>\",\n  \"created at\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-58118b97-d1e3-4906-9e18-a69264ba09ef"
+                },
+                {
+                  "id": "9601e880-76cd-414d-a774-5eaed8a7ad82",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-9601e880-76cd-414d-a774-5eaed8a7ad82"
+                },
+                {
+                  "id": "61764852-5992-4662-a810-17dd2481012b",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/orders/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "orders",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-61764852-5992-4662-a810-17dd2481012b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-7a25ba3c-3c8b-40e6-9650-1f772423313d"
+            }
+          ],
+          "id": "a902d418-9b7c-4234-890b-589482c06ecf",
+          "createdAt": "2026-07-28T03:13:40.000Z",
+          "updatedAt": "2026-07-28T03:13:40.000Z",
+          "uid": "35240-a902d418-9b7c-4234-890b-589482c06ecf"
+        },
+        {
+          "name": "Get Orders",
+          "id": "d4485ffa-ba2a-4a1a-a157-c3a4b0a51117",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned.",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Retrieve a list of Orders"
+          },
+          "response": [
+            {
+              "id": "d5839eca-948e-49d5-a0b2-98543ec9b370",
+              "name": "Orders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"amount_cents\": \"<number>\",\n      \"amount_dollars\": \"<string>\",\n      \"id\": \"<number>\",\n      \"product_id\": \"<number>\",\n      \"product_name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription\": \"<boolean>\",\n      \"user_email\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"user_name\": \"<string>\",\n      \"coupon_code\": \"<string>\",\n      \"coupon_id\": \"<number>\",\n      \"items\": [\n        {\n          \"product_id\": \"<number>\",\n          \"product_name\": \"<string>\",\n          \"amount_dollars\": \"<number>\",\n          \"amount_cents\": \"<number>\"\n        },\n        {\n          \"product_id\": \"<number>\",\n          \"product_name\": \"<string>\",\n          \"amount_dollars\": \"<number>\",\n          \"amount_cents\": \"<number>\"\n        }\n      ],\n      \"affiliate_referral_code\": \"<string>\",\n      \"created at\": \"<string>\"\n    },\n    {\n      \"amount_cents\": \"<number>\",\n      \"amount_dollars\": \"<string>\",\n      \"id\": \"<number>\",\n      \"product_id\": \"<number>\",\n      \"product_name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"subscription\": \"<boolean>\",\n      \"user_email\": \"<string>\",\n      \"user_id\": \"<number>\",\n      \"user_name\": \"<string>\",\n      \"coupon_code\": \"<string>\",\n      \"coupon_id\": \"<number>\",\n      \"items\": [\n        {\n          \"product_id\": \"<number>\",\n          \"product_name\": \"<string>\",\n          \"amount_dollars\": \"<number>\",\n          \"amount_cents\": \"<number>\"\n        },\n        {\n          \"product_id\": \"<number>\",\n          \"product_name\": \"<string>\",\n          \"amount_dollars\": \"<number>\",\n          \"amount_cents\": \"<number>\"\n        }\n      ],\n      \"affiliate_referral_code\": \"<string>\",\n      \"created at\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-d5839eca-948e-49d5-a0b2-98543ec9b370"
+            },
+            {
+              "id": "d2f46909-10da-4f8c-a830-6e3ec0401cff",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned.",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-d2f46909-10da-4f8c-a830-6e3ec0401cff"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:40.000Z",
+          "updatedAt": "2026-07-28T03:13:40.000Z",
+          "uid": "35240-d4485ffa-ba2a-4a1a-a157-c3a4b0a51117"
+        }
+      ],
+      "id": "f32a0847-9972-4834-9b18-9b6cbe0c62d9",
+      "createdAt": "2026-07-28T03:13:40.000Z",
+      "updatedAt": "2026-07-28T03:13:40.000Z",
+      "uid": "35240-f32a0847-9972-4834-9b18-9b6cbe0c62d9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

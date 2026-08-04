@@ -1,0 +1,477 @@
+{
+  "info": {
+    "_postman_id": "87e5b791-440c-43ac-90b5-04b1feaf939d",
+    "name": "Thinkific Admin Bundles Chapters API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:14.000Z",
+    "updatedAt": "2026-07-28T03:13:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87e5b791-440c-43ac-90b5-04b1feaf939d"
+  },
+  "item": [
+    {
+      "name": "chapters",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "contents",
+              "item": [
+                {
+                  "name": "Get Contents by Chapter id",
+                  "id": "0640a065-fe63-4727-a327-6991af28fc10",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chapters/:id/contents?page=1&limit=25",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chapters",
+                        ":id",
+                        "contents"
+                      ],
+                      "query": [
+                        {
+                          "description": "The page within the collection to fetch.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "The number of items to be returned.",
+                          "key": "limit",
+                          "value": "25"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "990771f7-1529-458d-b776-8e99d50c7598",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) ID of the Chapter in the form of an integer"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the Contents within the Chapter identified by the provided id"
+                  },
+                  "response": [
+                    {
+                      "id": "a350ce3c-ae53-493b-a8e6-28ada2c963ed",
+                      "name": "Chapters response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chapters/:id/contents?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chapters",
+                            ":id",
+                            "contents"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"items\": [\n    {\n      \"chapter_id\": \"<number>\",\n      \"contentable_type\": \"Audio\",\n      \"free\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"position\": \"<number>\",\n      \"take_url\": \"<string>\"\n    },\n    {\n      \"chapter_id\": \"<number>\",\n      \"contentable_type\": \"BrilliumExam\",\n      \"free\": \"<boolean>\",\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"position\": \"<number>\",\n      \"take_url\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T03:13:15.000Z",
+                      "updatedAt": "2026-07-28T03:13:15.000Z",
+                      "uid": "35240-a350ce3c-ae53-493b-a8e6-28ada2c963ed"
+                    },
+                    {
+                      "id": "74c5a8cd-d676-4cba-8128-a50c6195ed76",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chapters/:id/contents?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chapters",
+                            ":id",
+                            "contents"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:15.000Z",
+                      "updatedAt": "2026-07-28T03:13:15.000Z",
+                      "uid": "35240-74c5a8cd-d676-4cba-8128-a50c6195ed76"
+                    },
+                    {
+                      "id": "974ca74e-6d4b-44e2-90d8-888b0b3eceef",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/chapters/:id/contents?page=1&limit=25",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "chapters",
+                            ":id",
+                            "contents"
+                          ],
+                          "query": [
+                            {
+                              "description": "The page within the collection to fetch.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "The number of items to be returned.",
+                              "key": "limit",
+                              "value": "25"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:15.000Z",
+                      "updatedAt": "2026-07-28T03:13:15.000Z",
+                      "uid": "35240-974ca74e-6d4b-44e2-90d8-888b0b3eceef"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:15.000Z",
+                  "updatedAt": "2026-07-28T03:13:15.000Z",
+                  "uid": "35240-0640a065-fe63-4727-a327-6991af28fc10"
+                }
+              ],
+              "id": "a29ee615-bf36-494a-9a1d-d726c5abb42c",
+              "createdAt": "2026-07-28T03:13:15.000Z",
+              "updatedAt": "2026-07-28T03:13:15.000Z",
+              "uid": "35240-a29ee615-bf36-494a-9a1d-d726c5abb42c"
+            },
+            {
+              "name": "Get Chapters",
+              "id": "92f0aa83-537d-4b0d-8d11-0a5398a73cc8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/chapters/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chapters",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c72dedd1-5093-4fd1-9c23-2f6803b97781",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Chapter in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Returns a chapter"
+              },
+              "response": [
+                {
+                  "id": "d76245e5-03d1-4693-afd7-7239e2953998",
+                  "name": "Chapters response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chapters/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chapters",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"content_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"position\": \"<number>\",\n  \"description\": \"<string>\",\n  \"duration_in_seconds\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T03:13:15.000Z",
+                  "updatedAt": "2026-07-28T03:13:15.000Z",
+                  "uid": "35240-d76245e5-03d1-4693-afd7-7239e2953998"
+                },
+                {
+                  "id": "12ac38ff-4fea-41d0-80f2-527cd6a5e0c0",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chapters/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chapters",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:15.000Z",
+                  "updatedAt": "2026-07-28T03:13:15.000Z",
+                  "uid": "35240-12ac38ff-4fea-41d0-80f2-527cd6a5e0c0"
+                },
+                {
+                  "id": "3dc7ab02-aedd-405b-983d-1a3786821e62",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/chapters/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "chapters",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:15.000Z",
+                  "updatedAt": "2026-07-28T03:13:15.000Z",
+                  "uid": "35240-3dc7ab02-aedd-405b-983d-1a3786821e62"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:15.000Z",
+              "updatedAt": "2026-07-28T03:13:15.000Z",
+              "uid": "35240-92f0aa83-537d-4b0d-8d11-0a5398a73cc8"
+            }
+          ],
+          "id": "24ea92a7-d131-4144-88b0-e58752bcca68",
+          "createdAt": "2026-07-28T03:13:15.000Z",
+          "updatedAt": "2026-07-28T03:13:15.000Z",
+          "uid": "35240-24ea92a7-d131-4144-88b0-e58752bcca68"
+        }
+      ],
+      "id": "35b3dc91-7340-42b3-a956-de784a17d9bc",
+      "createdAt": "2026-07-28T03:13:15.000Z",
+      "updatedAt": "2026-07-28T03:13:15.000Z",
+      "uid": "35240-35b3dc91-7340-42b3-a956-de784a17d9bc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

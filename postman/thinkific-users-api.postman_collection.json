@@ -1,0 +1,1415 @@
+{
+  "info": {
+    "_postman_id": "6df50bbc-7d89-4e7d-bb33-b892e430c61e",
+    "name": "Thinkific Admin Bundles Users API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:45.000Z",
+    "updatedAt": "2026-07-28T03:13:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6df50bbc-7d89-4e7d-bb33-b892e430c61e"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "authentications",
+              "item": [
+                {
+                  "name": "{provider}",
+                  "item": [
+                    {
+                      "name": "Get User Auth data by ID and Provider",
+                      "id": "4986f7c1-513f-499d-a5dc-48e3ea293ba5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/authentications/:provider",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "authentications",
+                            ":provider"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d0b92a35-e0ac-4012-9ca5-b1b29acc9a78",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer)"
+                            },
+                            {
+                              "id": "fd44ac59-4ed0-4090-b78f-b53e10294e76",
+                              "key": "provider",
+                              "value": "OPENID_CONNECT",
+                              "description": "(Required) Provider from which the user's External Id is associated"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a User authentication data identified by the id and provider"
+                      },
+                      "response": [
+                        {
+                          "id": "8b0117ec-e700-4117-9448-51506f157110",
+                          "name": "User Response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:id/authentications/:provider",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":id",
+                                "authentications",
+                                ":provider"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "provider"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"provider\": \"OPENID_CONNECT\",\n  \"external_id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:45.000Z",
+                          "updatedAt": "2026-07-28T03:13:45.000Z",
+                          "uid": "35240-8b0117ec-e700-4117-9448-51506f157110"
+                        },
+                        {
+                          "id": "14465daf-99ba-4c7f-9862-0765150fbe0f",
+                          "name": "Access Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:id/authentications/:provider",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":id",
+                                "authentications",
+                                ":provider"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "provider"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:45.000Z",
+                          "updatedAt": "2026-07-28T03:13:45.000Z",
+                          "uid": "35240-14465daf-99ba-4c7f-9862-0765150fbe0f"
+                        },
+                        {
+                          "id": "56122b5c-841e-4122-a89a-3ece34d4fb3d",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:id/authentications/:provider",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":id",
+                                "authentications",
+                                ":provider"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "provider"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T03:13:45.000Z",
+                          "updatedAt": "2026-07-28T03:13:45.000Z",
+                          "uid": "35240-56122b5c-841e-4122-a89a-3ece34d4fb3d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:13:45.000Z",
+                      "updatedAt": "2026-07-28T03:13:45.000Z",
+                      "uid": "35240-4986f7c1-513f-499d-a5dc-48e3ea293ba5"
+                    }
+                  ],
+                  "id": "b617bb47-dbc3-4281-beae-d237f463e1c5",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-b617bb47-dbc3-4281-beae-d237f463e1c5"
+                }
+              ],
+              "id": "0b7dedbf-60e0-4c15-8b75-6a0423156735",
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-0b7dedbf-60e0-4c15-8b75-6a0423156735"
+            },
+            {
+              "name": "List Users by ID",
+              "id": "e7cec7ff-506d-4689-a891-be09fda404e7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                      "key": "provider",
+                      "value": "OPENID_CONNECT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "c467ebab-70c9-4673-8522-9f6cc31f8b65",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "description": "Retrieves a User identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "0a53ca3d-6ec1-4ecf-a3ec-bbe5b6f78b7e",
+                  "name": "User Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<number>\",\n  \"created_at\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"company\": \"<string>\",\n  \"email\": \"<email>\",\n  \"roles\": [\n    \"group_analyst\",\n    \"course_admin\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"administered_course_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"custom_profile_fields\": [\n    {\n      \"id\": \"<number>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_profile_field_definition_id\": \"<number>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_profile_field_definition_id\": \"<number>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-0a53ca3d-6ec1-4ecf-a3ec-bbe5b6f78b7e"
+                },
+                {
+                  "id": "aab0669b-d165-482b-9c27-6fa04ede54b9",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-aab0669b-d165-482b-9c27-6fa04ede54b9"
+                },
+                {
+                  "id": "1f2d6580-631e-4e64-91b7-ec26beb8ae19",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-1f2d6580-631e-4e64-91b7-ec26beb8ae19"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-e7cec7ff-506d-4689-a891-be09fda404e7"
+            },
+            {
+              "name": "Update user by ID",
+              "id": "833e2e2c-1b6e-4c58-9b61-87fa05846e27",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"affiliate\",\n    \"group_analyst\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                      "key": "provider",
+                      "value": "OPENID_CONNECT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "a89517a0-f92e-424e-9e42-177523e2fef8",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "description": "Updates the user specified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "f741153f-e3a8-4c0f-9d52-19cbc51b8aff",
+                  "name": "User Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"affiliate\",\n    \"group_analyst\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-f741153f-e3a8-4c0f-9d52-19cbc51b8aff"
+                },
+                {
+                  "id": "9347d37a-5bda-4c15-85d8-d09d256cc237",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"affiliate\",\n    \"group_analyst\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-9347d37a-5bda-4c15-85d8-d09d256cc237"
+                },
+                {
+                  "id": "212070f4-cd77-4eee-aa8b-a2eac0247c85",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"affiliate\",\n    \"group_analyst\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-212070f4-cd77-4eee-aa8b-a2eac0247c85"
+                },
+                {
+                  "id": "2ac26236-8ef1-445f-a95f-ad167a1edd4b",
+                  "name": "UnprocessableEntity",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"affiliate\",\n    \"group_analyst\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-2ac26236-8ef1-445f-a95f-ad167a1edd4b"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-833e2e2c-1b6e-4c58-9b61-87fa05846e27"
+            },
+            {
+              "name": "Delete user by ID",
+              "id": "e3b60653-be54-4013-9f8f-78dbcad1244b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                      "key": "provider",
+                      "value": "OPENID_CONNECT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "3a5e585b-6aa7-499a-b199-ad5634cd9016",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "description": "Deletes a User identified by the provided id"
+              },
+              "response": [
+                {
+                  "id": "f53338aa-8c4f-430e-bc06-89a84e0c38fe",
+                  "name": "User Deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-f53338aa-8c4f-430e-bc06-89a84e0c38fe"
+                },
+                {
+                  "id": "a70ba747-5ca5-45c9-baa2-6172f977b037",
+                  "name": "NotFound",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?provider=OPENID_CONNECT",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)",
+                          "key": "provider",
+                          "value": "OPENID_CONNECT"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:45.000Z",
+                  "updatedAt": "2026-07-28T03:13:45.000Z",
+                  "uid": "35240-a70ba747-5ca5-45c9-baa2-6172f977b037"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-e3b60653-be54-4013-9f8f-78dbcad1244b"
+            }
+          ],
+          "id": "44530fd8-0c9c-4c67-9d36-4c498560697a",
+          "createdAt": "2026-07-28T03:13:45.000Z",
+          "updatedAt": "2026-07-28T03:13:45.000Z",
+          "uid": "35240-44530fd8-0c9c-4c67-9d36-4c498560697a"
+        },
+        {
+          "name": "List Users",
+          "id": "3fb9b10c-7f68-4629-9b3a-eb5931f8152a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users?page=1&limit=25&query[email]=<string>&query[role]=<string>&query[external_source]=<string>&query[custom_profile_field_label]=<string>&query[custom_profile_field_value]=<string>&query[group_id]=<number>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Search Users by email.",
+                  "key": "query[email]",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search Users by role.",
+                  "key": "query[role]",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search Users by external source.",
+                  "key": "query[external_source]",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search by custom profile field label (must be combined with custom_profile_field_value)",
+                  "key": "query[custom_profile_field_label]",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search by custom profile field value (must be combined with custom_profile_field_label)",
+                  "key": "query[custom_profile_field_value]",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Search by group id.",
+                  "key": "query[group_id]",
+                  "value": "<number>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of users"
+          },
+          "response": [
+            {
+              "id": "5661dfa5-fdac-482a-a893-c5e033e5f7ec",
+              "name": "Users response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?page=1&limit=25&query[email]=<string>&query[role]=<string>&query[external_source]=<string>&query[custom_profile_field_label]=<string>&query[custom_profile_field_value]=<string>&query[group_id]=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Search Users by email.",
+                      "key": "query[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search Users by role.",
+                      "key": "query[role]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search Users by external source.",
+                      "key": "query[external_source]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search by custom profile field label (must be combined with custom_profile_field_value)",
+                      "key": "query[custom_profile_field_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search by custom profile field value (must be combined with custom_profile_field_label)",
+                      "key": "query[custom_profile_field_value]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search by group id.",
+                      "key": "query[group_id]",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"company\": \"<string>\",\n      \"email\": \"<email>\",\n      \"roles\": [\n        \"group_analyst\",\n        \"site_admin\"\n      ],\n      \"avatar_url\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"headline\": \"<string>\",\n      \"affiliate_code\": \"<string>\",\n      \"external_source\": \"<string>\",\n      \"affiliate_commission\": \"<number>\",\n      \"affiliate_commission_type\": \"<string>\",\n      \"affiliate_payout_email\": \"<string>\",\n      \"administered_course_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"custom_profile_fields\": [\n        {\n          \"id\": \"<number>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_profile_field_definition_id\": \"<number>\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_profile_field_definition_id\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<number>\",\n      \"created_at\": \"<dateTime>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"company\": \"<string>\",\n      \"email\": \"<email>\",\n      \"roles\": [\n        \"group_analyst\",\n        \"affiliate\"\n      ],\n      \"avatar_url\": \"<string>\",\n      \"bio\": \"<string>\",\n      \"headline\": \"<string>\",\n      \"affiliate_code\": \"<string>\",\n      \"external_source\": \"<string>\",\n      \"affiliate_commission\": \"<number>\",\n      \"affiliate_commission_type\": \"<string>\",\n      \"affiliate_payout_email\": \"<string>\",\n      \"administered_course_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"custom_profile_fields\": [\n        {\n          \"id\": \"<number>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_profile_field_definition_id\": \"<number>\"\n        },\n        {\n          \"id\": \"<number>\",\n          \"value\": \"<string>\",\n          \"label\": \"<string>\",\n          \"custom_profile_field_definition_id\": \"<number>\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-5661dfa5-fdac-482a-a893-c5e033e5f7ec"
+            },
+            {
+              "id": "0840fa82-5d03-4975-912d-6e95aed90087",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users?page=1&limit=25&query[email]=<string>&query[role]=<string>&query[external_source]=<string>&query[custom_profile_field_label]=<string>&query[custom_profile_field_value]=<string>&query[group_id]=<number>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Search Users by email.",
+                      "key": "query[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search Users by role.",
+                      "key": "query[role]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search Users by external source.",
+                      "key": "query[external_source]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search by custom profile field label (must be combined with custom_profile_field_value)",
+                      "key": "query[custom_profile_field_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search by custom profile field value (must be combined with custom_profile_field_label)",
+                      "key": "query[custom_profile_field_value]",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Search by group id.",
+                      "key": "query[group_id]",
+                      "value": "<number>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-0840fa82-5d03-4975-912d-6e95aed90087"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:45.000Z",
+          "updatedAt": "2026-07-28T03:13:45.000Z",
+          "uid": "35240-3fb9b10c-7f68-4629-9b3a-eb5931f8152a"
+        },
+        {
+          "name": "Create user",
+          "id": "21f7679c-6c50-49b5-867f-39493228b359",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"group_analyst\",\n    \"affiliate\"\n  ],\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "Create a new user"
+          },
+          "response": [
+            {
+              "id": "8b632373-775d-4262-b703-fedadd041c87",
+              "name": "User Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"group_analyst\",\n    \"affiliate\"\n  ],\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<number>\",\n  \"created_at\": \"<dateTime>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"company\": \"<string>\",\n  \"email\": \"<email>\",\n  \"roles\": [\n    \"group_analyst\",\n    \"course_admin\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"administered_course_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"custom_profile_fields\": [\n    {\n      \"id\": \"<number>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_profile_field_definition_id\": \"<number>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"value\": \"<string>\",\n      \"label\": \"<string>\",\n      \"custom_profile_field_definition_id\": \"<number>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-8b632373-775d-4262-b703-fedadd041c87"
+            },
+            {
+              "id": "bb705479-4283-4075-9e59-e2142844125d",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"group_analyst\",\n    \"affiliate\"\n  ],\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-bb705479-4283-4075-9e59-e2142844125d"
+            },
+            {
+              "id": "5aafccec-bba3-43b4-9c56-7aa202984dae",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"group_analyst\",\n    \"affiliate\"\n  ],\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:45.000Z",
+              "updatedAt": "2026-07-28T03:13:45.000Z",
+              "uid": "35240-5aafccec-bba3-43b4-9c56-7aa202984dae"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:45.000Z",
+          "updatedAt": "2026-07-28T03:13:45.000Z",
+          "uid": "35240-21f7679c-6c50-49b5-867f-39493228b359"
+        }
+      ],
+      "id": "92f11ac9-1266-4388-8503-c033cdeb440b",
+      "createdAt": "2026-07-28T03:13:45.000Z",
+      "updatedAt": "2026-07-28T03:13:45.000Z",
+      "uid": "35240-92f11ac9-1266-4388-8503-c033cdeb440b"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

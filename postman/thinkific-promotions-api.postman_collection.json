@@ -1,0 +1,1277 @@
+{
+  "info": {
+    "_postman_id": "db29edc1-7871-4de9-b042-d14ebe9f95ad",
+    "name": "Thinkific Admin Bundles Promotions API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:42.000Z",
+    "updatedAt": "2026-07-28T03:13:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-db29edc1-7871-4de9-b042-d14ebe9f95ad"
+  },
+  "item": [
+    {
+      "name": "promotions",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get promotion by provided ID",
+              "id": "8ef6775a-8bef-4038-87cc-d523c9988848",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/promotions/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e928ca61-04a7-4365-bb25-057bf2eb6a34",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) Id of the promotion in the form of an integer"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b8334137-fe3a-4e17-850b-60a630c6cefe",
+                  "name": "Promotions response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"discount_type\": \"fixed\",\n  \"amount\": \"<number>\",\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-b8334137-fe3a-4e17-850b-60a630c6cefe"
+                },
+                {
+                  "id": "0ab3d7b1-3e3d-4a46-9a1d-d9348476bc96",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-0ab3d7b1-3e3d-4a46-9a1d-d9348476bc96"
+                },
+                {
+                  "id": "18c1e430-0355-4211-9e34-6cd60ceb55bb",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-18c1e430-0355-4211-9e34-6cd60ceb55bb"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-8ef6775a-8bef-4038-87cc-d523c9988848"
+            },
+            {
+              "name": "Update promotion by provided ID",
+              "id": "b6017653-bdf8-43ed-a0cf-c1fd8e109d30",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/promotions/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a2e5a4bf-1ed5-4eb1-a0aa-cac137ceac8a",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) Id of the promotion in the form of an integer"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "bfcc8a1a-976b-4e74-adab-75c1e067e1b9",
+                  "name": "Promotion Updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-bfcc8a1a-976b-4e74-adab-75c1e067e1b9"
+                },
+                {
+                  "id": "17964b46-824b-4ad5-8800-56bcdfb9c14e",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-17964b46-824b-4ad5-8800-56bcdfb9c14e"
+                },
+                {
+                  "id": "33667f54-e392-4289-98bf-dbe96d50b188",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-33667f54-e392-4289-98bf-dbe96d50b188"
+                },
+                {
+                  "id": "82597d6c-c7cc-4d88-bb6a-c779834e97da",
+                  "name": "Unprocessable Entity",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-82597d6c-c7cc-4d88-bb6a-c779834e97da"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-b6017653-bdf8-43ed-a0cf-c1fd8e109d30"
+            },
+            {
+              "name": "Delete promotion by provided ID",
+              "id": "b46779c8-11ed-4a23-8981-933e976f2a39",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/promotions/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e813b9c4-93db-4148-a70c-2032edae4c38",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) Id of the promotion in the form of an integer"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "d8f17c22-6e57-4f24-8ee2-88e8f9d8b437",
+                  "name": "Promotions deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-d8f17c22-6e57-4f24-8ee2-88e8f9d8b437"
+                },
+                {
+                  "id": "fe87dad3-d969-4550-a362-a07ab6c0b664",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-fe87dad3-d969-4550-a362-a07ab6c0b664"
+                },
+                {
+                  "id": "32f0bb88-37db-44b0-b43c-374a55e6a158",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-32f0bb88-37db-44b0-b43c-374a55e6a158"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-b46779c8-11ed-4a23-8981-933e976f2a39"
+            }
+          ],
+          "id": "ecd5ec9d-6f93-498f-b13c-de0a2790bdfa",
+          "createdAt": "2026-07-28T03:13:42.000Z",
+          "updatedAt": "2026-07-28T03:13:42.000Z",
+          "uid": "35240-ecd5ec9d-6f93-498f-b13c-de0a2790bdfa"
+        },
+        {
+          "name": "by_coupon",
+          "item": [
+            {
+              "name": "Get Promotion associated with the provided Coupon code.",
+              "id": "2831defc-64e9-48c2-ae7a-cc4cb51d4a66",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/promotions/by_coupon?product_id=<number>&coupon_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions",
+                    "by_coupon"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The id of the Product to which the promotion applies.",
+                      "key": "product_id",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) The Coupon code to be used as search critieria.",
+                      "key": "coupon_code",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Find a Promotion by Coupon Code and Product"
+              },
+              "response": [
+                {
+                  "id": "e5a4828d-ab13-4456-9aa5-66a32bc5c2c2",
+                  "name": "Promotions response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/by_coupon?product_id=<number>&coupon_code=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        "by_coupon"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The id of the Product to which the promotion applies.",
+                          "key": "product_id",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) The Coupon code to be used as search critieria.",
+                          "key": "coupon_code",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"discount_type\": \"fixed\",\n  \"amount\": \"<number>\",\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-e5a4828d-ab13-4456-9aa5-66a32bc5c2c2"
+                },
+                {
+                  "id": "e4129dc7-8551-4df1-9912-a831ec06508a",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/by_coupon?product_id=<number>&coupon_code=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        "by_coupon"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The id of the Product to which the promotion applies.",
+                          "key": "product_id",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) The Coupon code to be used as search critieria.",
+                          "key": "coupon_code",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-e4129dc7-8551-4df1-9912-a831ec06508a"
+                },
+                {
+                  "id": "f397d614-a3a0-4be1-8837-930b49d985b6",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/promotions/by_coupon?product_id=<number>&coupon_code=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "promotions",
+                        "by_coupon"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The id of the Product to which the promotion applies.",
+                          "key": "product_id",
+                          "value": "<number>"
+                        },
+                        {
+                          "description": "(Required) The Coupon code to be used as search critieria.",
+                          "key": "coupon_code",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:42.000Z",
+                  "updatedAt": "2026-07-28T03:13:42.000Z",
+                  "uid": "35240-f397d614-a3a0-4be1-8837-930b49d985b6"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-2831defc-64e9-48c2-ae7a-cc4cb51d4a66"
+            }
+          ],
+          "id": "029f9f8c-6af3-4491-9e42-f5e89977a55c",
+          "createdAt": "2026-07-28T03:13:42.000Z",
+          "updatedAt": "2026-07-28T03:13:42.000Z",
+          "uid": "35240-029f9f8c-6af3-4491-9e42-f5e89977a55c"
+        },
+        {
+          "name": "List promotions",
+          "id": "5a413bba-a3c1-40b9-9234-9f60700fa334",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/promotions?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "promotions"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "674ac4f1-c09a-4611-8295-9c45605e4949",
+              "name": "Promotions response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/promotions?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"starts_at\": \"<dateTime>\",\n      \"expires_at\": \"<dateTime>\",\n      \"discount_type\": \"fixed\",\n      \"amount\": \"<number>\",\n      \"coupon_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"duration\": \"<number>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"starts_at\": \"<dateTime>\",\n      \"expires_at\": \"<dateTime>\",\n      \"discount_type\": \"fixed\",\n      \"amount\": \"<number>\",\n      \"coupon_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"duration\": \"<number>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-674ac4f1-c09a-4611-8295-9c45605e4949"
+            },
+            {
+              "id": "9f6f66c9-26ae-4f83-a937-b70df5e7d31d",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/promotions?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-9f6f66c9-26ae-4f83-a937-b70df5e7d31d"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:42.000Z",
+          "updatedAt": "2026-07-28T03:13:42.000Z",
+          "uid": "35240-5a413bba-a3c1-40b9-9234-9f60700fa334"
+        },
+        {
+          "name": "Create a new promotion",
+          "id": "e16ec721-c832-4ba0-bf06-d5ca62355fc0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/promotions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "promotions"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "be1766d1-697a-438a-bb53-1416bf9b9302",
+              "name": "Promotions response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/promotions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<number>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"discount_type\": \"fixed\",\n  \"amount\": \"<number>\",\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-be1766d1-697a-438a-bb53-1416bf9b9302"
+            },
+            {
+              "id": "f5b1791e-34d1-4df7-b590-2d390f02e7d1",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/promotions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-f5b1791e-34d1-4df7-b590-2d390f02e7d1"
+            },
+            {
+              "id": "71f05ed1-0dfa-4076-97eb-a0d5cfc86708",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<number>\",\n  \"discount_type\": \"percentage\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"product_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"coupon_ids\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"duration\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/promotions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "promotions"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:42.000Z",
+              "updatedAt": "2026-07-28T03:13:42.000Z",
+              "uid": "35240-71f05ed1-0dfa-4076-97eb-a0d5cfc86708"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:42.000Z",
+          "updatedAt": "2026-07-28T03:13:42.000Z",
+          "uid": "35240-e16ec721-c832-4ba0-bf06-d5ca62355fc0"
+        }
+      ],
+      "id": "63fbdf0d-f6fc-4d60-a47a-19903ad44d6a",
+      "createdAt": "2026-07-28T03:13:42.000Z",
+      "updatedAt": "2026-07-28T03:13:42.000Z",
+      "uid": "35240-63fbdf0d-f6fc-4d60-a47a-19903ad44d6a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

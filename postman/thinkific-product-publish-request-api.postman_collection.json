@@ -1,0 +1,997 @@
+{
+  "info": {
+    "_postman_id": "4ad17757-93ab-46ae-a319-e1777006d207",
+    "name": "Thinkific Admin Bundles Product Publish Request API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:40.000Z",
+    "updatedAt": "2026-07-28T03:13:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4ad17757-93ab-46ae-a319-e1777006d207"
+  },
+  "item": [
+    {
+      "name": "product_publish_requests",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "approve",
+              "item": [
+                {
+                  "name": "Approves Product Publish Request",
+                  "id": "55f59732-f80a-4452-aee9-22686b9a6d23",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/product_publish_requests/:id/approve",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product_publish_requests",
+                        ":id",
+                        "approve"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b2edf1f4-789b-4ade-a3fa-270a32059fb2",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) ID of the Product Publish Request in the form of an integer."
+                        }
+                      ]
+                    },
+                    "description": "Approves the Product Publish Request identified by the provided id."
+                  },
+                  "response": [
+                    {
+                      "id": "4502cb5e-1faf-472a-abf1-c2612e63c006",
+                      "name": "Product Publish Request approved",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-4502cb5e-1faf-472a-abf1-c2612e63c006"
+                    },
+                    {
+                      "id": "40d009b7-27bb-4b75-85a5-29a2f2dba61e",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-40d009b7-27bb-4b75-85a5-29a2f2dba61e"
+                    },
+                    {
+                      "id": "83d786e9-7a21-4020-ad82-a0f23d9fa45e",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-83d786e9-7a21-4020-ad82-a0f23d9fa45e"
+                    },
+                    {
+                      "id": "3228c494-fb76-4e70-8ed3-15b4a6245c33",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/approve",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "approve"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-3228c494-fb76-4e70-8ed3-15b4a6245c33"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-55f59732-f80a-4452-aee9-22686b9a6d23"
+                }
+              ],
+              "id": "8bb9ce38-5b93-4a1a-8c26-ea90044466c2",
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-8bb9ce38-5b93-4a1a-8c26-ea90044466c2"
+            },
+            {
+              "name": "deny",
+              "item": [
+                {
+                  "name": "Denies Product Publish Request",
+                  "id": "6281fd1c-6ebf-4b1d-a424-0414ca89f9a3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/product_publish_requests/:id/deny",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product_publish_requests",
+                        ":id",
+                        "deny"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c856ebc0-eabf-4583-a8ca-c1edb9077f8a",
+                          "key": "id",
+                          "value": "<number>",
+                          "description": "(Required) ID of the Product Publish Request in the form of an integer."
+                        }
+                      ]
+                    },
+                    "description": "Denies the Product Publish Request identified by the provided id."
+                  },
+                  "response": [
+                    {
+                      "id": "864c761b-be22-4178-bccf-34410bd5f79f",
+                      "name": "Product Publish Request denied",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-864c761b-be22-4178-bccf-34410bd5f79f"
+                    },
+                    {
+                      "id": "c0a06953-fdda-4c11-afd6-58c88142ffe3",
+                      "name": "Access Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-c0a06953-fdda-4c11-afd6-58c88142ffe3"
+                    },
+                    {
+                      "id": "ae5b561e-f682-4700-97f1-f96518bd8768",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-ae5b561e-f682-4700-97f1-f96518bd8768"
+                    },
+                    {
+                      "id": "ccff54cf-6a2d-4ac5-920a-87aad5a6a5d8",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_id\": \"<number>\",\n  \"response_text\": \"<string>\",\n  \"notify_requester\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/product_publish_requests/:id/deny",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "product_publish_requests",
+                            ":id",
+                            "deny"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:13:40.000Z",
+                      "updatedAt": "2026-07-28T03:13:40.000Z",
+                      "uid": "35240-ccff54cf-6a2d-4ac5-920a-87aad5a6a5d8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-6281fd1c-6ebf-4b1d-a424-0414ca89f9a3"
+                }
+              ],
+              "id": "84df42e5-a9a0-4eb1-a833-7991914726b1",
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-84df42e5-a9a0-4eb1-a833-7991914726b1"
+            },
+            {
+              "name": "Get product publish request by ID",
+              "id": "7d97feee-b974-4aa1-b28b-57a70c5e01f6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/product_publish_requests/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "product_publish_requests",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "465cd753-0349-4c83-8f91-1f4c2b4ab7e8",
+                      "key": "id",
+                      "value": "<number>",
+                      "description": "(Required) ID of the Product Publish Request in the form of an integer."
+                    }
+                  ]
+                },
+                "description": "Returns the Product Publish Request identified by the provided id."
+              },
+              "response": [
+                {
+                  "id": "88dde859-5f2a-48ac-a4e4-12f30dc8e13b",
+                  "name": "Product Publish Request success response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/product_publish_requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product_publish_requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"product_id\": \"<number>\",\n  \"requesting_user_id\": \"<number>\",\n  \"status\": \"<string>\",\n  \"response_text\": \"<string>\",\n  \"responding_user_id\": \"<number>\",\n  \"completed_at\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-88dde859-5f2a-48ac-a4e4-12f30dc8e13b"
+                },
+                {
+                  "id": "e64dd3d5-7b4d-4219-b740-21d6c4ea817d",
+                  "name": "Access Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/product_publish_requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product_publish_requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-e64dd3d5-7b4d-4219-b740-21d6c4ea817d"
+                },
+                {
+                  "id": "e1eb6720-7157-4789-af25-6f2e94a5f334",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/product_publish_requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product_publish_requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T03:13:40.000Z",
+                  "updatedAt": "2026-07-28T03:13:40.000Z",
+                  "uid": "35240-e1eb6720-7157-4789-af25-6f2e94a5f334"
+                }
+              ],
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-7d97feee-b974-4aa1-b28b-57a70c5e01f6"
+            }
+          ],
+          "id": "6a4bc7e6-3901-4c1a-a401-67f63bf44ee4",
+          "createdAt": "2026-07-28T03:13:40.000Z",
+          "updatedAt": "2026-07-28T03:13:40.000Z",
+          "uid": "35240-6a4bc7e6-3901-4c1a-a401-67f63bf44ee4"
+        },
+        {
+          "name": "Get List of unhandled product publish requests",
+          "id": "e4e7cc44-7c6b-4ef6-a667-4e096056a25d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/product_publish_requests?page=1&limit=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "product_publish_requests"
+              ],
+              "query": [
+                {
+                  "description": "The page within the collection to fetch",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "The number of items to be returned",
+                  "key": "limit",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Returns a list of unhandled Product Publish Requests."
+          },
+          "response": [
+            {
+              "id": "309f3a91-5573-42e3-bb85-d90985f5bf9f",
+              "name": "Product Publish Requests response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/product_publish_requests?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "product_publish_requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"starts_at\": \"<dateTime>\",\n      \"expires_at\": \"<dateTime>\",\n      \"discount_type\": \"percentage\",\n      \"amount\": \"<number>\",\n      \"coupon_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"duration\": \"<number>\"\n    },\n    {\n      \"id\": \"<number>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"starts_at\": \"<dateTime>\",\n      \"expires_at\": \"<dateTime>\",\n      \"discount_type\": \"fixed\",\n      \"amount\": \"<number>\",\n      \"coupon_ids\": [\n        \"<number>\",\n        \"<number>\"\n      ],\n      \"duration\": \"<number>\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": \"<number>\",\n      \"next_page\": \"<number>\",\n      \"prev_page\": \"<number>\",\n      \"total_pages\": \"<number>\",\n      \"total_items\": \"<number>\",\n      \"entries_info\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-309f3a91-5573-42e3-bb85-d90985f5bf9f"
+            },
+            {
+              "id": "5a8e580e-762c-4a6b-83d8-3e04eec55800",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/product_publish_requests?page=1&limit=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "product_publish_requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "The page within the collection to fetch",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The number of items to be returned",
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:40.000Z",
+              "updatedAt": "2026-07-28T03:13:40.000Z",
+              "uid": "35240-5a8e580e-762c-4a6b-83d8-3e04eec55800"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:40.000Z",
+          "updatedAt": "2026-07-28T03:13:40.000Z",
+          "uid": "35240-e4e7cc44-7c6b-4ef6-a667-4e096056a25d"
+        }
+      ],
+      "id": "4a55dafb-fa61-4722-b5df-9474be2ed27f",
+      "createdAt": "2026-07-28T03:13:40.000Z",
+      "updatedAt": "2026-07-28T03:13:40.000Z",
+      "uid": "35240-4a55dafb-fa61-4722-b5df-9474be2ed27f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

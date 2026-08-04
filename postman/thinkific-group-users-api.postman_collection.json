@@ -1,0 +1,243 @@
+{
+  "info": {
+    "_postman_id": "b5bdcae2-d329-4060-947c-b92447dd52b6",
+    "name": "Thinkific Admin Bundles Group Users API",
+    "description": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:13:36.000Z",
+    "updatedAt": "2026-07-28T03:13:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b5bdcae2-d329-4060-947c-b92447dd52b6"
+  },
+  "item": [
+    {
+      "name": "group_users",
+      "item": [
+        {
+          "name": "Create a User to existing Groups",
+          "id": "eb159761-5227-4ef6-977a-0bb59373865e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/group_users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "group_users"
+              ]
+            },
+            "description": "Create an existing User to existing Groups"
+          },
+          "response": [
+            {
+              "id": "fc542643-79cd-45ba-b4aa-f2548c778840",
+              "name": "Group Users response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group_users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group_users"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:13:37.000Z",
+              "updatedAt": "2026-07-28T03:13:37.000Z",
+              "uid": "35240-fc542643-79cd-45ba-b4aa-f2548c778840"
+            },
+            {
+              "id": "92e90233-e605-42d3-9cc1-bbda61d56ba3",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group_users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group_users"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T03:13:37.000Z",
+              "updatedAt": "2026-07-28T03:13:37.000Z",
+              "uid": "35240-92e90233-e605-42d3-9cc1-bbda61d56ba3"
+            },
+            {
+              "id": "c1b3adcd-966a-4fb5-85d7-03fc4d3ff689",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"group_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group_users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group_users"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"field_name\": \"<string>\"\n    },\n    {\n      \"field_name\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T03:13:37.000Z",
+              "updatedAt": "2026-07-28T03:13:37.000Z",
+              "uid": "35240-c1b3adcd-966a-4fb5-85d7-03fc4d3ff689"
+            }
+          ],
+          "createdAt": "2026-07-28T03:13:37.000Z",
+          "updatedAt": "2026-07-28T03:13:37.000Z",
+          "uid": "35240-eb159761-5227-4ef6-977a-0bb59373865e"
+        }
+      ],
+      "id": "a01c0c84-b934-4b71-b464-5ee2e89264a3",
+      "createdAt": "2026-07-28T03:13:37.000Z",
+      "updatedAt": "2026-07-28T03:13:37.000Z",
+      "uid": "35240-a01c0c84-b934-4b71-b464-5ee2e89264a3"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.thinkific.com/api/public/v1"
+    }
+  ]
+}

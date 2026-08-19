@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thinkific.
 url: https://raw.githubusercontent.com/api-evangelist/thinkific/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: >
   Thinkific is an online course creation and delivery platform that enables creators and businesses
   to build, market, and sell courses, communities, and digital products. The Thinkific Admin REST

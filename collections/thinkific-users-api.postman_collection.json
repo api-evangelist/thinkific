@@ -1,0 +1,1417 @@
+{
+  "item": [
+    {
+      "id": "6f094318-3da8-4de8-8872-cfb4131bf0f9",
+      "name": "Users",
+      "description": {
+        "content": "Users operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19d2c3cf-e7d7-43e7-8150-1a3ca13f8307",
+          "name": "List Users",
+          "request": {
+            "name": "List Users",
+            "description": {
+              "content": "Retrieve a list of users",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page within the collection to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The number of items to be returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "query[email]",
+                  "value": "<string>",
+                  "description": "Search Users by email."
+                },
+                {
+                  "disabled": false,
+                  "key": "query[role]",
+                  "value": "<string>",
+                  "description": "Search Users by role."
+                },
+                {
+                  "disabled": false,
+                  "key": "query[external_source]",
+                  "value": "<string>",
+                  "description": "Search Users by external source."
+                },
+                {
+                  "disabled": false,
+                  "key": "query[custom_profile_field_label]",
+                  "value": "<string>",
+                  "description": "Search by custom profile field label (must be combined with custom_profile_field_value)"
+                },
+                {
+                  "disabled": false,
+                  "key": "query[custom_profile_field_value]",
+                  "value": "<string>",
+                  "description": "Search by custom profile field value (must be combined with custom_profile_field_label)"
+                },
+                {
+                  "disabled": false,
+                  "key": "query[group_id]",
+                  "value": "<number>",
+                  "description": "Search by group id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b10d14d5-7b0f-4bd2-b920-88986c72e51d",
+              "name": "Users response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "query[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[role]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[external_source]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[custom_profile_field_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[custom_profile_field_value]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[group_id]",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": 1,\n      \"created_at\": \"2018-07-12T23:19:00.154Z\",\n      \"first_name\": \"Bob\",\n      \"last_name\": \"Smith\",\n      \"full_name\": \"Bob Smith\",\n      \"company\": \"The user's company\",\n      \"email\": \"bob@example.com\",\n      \"roles\": [\n        \"affiliate\"\n      ],\n      \"avatar_url\": \"https://example.com/avatar/123\",\n      \"bio\": \"User's bio\",\n      \"headline\": \"User's headline\",\n      \"affiliate_code\": \"abc123\",\n      \"external_source\": \"string\",\n      \"affiliate_commission\": 20,\n      \"affiliate_commission_type\": \"%\",\n      \"affiliate_payout_email\": \"bob@example.com\",\n      \"administered_course_ids\": [\n        3144.570276968247,\n        8785.602080547333\n      ],\n      \"custom_profile_fields\": [\n        {\n          \"id\": 1,\n          \"value\": \"887 909 9999\",\n          \"label\": \"Phone\",\n          \"custom_profile_field_definition_id\": 1\n        },\n        {\n          \"id\": 1,\n          \"value\": \"887 909 9999\",\n          \"label\": \"Phone\",\n          \"custom_profile_field_definition_id\": 1\n        }\n      ]\n    },\n    {\n      \"id\": 1,\n      \"created_at\": \"2018-07-12T23:19:00.154Z\",\n      \"first_name\": \"Bob\",\n      \"last_name\": \"Smith\",\n      \"full_name\": \"Bob Smith\",\n      \"company\": \"The user's company\",\n      \"email\": \"bob@example.com\",\n      \"roles\": [\n        \"affiliate\"\n      ],\n      \"avatar_url\": \"https://example.com/avatar/123\",\n      \"bio\": \"User's bio\",\n      \"headline\": \"User's headline\",\n      \"affiliate_code\": \"abc123\",\n      \"external_source\": \"string\",\n      \"affiliate_commission\": 20,\n      \"affiliate_commission_type\": \"%\",\n      \"affiliate_payout_email\": \"bob@example.com\",\n      \"administered_course_ids\": [\n        4598.657509160233,\n        6595.789400850432\n      ],\n      \"custom_profile_fields\": [\n        {\n          \"id\": 1,\n          \"value\": \"887 909 9999\",\n          \"label\": \"Phone\",\n          \"custom_profile_field_definition_id\": 1\n        },\n        {\n          \"id\": 1,\n          \"value\": \"887 909 9999\",\n          \"label\": \"Phone\",\n          \"custom_profile_field_definition_id\": 1\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"next_page\": 2,\n      \"prev_page\": 7305.571841567435,\n      \"total_pages\": 10,\n      \"total_items\": 250,\n      \"entries_info\": \"1-10 of 10\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cd2432b-1758-42f1-8adf-35882888bfff",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "query[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[role]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[external_source]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[custom_profile_field_label]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[custom_profile_field_value]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query[group_id]",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1df23e15-7f52-4bdf-b056-5c5a90ed4252",
+          "name": "Create user",
+          "request": {
+            "name": "Create user",
+            "description": {
+              "content": "Create a new user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0d95e927-1960-4d4b-bf2a-ad6b99d03fbf",
+              "name": "User Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@example.com\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2018-07-12T23:19:00.154Z\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"full_name\": \"Bob Smith\",\n  \"company\": \"The user's company\",\n  \"email\": \"bob@example.com\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"avatar_url\": \"https://example.com/avatar/123\",\n  \"bio\": \"User's bio\",\n  \"headline\": \"User's headline\",\n  \"affiliate_code\": \"abc123\",\n  \"external_source\": \"string\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"administered_course_ids\": [\n    3217.7015712912194,\n    6906.64462751776\n  ],\n  \"custom_profile_fields\": [\n    {\n      \"id\": 1,\n      \"value\": \"887 909 9999\",\n      \"label\": \"Phone\",\n      \"custom_profile_field_definition_id\": 1\n    },\n    {\n      \"id\": 1,\n      \"value\": \"887 909 9999\",\n      \"label\": \"Phone\",\n      \"custom_profile_field_definition_id\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "235eeebf-cd9a-4e45-a4d9-82381086ae0d",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@example.com\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d7014e0-ad93-4d1d-b493-58d4b45b7cce",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"bob@example.com\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ],\n  \"skip_custom_fields_validation\": false,\n  \"send_welcome_email\": false,\n  \"external_id\": \"<string>\",\n  \"provider\": \"SSO\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"first_name\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc2f7178-5ed7-4a46-9c98-4916f70c6a2e",
+          "name": "List Users by ID",
+          "request": {
+            "name": "List Users by ID",
+            "description": {
+              "content": "Retrieves a User identified by the provided id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "325cd423-904b-4d67-9129-e217771c9cb6",
+              "name": "User Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1,\n  \"created_at\": \"2018-07-12T23:19:00.154Z\",\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"full_name\": \"Bob Smith\",\n  \"company\": \"The user's company\",\n  \"email\": \"bob@example.com\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"avatar_url\": \"https://example.com/avatar/123\",\n  \"bio\": \"User's bio\",\n  \"headline\": \"User's headline\",\n  \"affiliate_code\": \"abc123\",\n  \"external_source\": \"string\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"administered_course_ids\": [\n    3217.7015712912194,\n    6906.64462751776\n  ],\n  \"custom_profile_fields\": [\n    {\n      \"id\": 1,\n      \"value\": \"887 909 9999\",\n      \"label\": \"Phone\",\n      \"custom_profile_field_definition_id\": 1\n    },\n    {\n      \"id\": 1,\n      \"value\": \"887 909 9999\",\n      \"label\": \"Phone\",\n      \"custom_profile_field_definition_id\": 1\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ef7000c-9f28-4c57-b1cb-94a6a6ade1a6",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a459cb4-2f81-43d2-9309-18462ec969a6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "057b1765-5e26-4675-a57a-a5a09b8ff6c2",
+          "name": "Update user by ID",
+          "request": {
+            "name": "Update user by ID",
+            "description": {
+              "content": "Updates the user specified by the provided id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"avatar_url\": \"<string>\",\n  \"bio\": \"<string>\",\n  \"company\": \"<string>\",\n  \"headline\": \"<string>\",\n  \"external_source\": \"<string>\",\n  \"affiliate_code\": \"<string>\",\n  \"affiliate_commission\": \"<number>\",\n  \"affiliate_commission_type\": \"<string>\",\n  \"affiliate_payout_email\": \"<string>\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"custom_profile_field_definition_id\": \"<number>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "793c9262-184a-4b36-b122-7362744830f0",
+              "name": "User Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"email\": \"bob@example.com\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"avatar_url\": \"https://example.com/avatar/123\",\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"external_source\": \"The external source that the user was created from\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b46ac1e-acda-417b-a902-9916bedf5eac",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"email\": \"bob@example.com\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"avatar_url\": \"https://example.com/avatar/123\",\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"external_source\": \"The external source that the user was created from\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0b86a60-7ba6-4be6-aee9-3897121338d0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"email\": \"bob@example.com\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"avatar_url\": \"https://example.com/avatar/123\",\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"external_source\": \"The external source that the user was created from\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e214b39-e9b5-4b10-a91f-339aaa6edb9b",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Bob\",\n  \"last_name\": \"Smith\",\n  \"email\": \"bob@example.com\",\n  \"password\": \"password\",\n  \"roles\": [\n    \"affiliate\"\n  ],\n  \"avatar_url\": \"https://example.com/avatar/123\",\n  \"bio\": \"The user's bio\",\n  \"company\": \"The user's company\",\n  \"headline\": \"The user's job title\",\n  \"external_source\": \"The external source that the user was created from\",\n  \"affiliate_code\": \"abc123\",\n  \"affiliate_commission\": 20,\n  \"affiliate_commission_type\": \"%\",\n  \"affiliate_payout_email\": \"bob@example.com\",\n  \"custom_profile_fields\": [\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    },\n    {\n      \"custom_profile_field_definition_id\": 1,\n      \"value\": \"887 909 9999\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"first_name\": [\n      \"can't be blank\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34131729-8915-4f48-8967-680eff1136e2",
+          "name": "Delete user by ID",
+          "request": {
+            "name": "Delete user by ID",
+            "description": {
+              "content": "Deletes a User identified by the provided id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "Provider from which the user's External Id is associated (Required if using External Id as id parameter)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e0fbd19-b961-4303-97f5-02f6eafe555c",
+              "name": "User Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb9d4c96-e84f-4fc2-bc34-503980b86e4b",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "SSO"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer), or an External ID (as a string) when accompanied by the \"provider\" parameter."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c953b6c-476c-480c-90ea-a927f750c056",
+          "name": "Get User Auth data by ID and Provider",
+          "request": {
+            "name": "Get User Auth data by ID and Provider",
+            "description": {
+              "content": "Retrieves a User authentication data identified by the id and provider",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":id",
+                "authentications",
+                ":provider"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) Provider from which the user's External Id is associated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a731c65d-3f31-4330-af3f-6067bca3e204",
+              "name": "User Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "authentications",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Provider from which the user's External Id is associated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"provider\": \"OPENID_CONNECT\",\n  \"external_id\": \"abc123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d9eb6a1-86ac-4cb8-af98-0e9672e32e3e",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "authentications",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Provider from which the user's External Id is associated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab8dbbbe-c039-4928-964f-74ed3d14bcd5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":id",
+                    "authentications",
+                    ":provider"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Accepts a Thinkific generated ID (in the form of an integer)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Provider from which the user's External Id is associated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thinkific.com/api/public/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b4204ba0-7241-42d4-9123-d972ec87684d",
+    "name": "Thinkific Admin Bundles Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+      "type": "text/plain"
+    }
+  }
+}

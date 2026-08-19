@@ -1,0 +1,634 @@
+{
+  "item": [
+    {
+      "id": "f4ccc180-47e5-46d5-947b-7912cc903a90",
+      "name": "Products",
+      "description": {
+        "content": "Products operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "86e0da36-1d4a-479e-b594-0e26b76e5a65",
+          "name": "List products",
+          "request": {
+            "name": "List products",
+            "description": {},
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page within the collection to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The number of items to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "011e4c6d-35c4-4145-8adf-f4b9098533bd",
+              "name": "Products response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": 6,\n      \"created_at\": \"2018-01-01T01:01:00Z\",\n      \"productable_id\": 6,\n      \"productable_type\": \"Course\",\n      \"price\": 10.99,\n      \"position\": 1,\n      \"status\": \"published\",\n      \"name\": \"My Course\",\n      \"private\": false,\n      \"hidden\": false,\n      \"subscription\": false,\n      \"days_until_expiry\": 365,\n      \"has_certificate\": false,\n      \"keywords\": \"some key words\",\n      \"seo_title\": \"Product Title\",\n      \"seo_description\": \"Description\",\n      \"collection_ids\": [\n        2,\n        3,\n        5\n      ],\n      \"related_product_ids\": [\n        16,\n        22\n      ],\n      \"description\": \"Product Description\",\n      \"card_image_url\": \"http://example.com/card.jpg\",\n      \"slug\": \"new-product\",\n      \"product_prices\": [\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"month\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        }\n      ]\n    },\n    {\n      \"id\": 6,\n      \"created_at\": \"2018-01-01T01:01:00Z\",\n      \"productable_id\": 6,\n      \"productable_type\": \"Course\",\n      \"price\": 10.99,\n      \"position\": 1,\n      \"status\": \"published\",\n      \"name\": \"My Course\",\n      \"private\": false,\n      \"hidden\": false,\n      \"subscription\": false,\n      \"days_until_expiry\": 365,\n      \"has_certificate\": false,\n      \"keywords\": \"some key words\",\n      \"seo_title\": \"Product Title\",\n      \"seo_description\": \"Description\",\n      \"collection_ids\": [\n        2,\n        3,\n        5\n      ],\n      \"related_product_ids\": [\n        16,\n        22\n      ],\n      \"description\": \"Product Description\",\n      \"card_image_url\": \"http://example.com/card.jpg\",\n      \"slug\": \"new-product\",\n      \"product_prices\": [\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"month\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"next_page\": 2,\n      \"prev_page\": 9204.349736086046,\n      \"total_pages\": 10,\n      \"total_items\": 250,\n      \"entries_info\": \"1-10 of 10\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "861abe02-e139-4e55-a862-00ef49dc9f34",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd3abbbe-0028-49cb-b8fe-e09a9f67778a",
+          "name": "Get product by ID",
+          "request": {
+            "name": "Get product by ID",
+            "description": {
+              "content": "Returns the Product identified by the provided id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "id",
+                  "description": "(Required) Id of the product in the form of an integer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "affc6215-54f5-4091-8bdb-b31aa304909c",
+              "name": "Products response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6,\n  \"created_at\": \"2018-01-01T01:01:00Z\",\n  \"productable_id\": 6,\n  \"productable_type\": \"Course\",\n  \"price\": 10.99,\n  \"position\": 1,\n  \"status\": \"published\",\n  \"name\": \"My Course\",\n  \"private\": false,\n  \"hidden\": false,\n  \"subscription\": false,\n  \"days_until_expiry\": 365,\n  \"has_certificate\": false,\n  \"keywords\": \"some key words\",\n  \"seo_title\": \"Product Title\",\n  \"seo_description\": \"Description\",\n  \"collection_ids\": [\n    2,\n    3,\n    5\n  ],\n  \"related_product_ids\": [\n    16,\n    22\n  ],\n  \"description\": \"Product Description\",\n  \"card_image_url\": \"http://example.com/card.jpg\",\n  \"slug\": \"new-product\",\n  \"product_prices\": [\n    {\n      \"id\": 4,\n      \"is_primary\": true,\n      \"payment_type\": \"subscription\",\n      \"label\": null,\n      \"price\": \"10.0\",\n      \"days_until_expiry\": \"string\",\n      \"pay_button_text\": \"string\",\n      \"number_of_payments\": \"string\",\n      \"interval\": \"month\",\n      \"interval_count\": \"1\",\n      \"trial_interval\": \"day\",\n      \"trial_interval_count\": \"string\",\n      \"custom_first_price\": \"string\",\n      \"price_name\": \"Learn Jiu Jitsu\",\n      \"currency\": \"usd\"\n    },\n    {\n      \"id\": 4,\n      \"is_primary\": true,\n      \"payment_type\": \"subscription\",\n      \"label\": null,\n      \"price\": \"10.0\",\n      \"days_until_expiry\": \"string\",\n      \"pay_button_text\": \"string\",\n      \"number_of_payments\": \"string\",\n      \"interval\": \"month\",\n      \"interval_count\": \"1\",\n      \"trial_interval\": \"month\",\n      \"trial_interval_count\": \"string\",\n      \"custom_first_price\": \"string\",\n      \"price_name\": \"Learn Jiu Jitsu\",\n      \"currency\": \"usd\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a530b9d-7c53-49bf-a722-64c0e4195c1e",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8bc0a9f-9d65-4d94-9fc5-3e7579a8f510",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2795820-ee58-4ea7-b3c0-f6679d0e31d9",
+          "name": "Get related products",
+          "request": {
+            "name": "Get related products",
+            "description": {
+              "content": "Returns a list of products that are related to the Product identified by the provided id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":id",
+                "related"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page within the collection to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The number of items to be returned"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "id",
+                  "description": "(Required) Id of the product in the form of an integer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8259d1f2-a5dd-45c7-a9cd-c9a49c3ccc9a",
+              "name": "Products response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id",
+                    "related"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": 6,\n      \"created_at\": \"2018-01-01T01:01:00Z\",\n      \"productable_id\": 6,\n      \"productable_type\": \"Course\",\n      \"price\": 10.99,\n      \"position\": 1,\n      \"status\": \"published\",\n      \"name\": \"My Course\",\n      \"private\": false,\n      \"hidden\": false,\n      \"subscription\": false,\n      \"days_until_expiry\": 365,\n      \"has_certificate\": false,\n      \"keywords\": \"some key words\",\n      \"seo_title\": \"Product Title\",\n      \"seo_description\": \"Description\",\n      \"collection_ids\": [\n        2,\n        3,\n        5\n      ],\n      \"related_product_ids\": [\n        16,\n        22\n      ],\n      \"description\": \"Product Description\",\n      \"card_image_url\": \"http://example.com/card.jpg\",\n      \"slug\": \"new-product\",\n      \"product_prices\": [\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"month\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        }\n      ]\n    },\n    {\n      \"id\": 6,\n      \"created_at\": \"2018-01-01T01:01:00Z\",\n      \"productable_id\": 6,\n      \"productable_type\": \"Course\",\n      \"price\": 10.99,\n      \"position\": 1,\n      \"status\": \"published\",\n      \"name\": \"My Course\",\n      \"private\": false,\n      \"hidden\": false,\n      \"subscription\": false,\n      \"days_until_expiry\": 365,\n      \"has_certificate\": false,\n      \"keywords\": \"some key words\",\n      \"seo_title\": \"Product Title\",\n      \"seo_description\": \"Description\",\n      \"collection_ids\": [\n        2,\n        3,\n        5\n      ],\n      \"related_product_ids\": [\n        16,\n        22\n      ],\n      \"description\": \"Product Description\",\n      \"card_image_url\": \"http://example.com/card.jpg\",\n      \"slug\": \"new-product\",\n      \"product_prices\": [\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"month\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        },\n        {\n          \"id\": 4,\n          \"is_primary\": true,\n          \"payment_type\": \"subscription\",\n          \"label\": null,\n          \"price\": \"10.0\",\n          \"days_until_expiry\": \"string\",\n          \"pay_button_text\": \"string\",\n          \"number_of_payments\": \"string\",\n          \"interval\": \"month\",\n          \"interval_count\": \"1\",\n          \"trial_interval\": \"day\",\n          \"trial_interval_count\": \"string\",\n          \"custom_first_price\": \"string\",\n          \"price_name\": \"Learn Jiu Jitsu\",\n          \"currency\": \"usd\"\n        }\n      ]\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"next_page\": 2,\n      \"prev_page\": 3400.4100293684323,\n      \"total_pages\": 10,\n      \"total_items\": 250,\n      \"entries_info\": \"1-10 of 10\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a89c7521-5693-4609-add1-738e9fac76c2",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id",
+                    "related"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94c1bb25-6328-4a26-ad21-f1c4e33ddcd0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id",
+                    "related"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) Id of the product in the form of an integer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thinkific.com/api/public/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e252942-5ce5-4c67-a6b6-56aa5e6c7844",
+    "name": "Thinkific Admin Bundles Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+      "type": "text/plain"
+    }
+  }
+}

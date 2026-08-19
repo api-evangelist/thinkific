@@ -1,0 +1,202 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Thinkific Admin Bundles Enrollments API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Enrollments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Enrollments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/enrollments",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page within the collection to fetch."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned."
+              },
+              {
+                "name": "query[user_id]",
+                "value": "",
+                "type": "query",
+                "description": "Search Enrollments by User ID."
+              },
+              {
+                "name": "query[course_id]",
+                "value": "",
+                "type": "query",
+                "description": "Search Enrollments by Course ID."
+              },
+              {
+                "name": "query[email]",
+                "value": "",
+                "type": "query",
+                "description": "Search Enrollments by User email."
+              },
+              {
+                "name": "query[free_trial]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Free Trial Enrollments when set to true."
+              },
+              {
+                "name": "query[full]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only full Enrollments when set to true."
+              },
+              {
+                "name": "query[completed]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only completed Enrollments when set to true."
+              },
+              {
+                "name": "query[expired]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only expired Enrollments when set to true."
+              },
+              {
+                "name": "query[created_on]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments created on the date specified."
+              },
+              {
+                "name": "query[created_before]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments created before the date specified."
+              },
+              {
+                "name": "query[created_on_or_before]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments created on or before the date specified."
+              },
+              {
+                "name": "query[created_after]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments created after the date specified."
+              },
+              {
+                "name": "query[created_on_or_after]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments created on or after the date specified."
+              },
+              {
+                "name": "query[updated_on]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments updated on the date specified."
+              },
+              {
+                "name": "query[updated_before]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments updated before the date specified."
+              },
+              {
+                "name": "query[updated_on_or_before]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments updated on or before the date specified."
+              },
+              {
+                "name": "query[updated_after]",
+                "value": "",
+                "type": "query",
+                "description": "Filter for only Enrollments updated after the date specified."
+              }
+            ]
+          },
+          "docs": "Returns a list of enrollments"
+        },
+        {
+          "info": {
+            "name": "Create enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/enrollments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Enrollment for specified student in specified course"
+        },
+        {
+          "info": {
+            "name": "Get enrollments by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/enrollments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Enrollment in the form of an integer."
+              }
+            ]
+          },
+          "docs": "Returns the Enrollment identified by the provided id."
+        },
+        {
+          "info": {
+            "name": "Update enrollment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.thinkific.com/api/public/v1/enrollments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Enrollment in the form of an integer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Enrollment for specified student in specified course"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

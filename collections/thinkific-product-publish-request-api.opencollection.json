@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Thinkific Admin Bundles Product Publish Request API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Publish Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List of unhandled product publish requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/product_publish_requests",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page within the collection to fetch"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned"
+              }
+            ]
+          },
+          "docs": "Returns a list of unhandled Product Publish Requests."
+        },
+        {
+          "info": {
+            "name": "Get product publish request by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/product_publish_requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Product Publish Request in the form of an integer."
+              }
+            ]
+          },
+          "docs": "Returns the Product Publish Request identified by the provided id."
+        },
+        {
+          "info": {
+            "name": "Approves Product Publish Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/product_publish_requests/:id/approve",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Product Publish Request in the form of an integer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves the Product Publish Request identified by the provided id."
+        },
+        {
+          "info": {
+            "name": "Denies Product Publish Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/product_publish_requests/:id/deny",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Product Publish Request in the form of an integer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Denies the Product Publish Request identified by the provided id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

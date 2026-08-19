@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Thinkific Admin Bundles Instructors API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instructors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Instructors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/instructors",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page within the collection to fetch."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of Instructors"
+        },
+        {
+          "info": {
+            "name": "Create instructor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/instructors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Instructor "
+        },
+        {
+          "info": {
+            "name": "Get Instructor by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/instructors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Instructor in the form of an integer."
+              }
+            ]
+          },
+          "docs": "Returns the Instructor identified by the provided id."
+        },
+        {
+          "info": {
+            "name": "Update instructor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.thinkific.com/api/public/v1/instructors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Instructor in the form of an integer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the Instructor identified by the provided id"
+        },
+        {
+          "info": {
+            "name": "Delete instructor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.thinkific.com/api/public/v1/instructors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Instructor in the form of an integer"
+              }
+            ]
+          },
+          "docs": "Delete the Instructor identified by the provided id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

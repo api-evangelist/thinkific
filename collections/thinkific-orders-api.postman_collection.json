@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "ac7e1182-e1d7-4382-9f4a-3d39f469cdbe",
+      "name": "Orders",
+      "description": {
+        "content": "Orders operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe0f30ff-7cee-41bf-a7c7-512e4f1fd8d8",
+          "name": "Get Orders",
+          "request": {
+            "name": "Get Orders",
+            "description": {
+              "content": "Retrieve a list of Orders",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page within the collection to fetch."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The number of items to be returned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8f2756c-015e-4cb4-80f3-fad5a6195803",
+              "name": "Orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"amount_cents\": 2000,\n      \"amount_dollars\": \"20.0\",\n      \"id\": 1,\n      \"product_id\": 1,\n      \"product_name\": \"My Course\",\n      \"status\": \"complete\",\n      \"subscription\": false,\n      \"user_email\": \"bob@example.com\",\n      \"user_id\": 1,\n      \"user_name\": \"Bob Smith\",\n      \"coupon_code\": \"abc123\",\n      \"coupon_id\": 1,\n      \"items\": [\n        {\n          \"product_id\": 1,\n          \"product_name\": \"My Course\",\n          \"amount_dollars\": 20,\n          \"amount_cents\": 2000\n        },\n        {\n          \"product_id\": 1,\n          \"product_name\": \"My Course\",\n          \"amount_dollars\": 20,\n          \"amount_cents\": 2000\n        }\n      ],\n      \"affiliate_referral_code\": \"exexex\",\n      \"created at\": \"string\"\n    },\n    {\n      \"amount_cents\": 2000,\n      \"amount_dollars\": \"20.0\",\n      \"id\": 1,\n      \"product_id\": 1,\n      \"product_name\": \"My Course\",\n      \"status\": \"complete\",\n      \"subscription\": false,\n      \"user_email\": \"bob@example.com\",\n      \"user_id\": 1,\n      \"user_name\": \"Bob Smith\",\n      \"coupon_code\": \"abc123\",\n      \"coupon_id\": 1,\n      \"items\": [\n        {\n          \"product_id\": 1,\n          \"product_name\": \"My Course\",\n          \"amount_dollars\": 20,\n          \"amount_cents\": 2000\n        },\n        {\n          \"product_id\": 1,\n          \"product_name\": \"My Course\",\n          \"amount_dollars\": 20,\n          \"amount_cents\": 2000\n        }\n      ],\n      \"affiliate_referral_code\": \"exexex\",\n      \"created at\": \"string\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"next_page\": 2,\n      \"prev_page\": 4149.840176721235,\n      \"total_pages\": 10,\n      \"total_items\": 250,\n      \"entries_info\": \"1-10 of 10\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a02b5e4e-897c-4507-aaed-de2a68de1037",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9647a3bb-2e1b-4e30-95a7-6dc844370193",
+          "name": "Get orders by ID",
+          "request": {
+            "name": "Get orders by ID",
+            "description": {
+              "content": "Returns the orders identified by the provided id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "id",
+                  "description": "(Required) ID of the Orders in the form of an integer."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd6a832d-58bf-412b-9d4f-ab474930fdd0",
+              "name": "Orders response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) ID of the Orders in the form of an integer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount_cents\": 2000,\n  \"amount_dollars\": \"20.0\",\n  \"id\": 1,\n  \"product_id\": 1,\n  \"product_name\": \"My Course\",\n  \"status\": \"complete\",\n  \"subscription\": false,\n  \"user_email\": \"bob@example.com\",\n  \"user_id\": 1,\n  \"user_name\": \"Bob Smith\",\n  \"coupon_code\": \"abc123\",\n  \"coupon_id\": 1,\n  \"items\": [\n    {\n      \"product_id\": 1,\n      \"product_name\": \"My Course\",\n      \"amount_dollars\": 20,\n      \"amount_cents\": 2000\n    },\n    {\n      \"product_id\": 1,\n      \"product_name\": \"My Course\",\n      \"amount_dollars\": 20,\n      \"amount_cents\": 2000\n    }\n  ],\n  \"affiliate_referral_code\": \"exexex\",\n  \"created at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "717441a4-dbad-45d6-8d32-20a8a0b9ee71",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) ID of the Orders in the form of an integer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access to Apps is not available on your plan. Upgrade to gain access\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e803dac1-da41-4d04-a8c6-abb78419eb12",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "id",
+                      "description": "(Required) ID of the Orders in the form of an integer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thinkific.com/api/public/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a53430a1-cf03-45fe-a854-c14d2f2cc262",
+    "name": "Thinkific Admin Bundles Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+      "type": "text/plain"
+    }
+  }
+}

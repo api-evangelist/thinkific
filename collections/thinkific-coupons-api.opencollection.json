@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Thinkific Admin Bundles Coupons API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Coupons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/coupons",
+            "params": [
+              {
+                "name": "promotion_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the Promotion for which to get the Coupons in the form of an integer."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page within the collection to fetch."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all Coupons"
+        },
+        {
+          "info": {
+            "name": "Create a Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/coupons",
+            "params": [
+              {
+                "name": "promotion_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the Promotion to add the Coupon to in the form of an integer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Coupon"
+        },
+        {
+          "info": {
+            "name": "Bulk Create Coupons",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/coupons/bulk_create",
+            "params": [
+              {
+                "name": "promotion_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the Promotion for which to bulk create the Coupons."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk Create Coupons"
+        },
+        {
+          "info": {
+            "name": "Get a Coupon by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Coupon in the form of an integer."
+              }
+            ]
+          },
+          "docs": "Retrieve a Coupon"
+        },
+        {
+          "info": {
+            "name": "Update a Coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.thinkific.com/api/public/v1/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Coupon in the form of an integer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Coupon"
+        },
+        {
+          "info": {
+            "name": "Delete Coupon by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.thinkific.com/api/public/v1/coupons/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Coupon in the form of an integer."
+              }
+            ]
+          },
+          "docs": "Deletes a coupon identified by the provided id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

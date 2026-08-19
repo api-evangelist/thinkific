@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Thinkific Admin Bundles Group Analysts API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Group Analysts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add Analyst to Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/group_analysts/:user_id/groups",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the User in the form of an integer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Assign Group Analyst to groups. User need to be assigned the Group Analyst (group_analyst) role."
+        },
+        {
+          "info": {
+            "name": "Delete Analyst",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.thinkific.com/api/public/v1/group_analysts/:user_id/groups/:group_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the User in the form of an integer."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Group in the form of an integer."
+              }
+            ]
+          },
+          "docs": "Remove an analyst from a group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,235 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Thinkific Admin Bundles API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bundles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/bundles/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Bundle in the form of an integer"
+              }
+            ]
+          },
+          "docs": "Retrieves the Bundle identified by the provided id"
+        },
+        {
+          "info": {
+            "name": "List Courses by bundle ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/bundles/:id/courses",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Bundle in the form of an integer"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page within the collection to fetch"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned"
+              }
+            ]
+          },
+          "docs": "Retrieves the Courses within the Bundle identified by the provided id"
+        },
+        {
+          "info": {
+            "name": "List a enrollments in a bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thinkific.com/api/public/v1/bundles/:id/enrollments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the Bundle in the form of an integer"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page within the collection to fetch"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The number of items to be returned"
+              },
+              {
+                "name": "query[user_id]",
+                "value": "123",
+                "type": "query",
+                "description": "Search Bundle Enrollments by User ID."
+              },
+              {
+                "name": "query[email]",
+                "value": "user@example.com",
+                "type": "query",
+                "description": "Search Bundle Enrollments by User email"
+              },
+              {
+                "name": "query[completed]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only completed Bundle Enrollments when set to true."
+              },
+              {
+                "name": "query[expired]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only expired Bundle Enrollments when set to true."
+              },
+              {
+                "name": "query[created_after]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments created after the date specified."
+              },
+              {
+                "name": "query[created_before]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments created before the date specified."
+              },
+              {
+                "name": "query[created_on]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments created on the date specified."
+              },
+              {
+                "name": "query[created_on_or_after]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments created on or after the date specified."
+              },
+              {
+                "name": "query[created_on_or_before]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments created on or before the date specified."
+              },
+              {
+                "name": "query[updated_after]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments updated after the date specified."
+              },
+              {
+                "name": "query[updated_before]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments updated before the date specified."
+              },
+              {
+                "name": "query[updated_on]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments updated on the date specified."
+              },
+              {
+                "name": "query[updated_on_or_after]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments created on or after the date specified."
+              },
+              {
+                "name": "query[updated_on_or_before]",
+                "value": "2021-04-27",
+                "type": "query",
+                "description": "Filter for only Enrollments updated on or before the date specified."
+              }
+            ]
+          },
+          "docs": "Retrieves all the enrollments in the bundle identified by the provided id"
+        },
+        {
+          "info": {
+            "name": "Create an Enrollment in a Bundle of Courses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.thinkific.com/api/public/v1/bundles/:id/enrollments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the bundle in a form of integer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint enrolls a User in a Bundle and each of the Courses contained within the Bundle"
+        },
+        {
+          "info": {
+            "name": "Update Enrollments in a Bundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.thinkific.com/api/public/v1/bundles/:id/enrollments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the bundle in a form of integer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint updates a User’s Enrollment in a Bundle and each of the Courses contained within the Bundle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

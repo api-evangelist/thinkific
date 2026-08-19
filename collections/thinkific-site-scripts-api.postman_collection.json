@@ -1,0 +1,1083 @@
+{
+  "item": [
+    {
+      "id": "9c3e1698-1bd7-421c-b254-0ed73ea5d521",
+      "name": "Site Scripts",
+      "description": {
+        "content": "Site Scripts operations [Scope Required](https://developers.thinkific.com/building-apps/site-scripts/#oauth-scope)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21ae2316-405a-4837-9f7d-d61084377b76",
+          "name": "List Site Scripts",
+          "request": {
+            "name": "List Site Scripts",
+            "description": {
+              "content": "Retrieve a list of site scripts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "site_scripts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page within the collection to fetch"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "The number of items to be returned"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e85fd07-95dc-4ab7-8593-8102e4599a06",
+              "name": "Site Scripts response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"src\": \"https://your-site.com/site-script.js\",\n      \"name\": \"MyApp's Tracking Script\",\n      \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n      \"page_scopes\": [\n        \"landing_pages\",\n        \"course_player\"\n      ],\n      \"location\": \"footer\",\n      \"load_method\": \"async\",\n      \"category\": \"marketing\"\n    },\n    {\n      \"content\": \"console.log('Hello! This is a Site Script')\",\n      \"name\": \"MyApp's Tracking Script\",\n      \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n      \"page_scopes\": [\n        \"landing_pages\",\n        \"course_player\"\n      ],\n      \"location\": \"footer\",\n      \"load_method\": \"async\",\n      \"category\": \"marketing\"\n    }\n  ],\n  \"meta\": {\n    \"pagination\": {\n      \"current_page\": 1,\n      \"next_page\": 2,\n      \"prev_page\": 9899.094103521076,\n      \"total_pages\": 10,\n      \"total_items\": 250,\n      \"entries_info\": \"1-10 of 10\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "326832eb-f4ed-42c3-8595-e45847f8ae41",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access token has insufficient scope.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cb92870-3cdc-466c-a18e-3e03e7a75366",
+          "name": "Create Site Script",
+          "request": {
+            "name": "Create Site Script",
+            "description": {
+              "content": "Create a new Site Script",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "site_scripts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category\": \"<string>\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91788c43-deeb-405d-97a6-d586740ada29",
+              "name": "Site Script created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"site_script\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174999\",\n    \"content\": \"console.log('Hello! This is a Site Script')\",\n    \"name\": \"MyApp's Tracking Script\",\n    \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n    \"page_scopes\": [\n      \"landing_pages\",\n      \"course_player\"\n    ],\n    \"location\": \"footer\",\n    \"load_method\": \"async\",\n    \"category\": \"marketing\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb528898-481c-4986-aded-c410bacb5631",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access token has insufficient scope.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddd408bd-0f95-46c7-9ad6-f8a6dc8e3d73",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"base\": [\n      \"must provide one of: src or content\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1bbe992-41f5-4db5-9c58-3ae9c0510844",
+          "name": "Get Site Script by ID",
+          "request": {
+            "name": "Get Site Script by ID",
+            "description": {
+              "content": "Retrieves a Site Script identified by the provided ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "site_scripts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the Site Script in the form of a string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2ef6b63-1bb8-4557-ad94-4b3cdbc7c920",
+              "name": "Site Script Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"site_script\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174999\",\n    \"content\": \"console.log('Hello! This is a Site Script')\",\n    \"name\": \"MyApp's Tracking Script\",\n    \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n    \"page_scopes\": [\n      \"landing_pages\",\n      \"course_player\"\n    ],\n    \"location\": \"footer\",\n    \"load_method\": \"async\",\n    \"category\": \"marketing\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95952e52-7def-47fb-a4cc-68895370f5dd",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access token has insufficient scope.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c9c2636-1595-40d0-9b7f-75e9abf1ab18",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00bf2d77-7a9b-4ee3-a374-cd3a8bce1d5f",
+          "name": "Update Site Script by ID",
+          "request": {
+            "name": "Update Site Script by ID",
+            "description": {
+              "content": "Updates the Site Script specified by the provided ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "site_scripts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the Site Script in the form of a string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"page_scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"category\": \"<string>\",\n  \"src\": \"<uri>\",\n  \"content\": \"<string>\",\n  \"location\": \"footer\",\n  \"load_method\": \"async\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6db44192-baab-4060-b4eb-903a762bb308",
+              "name": "Site Script Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b03e179c-5bc7-490f-948d-5b27714ba863",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access token has insufficient scope.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b7255a7-bd12-4836-91b7-f41e6de7292b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "974ba9cd-7021-407e-a4f7-75a3dbd651b9",
+              "name": "UnprocessableEntity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"console.log('Hello! This is a Site Script')\",\n  \"name\": \"MyApp's Tracking Script\",\n  \"description\": \"MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.\",\n  \"page_scopes\": [\n    \"landing_pages\",\n    \"course_player\"\n  ],\n  \"location\": \"footer\",\n  \"load_method\": \"async\",\n  \"category\": \"marketing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": {\n    \"base\": [\n      \"must provide one of: src or content\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bda08811-e41f-4e80-8a38-45c41739fa70",
+          "name": "Delete Site Script by ID",
+          "request": {
+            "name": "Delete Site Script by ID",
+            "description": {
+              "content": "Deletes a Site Script identified by the provided ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "site_scripts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the Site Script in the form of a string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f4d5edf-886b-4a1c-9a7b-6bc381d27c3f",
+              "name": "Site Script Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05c6052c-54b8-45ac-b435-d04d5934f160",
+              "name": "Access Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Access token has insufficient scope.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ed4cfa1-2162-44b6-8e36-3f5355c551cb",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "site_scripts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the Site Script in the form of a string"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"Record not found.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thinkific.com/api/public/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9e81fd0e-95f2-46b2-807d-01efae9f6089",
+    "name": "Thinkific Admin Bundles Site Scripts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Thinkific's public API can be used to integrate your application with your Thinkific site.\n\nContact Support:\n Email: developers@thinkific.com",
+      "type": "text/plain"
+    }
+  }
+}

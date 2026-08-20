@@ -34,6 +34,16 @@ tags:
   - LMS
   - Course Creation
   - Enrollments
+  - User
+  - Education
+  - Digital Products
+  - Webhook
+tags_raw:
+  - Online Courses
+  - E-Learning
+  - LMS
+  - Course Creation
+  - Enrollments
   - Users
   - Education
   - Digital Products
@@ -50,6 +60,11 @@ apis:
   humanURL: https://developers.thinkific.com/api/webhooks-api/
   baseURL: https://api.thinkific.com/api/v2
   tags:
+  - Webhook
+  - Event
+  - Real-Time
+  - Notification
+  tags_raw:
   - Webhooks
   - Events
   - Real-Time
@@ -185,6 +200,8 @@ apis:
   humanURL: https://developers.thinkific.com/api/api-documentation
   baseURL: https://api.thinkific.com/api/public/v1
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -236,6 +253,8 @@ apis:
   humanURL: https://developers.thinkific.com/api/api-documentation
   baseURL: https://api.thinkific.com/api/public/v1
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -260,6 +279,8 @@ apis:
   humanURL: https://developers.thinkific.com/api/api-documentation
   baseURL: https://api.thinkific.com/api/public/v1
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -284,6 +305,8 @@ apis:
   humanURL: https://developers.thinkific.com/api/api-documentation
   baseURL: https://api.thinkific.com/api/public/v1
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -321,6 +344,8 @@ apis:
   humanURL: https://developers.thinkific.com/api/api-documentation
   baseURL: https://api.thinkific.com/api/public/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI

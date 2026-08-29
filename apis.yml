@@ -365,6 +365,9 @@ apis:
   - type: Documentation
     url: https://developers.thinkific.com/api/api-documentation
 common:
+  - type: CapabilityMap
+    url: capabilities/thinkific-capability-edges.yml
+    name: Thinkific Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/thinkific/overview
   - type: AgenticAccess

@@ -1,0 +1,45 @@
+slug: thinkific
+provider: Thinkific
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Enrollments
+  spec_file: thinkific-enrollments-api-openapi.yml
+  capability_id: BC-4720.10
+  capability_id_l1: BC-4720
+  capability_name: Enrolment & Registration
+  confidence: 0.88
+  evidence: POST /enrollments 'Create enrollment'; PUT /enrollments/{id} 'Update enrollment'; schema CreateEnrollmentRequest
+  reason: Creating and updating learner enrolments in courses is exactly enrolment and registration administration
+    within student records management.
+- tag: Coupons
+  spec_file: thinkific-coupons-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.85
+  evidence: POST /coupons 'Create a Coupon', POST /coupons/bulk_create 'Bulk Create Coupons', PUT /coupons/{id}
+    'Update a Coupon'
+  reason: Full CRUD over discount coupons used for selling courses is plainly discount and promotion management,
+    not an education-specific capability.
+- tag: Promotions
+  spec_file: thinkific-promotions-api-openapi.yml
+  capability_id: BC-440.30
+  capability_id_l1: BC-440
+  capability_name: Discount & Promotion Management
+  confidence: 0.85
+  evidence: POST /promotions createPromotion Create a new promotion; GET /promotions/by_coupon Get Promotion
+    associated with the provided Coupon code.
+  reason: Operations create, update and look up promotions by coupon code, which is plainly discount and
+    promotional offer management. Only residual ambiguity is whether it should sit under pricing strategy,
+    hence not 0.95.

@@ -406,8 +406,6 @@ common:
     url: vocabulary/thinkific-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/thinkific-context.jsonld
-  - type: Blog
-    url: blogs/blogs.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

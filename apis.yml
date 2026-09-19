@@ -46,7 +46,7 @@ tags:
   - E-Learning
   - LMS
   - Course Creation
-  - Enrollments
+  - Enrollment
   - User
   - Education
   - Digital Products
@@ -201,6 +201,8 @@ apis:
   humanURL: https://developers.thinkific.com/api/api-documentation
   baseURL: https://api.thinkific.com/api/public/v1
   tags:
+  - Enrollment
+  tags_raw:
   - Enrollments
   properties:
   - type: OpenAPI

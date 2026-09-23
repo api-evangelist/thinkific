@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Site Scripts API
+  title: Thinkific Admin Site Scripts API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -14,7 +14,7 @@ security:
   ApiKeySubdomain: []
 tags:
 - name: Site Scripts
-  description: Site Scripts operations [Scope Required](https://developers.thinkific.com/building-apps/site-scripts/#oauth-scope)
+  description: Site Scripts operations Scope Required
 paths:
   /site_scripts:
     get:
@@ -229,16 +229,16 @@ paths:
 components:
   responses:
     SiteScriptPutPostError:
-      InvalidSource:
-        value:
-          errors:
-            base:
-            - the source of the script must match the app's domain
       MissingInput:
         value:
           errors:
             base:
             - 'must provide one of: src or content'
+      InvalidSource:
+        value:
+          errors:
+            base:
+            - the source of the script must match the app's domain
       MissingHMACHeaderForContentInput:
         value:
           errors:
@@ -256,17 +256,33 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorForbiddenInsufficientScope'
   schemas:
-    ValidationError:
+    Pagination:
       type: object
       properties:
-        field_name:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
           type: string
-          description: validation error
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     GetSiteScriptsResponse:
       required:
       - items
@@ -300,6 +316,25 @@ components:
             category: marketing
         meta:
           $ref: '#/components/schemas/Meta'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     SiteScriptResponse:
       type: object
       properties:
@@ -400,14 +435,6 @@ components:
           description: Site Script's updated date
           format: date-time
           example: '2018-07-12T23:19:00.154Z'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     SiteScriptRequest:
       required:
       - name
@@ -500,13 +527,6 @@ components:
           - functional
           - analytics
           - marketing
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ErrorForbiddenInsufficientScope:
       type: object
       properties:
@@ -515,46 +535,28 @@ components:
           description: access forbidden
       example:
         error: Access token has insufficient scope.
-    Pagination:
+    UnprocessableEntityError:
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
   examples:
-    SiteScriptWithContentRequest:
-      summary: Site Script with content
+    SiteScriptWithSrcResponse:
+      summary: Site Script with src
       value:
-        content: console.log('Hello! This is a Site Script')
-        name: MyApp's Tracking Script
-        description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
-        page_scopes:
-        - landing_pages
-        - course_player
-        location: footer
-        load_method: async
-        category: marketing
+        site_script:
+          id: 123e4567-e89b-12d3-a456-426614174000
+          src: https://your-site.com/site-script.js
+          name: MyApp's Tracking Script
+          description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+          page_scopes:
+          - landing_pages
+          - course_player
+          location: footer
+          load_method: async
+          category: marketing
     SiteScriptWithContentResponse:
       summary: Site Script with content
       value:
@@ -581,20 +583,18 @@ components:
         location: footer
         load_method: async
         category: marketing
-    SiteScriptWithSrcResponse:
-      summary: Site Script with src
+    SiteScriptWithContentRequest:
+      summary: Site Script with content
       value:
-        site_script:
-          id: 123e4567-e89b-12d3-a456-426614174000
-          src: https://your-site.com/site-script.js
-          name: MyApp's Tracking Script
-          description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
-          page_scopes:
-          - landing_pages
-          - course_player
-          location: footer
-          load_method: async
-          category: marketing
+        content: console.log('Hello! This is a Site Script')
+        name: MyApp's Tracking Script
+        description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+        - landing_pages
+        - course_player
+        location: footer
+        load_method: async
+        category: marketing
   securitySchemes:
     OAuthAccessToken:
       type: http

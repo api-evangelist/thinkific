@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Thinkific Admin Bundles Webhooks API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
@@ -73,6 +73,8 @@ paths:
                     next_page: ''
                     page_items: 9
                     total_items: 9
+      operationId: getWebhooks
+      x-operation-id-source: derived
     post:
       tags:
       - Webhooks
@@ -114,6 +116,8 @@ paths:
                     errors:
                       url: is not valid
       x-codegen-request-body-name: body
+      operationId: postWebhooks
+      x-operation-id-source: derived
   /webhooks/{id}:
     get:
       tags:
@@ -207,12 +211,42 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ValidationError:
+    Pagination:
+      type: object
+      description: Pagination metadata
+      properties:
+        has_next:
+          type: boolean
+          description: indicate if there is a next page
+          example: 1.0
+        next_page:
+          type: string
+          description: Next page identifier
+          example: '20190807141006328188121'
+        page_items:
+          type: number
+          description: Number of total items
+          example: 2
+        total_items:
+          type: number
+          description: Number of total of items
+          example: 10
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 5
+    GetWebhooksResponse:
+      required:
+      - items
+      - meta
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     WebhookResponse:
       type: object
       properties:
@@ -250,23 +284,21 @@ components:
           type: number
           description: Last User who updated the Webhook
           example: 1.0
+    ErrorNotFound:
+      type: object
+      example:
+        error: Record not found.
     Meta:
       type: object
       properties:
         page:
           $ref: '#/components/schemas/Pagination'
-    GetWebhooksResponse:
-      required:
-      - items
-      - meta
+    ValidationError:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+        field_name:
+          type: string
+          description: validation error
     WebhookRequest:
       type: object
       properties:
@@ -280,10 +312,6 @@ components:
             **Note:** A Webhook''s target URL must use SSL encryption (aka use https).
 
             '
-    ErrorNotFound:
-      type: object
-      example:
-        error: Record not found.
     UnprocessableEntityError:
       type: object
       properties:
@@ -291,30 +319,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Pagination:
-      type: object
-      description: Pagination metadata
-      properties:
-        has_next:
-          type: boolean
-          description: indicate if there is a next page
-          example: 1.0
-        next_page:
-          type: string
-          description: Next page identifier
-          example: '20190807141006328188121'
-        page_items:
-          type: number
-          description: Number of total items
-          example: 2
-        total_items:
-          type: number
-          description: Number of total of items
-          example: 10
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 5
   requestBodies:
     WebhookRequest:
       description: Webhook request type

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Product Publish Request API
+  title: Thinkific Admin Product Publish Request API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -156,6 +156,41 @@ paths:
                 - user_id: not found
 components:
   schemas:
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     ProductPublishRequest:
       required:
       - product_id
@@ -191,6 +226,23 @@ components:
         updated_at:
           type: string
           description: The date/time the Product Publish Request was last updated.
+    ProductPublishRequestBody:
+      required:
+      - user_id
+      type: object
+      properties:
+        user_id:
+          type: number
+          description: user responding for publish request
+          example: 100
+        response_text:
+          type: string
+          description: approval or declining message
+          example: Course approved
+        notify_requester:
+          type: boolean
+          description: whether it should notify the user who made the request
+          example: true
     PromotionResponse:
       type: object
       properties:
@@ -240,6 +292,19 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     GetProductPublishResponse:
       required:
       - items
@@ -258,44 +323,6 @@ components:
         field_name:
           type: string
           description: validation error
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ProductPublishRequestBody:
-      required:
-      - user_id
-      type: object
-      properties:
-        user_id:
-          type: number
-          description: user responding for publish request
-          example: 100
-        response_text:
-          type: string
-          description: approval or declining message
-          example: Course approved
-        notify_requester:
-          type: boolean
-          description: whether it should notify the user who made the request
-          example: true
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     UnprocessableEntityError:
       type: object
       properties:
@@ -303,33 +330,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

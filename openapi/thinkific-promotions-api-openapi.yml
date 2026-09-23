@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Promotions API
+  title: Thinkific Admin Promotions API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -172,7 +172,7 @@ paths:
     get:
       tags:
       - Promotions
-      summary: Get Promotion associated with the provided Coupon code.
+      summary: Get Promotion associated with the provided Coupon code
       description: Find a Promotion by Coupon Code and Product
       parameters:
       - name: product_id
@@ -202,8 +202,57 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorNotFound'
+      operationId: getPromotionsByCoupon
+      x-operation-id-source: derived
 components:
   schemas:
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    GetPromotionsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     PromotionResponse:
       type: object
       properties:
@@ -253,29 +302,25 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ValidationError:
       type: object
       properties:
         field_name:
           type: string
           description: validation error
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    GetPromotionsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     PromotionRequest:
       required:
       - amount
@@ -330,22 +375,6 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     UnprocessableEntityError:
       type: object
       properties:
@@ -353,33 +382,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

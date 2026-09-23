@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Thinkific Admin Bundles API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
@@ -85,6 +85,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorNotFound'
+      operationId: getBundlesByIdCourses
+      x-operation-id-source: derived
   /bundles/{id}/enrollments:
     get:
       tags:
@@ -319,25 +321,42 @@ paths:
                   user_id:
                   - can't be blank
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    ValidationError:
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
-        field_name:
+        error:
           type: string
-          description: validation error
-    Meta:
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     CourseResponse:
       required:
       - chapter_ids
@@ -515,6 +534,37 @@ components:
           description: The date/time that the Enrollment expires.
           format: date-time
           example: '2019-01-01T01:01:00Z'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    GetEnrollmentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     BundleResponse:
       required:
       - id
@@ -551,34 +601,6 @@ components:
           type: string
           description: The card image url for the Bundle
           example: http://example.com/image.jpg
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    GetEnrollmentsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     UnprocessableEntityError:
       type: object
       properties:
@@ -586,33 +608,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
     GetCoursesResponse:
       type: object
       properties:
@@ -622,6 +617,13 @@ components:
             $ref: '#/components/schemas/CourseResponse'
         meta:
           $ref: '#/components/schemas/Meta'
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

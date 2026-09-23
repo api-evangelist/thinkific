@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles External Orders API
+  title: Thinkific Admin External Orders API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -66,6 +66,8 @@ paths:
           description: Transaction created
         403:
           $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+      operationId: postExternalOrdersByIdTransactionsRefund
+      x-operation-id-source: derived
   /external_orders/{id}/transactions/purchase:
     post:
       tags:
@@ -90,6 +92,8 @@ paths:
           description: Transaction created
         403:
           $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
+      operationId: postExternalOrdersByIdTransactionsPurchase
+      x-operation-id-source: derived
 components:
   schemas:
     ErrorForbiddenAppsNotAvailable:

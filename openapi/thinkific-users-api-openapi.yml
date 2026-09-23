@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Users API
+  title: Thinkific Admin Users API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -275,6 +275,41 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     AuthenticationResponse:
       type: object
       properties:
@@ -289,91 +324,69 @@ components:
           type: string
           description: User External Id given by the provider.
           example: abc123
-    UpdateUserRequest:
+    CustomProfileFieldRequest:
+      required:
+      - custom_profile_field_definition_id
       type: object
       properties:
-        first_name:
+        value:
           type: string
-          description: 'User''s first name '
-          example: Bob
-        last_name:
-          type: string
-          description: User's last name
-          example: Smith
-        email:
-          type: string
-          description: User's email. This can only be updated by private integrations.
-          format: email
-          example: bob@example.com
-        password:
-          minLength: 6
-          type: string
-          description: The password of the User.
-          example: password
-        roles:
-          type: array
-          description: User's roles
-          example:
-          - affiliate
-          items:
-            type: string
-            enum:
-            - affiliate
-            - course_admin
-            - group_analyst
-            - site_admin
-        avatar_url:
-          type: string
-          description: The fully-qualified avatar url of the User.
-          example: https://example.com/avatar/123
-        bio:
-          type: string
-          description: User's bio
-          example: The user's bio
-        company:
-          type: string
-          description: User's Company Name
-          example: The user's company
-        headline:
-          type: string
-          description: User's headline
-          example: The user's job title
-        external_source:
-          type: string
-          description: User's external source
-          example: The external source that the user was created from
-        affiliate_code:
-          type: string
-          description: User's affiliate code
-          example: abc123
-        affiliate_commission:
+          description: Custom profile field value
+          example: 887 909 9999
+        custom_profile_field_definition_id:
           type: number
-          description: Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100 if the type is percentage or lower than 9999.99 if is a fixed type.
-          example: 20.0
-        affiliate_commission_type:
+          description: Custom profile field definition id
+          example: 1.0
+    CustomProfileField:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Custom profile field ID
+          example: 1.0
+        value:
           type: string
-          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). Required only if the User is an affiliate.
-          example: '%'
-        affiliate_payout_email:
+          description: Custom profile field value
+          example: 887 909 9999
+        label:
           type: string
-          description: The email of the User. Required only if the user is an affiliate. Used to pay the User out.
-          example: bob@example.com
-        custom_profile_fields:
+          description: Custom profile field label
+          example: Phone
+        custom_profile_field_definition_id:
+          type: number
+          description: Custom profile field definition ID
+          example: 1.0
+    GetUsersResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
           type: array
-          description: Custom profile fields for the User.
           items:
-            $ref: '#/components/schemas/CustomProfileFieldRequest'
+            $ref: '#/components/schemas/UserResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ValidationError:
       type: object
       properties:
         field_name:
           type: string
           description: validation error
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     UserResponse:
       type: object
       properties:
@@ -464,39 +477,6 @@ components:
           description: Custom profile fields for the User.
           items:
             $ref: '#/components/schemas/CustomProfileField'
-    CustomProfileFieldRequest:
-      required:
-      - custom_profile_field_definition_id
-      type: object
-      properties:
-        value:
-          type: string
-          description: Custom profile field value
-          example: 887 909 9999
-        custom_profile_field_definition_id:
-          type: number
-          description: Custom profile field definition id
-          example: 1.0
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    GetUsersResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     CreateUserRequest:
       required:
       - email
@@ -585,33 +565,6 @@ components:
           - SSO
           - OPENID_CONNECT
           default: SSO
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    CustomProfileField:
-      type: object
-      properties:
-        id:
-          type: number
-          description: Custom profile field ID
-          example: 1.0
-        value:
-          type: string
-          description: Custom profile field value
-          example: 887 909 9999
-        label:
-          type: string
-          description: Custom profile field label
-          example: Phone
-        custom_profile_field_definition_id:
-          type: number
-          description: Custom profile field definition ID
-          example: 1.0
     UnprocessableEntityError:
       type: object
       properties:
@@ -619,33 +572,80 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Pagination:
+    UpdateUserRequest:
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
+        first_name:
           type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+          description: 'User''s first name '
+          example: Bob
+        last_name:
+          type: string
+          description: User's last name
+          example: Smith
+        email:
+          type: string
+          description: User's email. This can only be updated by private integrations.
+          format: email
+          example: bob@example.com
+        password:
+          minLength: 6
+          type: string
+          description: The password of the User.
+          example: password
+        roles:
+          type: array
+          description: User's roles
+          example:
+          - affiliate
+          items:
+            type: string
+            enum:
+            - affiliate
+            - course_admin
+            - group_analyst
+            - site_admin
+        avatar_url:
+          type: string
+          description: The fully-qualified avatar url of the User.
+          example: https://example.com/avatar/123
+        bio:
+          type: string
+          description: User's bio
+          example: The user's bio
+        company:
+          type: string
+          description: User's Company Name
+          example: The user's company
+        headline:
+          type: string
+          description: User's headline
+          example: The user's job title
+        external_source:
+          type: string
+          description: User's external source
+          example: The external source that the user was created from
+        affiliate_code:
+          type: string
+          description: User's affiliate code
+          example: abc123
+        affiliate_commission:
+          type: number
+          description: Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100 if the type is percentage or lower than 9999.99 if is a fixed type.
+          example: 20.0
+        affiliate_commission_type:
+          type: string
+          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). Required only if the User is an affiliate.
+          example: '%'
+        affiliate_payout_email:
+          type: string
+          description: The email of the User. Required only if the user is an affiliate. Used to pay the User out.
+          example: bob@example.com
+        custom_profile_fields:
+          type: array
+          description: Custom profile fields for the User.
+          items:
+            $ref: '#/components/schemas/CustomProfileFieldRequest'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

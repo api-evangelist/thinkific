@@ -1,28 +1,8 @@
 {
   "provider": "thinkific",
   "sources": [
-    "thinkific-bundles-api-openapi.yml",
-    "thinkific-categories-api-openapi.yml",
-    "thinkific-category-memberships-api-openapi.yml",
-    "thinkific-chapters-api-openapi.yml",
-    "thinkific-contents-api-openapi.yml",
-    "thinkific-coupons-api-openapi.yml",
-    "thinkific-course-reviews-api-openapi.yml",
-    "thinkific-courses-api-openapi.yml",
-    "thinkific-custom-profile-field-definitions-api-openapi.yml",
-    "thinkific-enrollments-api-openapi.yml",
+    "_original/thinkific-admin-api-openapi.yml",
     "thinkific-events-api-openapi.yml",
-    "thinkific-external-orders-api-openapi.yml",
-    "thinkific-group-analysts-api-openapi.yml",
-    "thinkific-group-users-api-openapi.yml",
-    "thinkific-groups-api-openapi.yml",
-    "thinkific-instructors-api-openapi.yml",
-    "thinkific-orders-api-openapi.yml",
-    "thinkific-product-publish-request-api-openapi.yml",
-    "thinkific-products-api-openapi.yml",
-    "thinkific-promotions-api-openapi.yml",
-    "thinkific-site-scripts-api-openapi.yml",
-    "thinkific-users-api-openapi.yml",
     "thinkific-webhooks-api-openapi.yml"
   ],
   "outputs": [
@@ -36,7 +16,6 @@
     "thinkific-courses-api-openapi.yml",
     "thinkific-custom-profile-field-definitions-api-openapi.yml",
     "thinkific-enrollments-api-openapi.yml",
-    "thinkific-events-api-openapi.yml",
     "thinkific-external-orders-api-openapi.yml",
     "thinkific-group-analysts-api-openapi.yml",
     "thinkific-group-users-api-openapi.yml",
@@ -48,11 +27,41 @@
     "thinkific-promotions-api-openapi.yml",
     "thinkific-site-scripts-api-openapi.yml",
     "thinkific-users-api-openapi.yml",
+    "thinkific-events-api-openapi.yml",
     "thinkific-webhooks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "thinkific-events-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /events/{id} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "thinkific-webhooks-api-openapi.yml: previously refined output kept for 5 operation(s) no archived document covers (e.g. /webhooks get, /webhooks post, /webhooks/{id} delete); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "thinkific-admin-api-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "thinkific-bundles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-category-memberships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-chapters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-contents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-coupons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-course-reviews-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-courses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-custom-profile-field-definitions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-enrollments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-external-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-group-analysts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-group-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-instructors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-product-publish-request-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-promotions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-site-scripts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thinkific-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

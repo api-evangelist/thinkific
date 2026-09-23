@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Courses API
+  title: Thinkific Admin Courses API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -110,19 +110,42 @@ paths:
         403:
           $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    Meta:
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     CourseResponse:
       required:
       - chapter_ids
@@ -216,6 +239,14 @@ components:
           type: number
           description: The ID of the Instructor of the Course
           example: 1.0
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
     GetChaptersResponse:
       required:
       - items
@@ -228,22 +259,11 @@ components:
             $ref: '#/components/schemas/ChapterResponse'
         meta:
           $ref: '#/components/schemas/Meta'
-    ErrorForbiddenAppsNotAvailable:
+    Meta:
       type: object
       properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ChapterResponse:
       required:
       - content_ids
@@ -281,33 +301,6 @@ components:
           items:
             type: number
             description: The IDs of the Contents within the Chapter
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
     GetCoursesResponse:
       type: object
       properties:
@@ -317,6 +310,13 @@ components:
             $ref: '#/components/schemas/CourseResponse'
         meta:
           $ref: '#/components/schemas/Meta'
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

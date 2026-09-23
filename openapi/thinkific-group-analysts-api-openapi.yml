@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Group Analysts API
+  title: Thinkific Admin Group Analysts API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -111,33 +111,7 @@ paths:
                   group_id:
                   - Could not find group with ID 1.
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    GroupAnalystsAddGroupRequest:
-      required:
-      - group_ids
-      type: object
-      properties:
-        group_ids:
-          type: array
-          description: The list of Group IDs to add the analyst
-          example:
-          - 1
-          - 2
-          items:
-            type: number
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -154,6 +128,25 @@ components:
           description: item not found error
       example:
         error: Record not found.
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    GroupAnalystsAddGroupRequest:
+      required:
+      - group_ids
+      type: object
+      properties:
+        group_ids:
+          type: array
+          description: The list of Group IDs to add the analyst
+          example:
+          - 1
+          - 2
+          items:
+            type: number
     UnprocessableEntityError:
       type: object
       properties:
@@ -161,6 +154,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

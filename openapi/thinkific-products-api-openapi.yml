@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Products API
+  title: Thinkific Admin Products API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -115,108 +115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    ProductPriceResponse:
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Product Price as an integer.
-          example: 4.0
-        is_primary:
-          type: boolean
-          description: A boolean indicating whether the Product Price is the default.
-          example: true
-          default: false
-        payment_type:
-          type: string
-          description: The type of payment. Must be one of 'free', 'one-time', 'subscription', or 'payment-plan'.
-          enum:
-          - free
-          - one-time
-          - subscription
-          - payment-plan
-          example: subscription
-        label:
-          type: string
-          description: The description for the Product Price. This value is required when is_primary is false.
-          example: null
-          default: null
-        price:
-          type: string
-          description: The amount in dollars to be charged.
-          example: '10.0'
-        days_until_expiry:
-          type: string
-          description: The number of days, after purchase, that a student will be enrolled in the course.
-          example: null
-        pay_button_text:
-          type: string
-          description: This text that is displayed on the Buy Button on the course card and the course landing page.
-          example: null
-        number_of_payments:
-          type: string
-          description: The number of recurring payments for a Product Price with payment_type of 'payment-plan'.
-          example: null
-        interval:
-          type: string
-          description: The billing frequency. Must be one of 'month' or 'year'.
-          enum:
-          - month
-          - year
-          example: month
-        interval_count:
-          type: string
-          description: The number of intervals between billings. For example, if interval is 'month' and interval_count is '1', the billing frequency is once every month.
-          example: '1'
-        trial_interval:
-          type: string
-          description: The interval for the trial period. Must be one of 'day' or 'month'.
-          enum:
-          - day
-          - month
-          example: null
-        trial_interval_count:
-          type: string
-          description: The number of intervals for the trial period. For example, if trial_interval is 'month' and trial_interval_count is '6', the free trial will end (and regular payments will begin) in 6 months.
-          example: null
-        custom_first_price:
-          type: string
-          description: Students pay this amount for the first payment period of the subscription.
-          example: null
-        price_name:
-          type: string
-          description: The name of the Product Price. If is_primary is true, returns the name of the product, otherwise returns "{Product name} - {Product Price label}".
-          example: Learn Jiu Jitsu
-        currency:
-          type: string
-          description: The three-letter ISO currency code of the Product Price. Must be a supported currency.
-          example: usd
-          default: usd
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    GetProductsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -225,14 +124,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     ProductResponse:
       type: object
       properties:
@@ -362,6 +253,115 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
+    GetProductsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ProductPriceResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Product Price as an integer.
+          example: 4.0
+        is_primary:
+          type: boolean
+          description: A boolean indicating whether the Product Price is the default.
+          example: true
+          default: false
+        payment_type:
+          type: string
+          description: The type of payment. Must be one of 'free', 'one-time', 'subscription', or 'payment-plan'.
+          enum:
+          - free
+          - one-time
+          - subscription
+          - payment-plan
+          example: subscription
+        label:
+          type: string
+          description: The description for the Product Price. This value is required when is_primary is false.
+          example: null
+          default: null
+        price:
+          type: string
+          description: The amount in dollars to be charged.
+          example: '10.0'
+        days_until_expiry:
+          type: string
+          description: The number of days, after purchase, that a student will be enrolled in the course.
+          example: null
+        pay_button_text:
+          type: string
+          description: This text that is displayed on the Buy Button on the course card and the course landing page.
+          example: null
+        number_of_payments:
+          type: string
+          description: The number of recurring payments for a Product Price with payment_type of 'payment-plan'.
+          example: null
+        interval:
+          type: string
+          description: The billing frequency. Must be one of 'month' or 'year'.
+          enum:
+          - month
+          - year
+          example: month
+        interval_count:
+          type: string
+          description: The number of intervals between billings. For example, if interval is 'month' and interval_count is '1', the billing frequency is once every month.
+          example: '1'
+        trial_interval:
+          type: string
+          description: The interval for the trial period. Must be one of 'day' or 'month'.
+          enum:
+          - day
+          - month
+          example: null
+        trial_interval_count:
+          type: string
+          description: The number of intervals for the trial period. For example, if trial_interval is 'month' and trial_interval_count is '6', the free trial will end (and regular payments will begin) in 6 months.
+          example: null
+        custom_first_price:
+          type: string
+          description: Students pay this amount for the first payment period of the subscription.
+          example: null
+        price_name:
+          type: string
+          description: The name of the Product Price. If is_primary is true, returns the name of the product, otherwise returns "{Product name} - {Product Price label}".
+          example: Learn Jiu Jitsu
+        currency:
+          type: string
+          description: The three-letter ISO currency code of the Product Price. Must be a supported currency.
+          example: usd
+          default: usd
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

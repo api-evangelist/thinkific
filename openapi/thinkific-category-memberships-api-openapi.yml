@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Category Memberships API
+  title: Thinkific Admin Category Memberships API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -54,7 +54,7 @@ paths:
     delete:
       tags:
       - Category Memberships
-      summary: Delete  Products by ID
+      summary: Delete Products by ID
       description: Delete one or more Products from a Category.
       operationId: deleteProductsByID
       parameters:

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Thinkific Admin Bundles Enrollments API
+  title: Thinkific Admin Enrollments API
   description: Thinkific's public API can be used to integrate your application with your Thinkific site.
   termsOfService: https://www.thinkific.com/legal/
   contact:
@@ -239,38 +239,42 @@ paths:
                 - User could not be found.
       x-codegen-request-body-name: body
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    UpdateEnrollmentRequest:
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
-        activated_at:
+        error:
           type: string
-          description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
-          format: date-time
-          example: '2018-01-01T01:01:00Z'
-        expiry_date:
-          type: string
-          description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
-          format: date-time
-          example: '2019-01-01T01:01:00Z'
-    ValidationError:
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
       type: object
       properties:
-        field_name:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
           type: string
-          description: validation error
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     EnrollmentResponse:
       required:
       - activated_at
@@ -355,6 +359,19 @@ components:
           description: The date/time that the Enrollment expires.
           format: date-time
           example: '2019-01-01T01:01:00Z'
+    UpdateEnrollmentRequest:
+      type: object
+      properties:
+        activated_at:
+          type: string
+          description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        expiry_date:
+          type: string
+          description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
+          format: date-time
+          example: '2019-01-01T01:01:00Z'
     CreateEnrollmentRequest:
       type: object
       properties:
@@ -376,14 +393,6 @@ components:
           description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
           format: date-time
           example: '2019-01-01T01:01:00Z'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
     ErrorNotFound:
       type: object
       properties:
@@ -392,6 +401,11 @@ components:
           description: item not found error
       example:
         error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     GetEnrollmentsResponse:
       required:
       - items
@@ -404,6 +418,12 @@ components:
             $ref: '#/components/schemas/EnrollmentResponse'
         meta:
           $ref: '#/components/schemas/Meta'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     UnprocessableEntityError:
       type: object
       properties:
@@ -411,33 +431,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

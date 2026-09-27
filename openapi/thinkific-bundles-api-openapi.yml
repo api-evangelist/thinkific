@@ -322,41 +322,47 @@ paths:
                   - can't be blank
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    GetEnrollmentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ErrorNotFound:
       type: object
       properties:
         error:
           type: string
-          description: access forbidden
+          description: item not found error
       example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
+        error: Record not found.
+    Meta:
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetCoursesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     CourseResponse:
       required:
       - chapter_ids
@@ -450,6 +456,83 @@ components:
           type: number
           description: The ID of the Instructor of the Course
           example: 1.0
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    BundleResponse:
+      required:
+      - id
+      - name
+      - course_ids
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Bundle
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Bundle
+          example: A Bundle
+        description:
+          type: string
+          description: The description on the Bundle
+          example: The Bundle description
+        tagline:
+          type: string
+          description: The tagline for the Bundle (Deprecated)
+          example: Bundle tagline
+        banner_image_url:
+          type: string
+          description: Deprecated - use 'bundle_card_image_url'* - The banner image url for the Bundle.
+          example: http://example.com/image.jpg
+        course_ids:
+          type: array
+          items:
+            type: number
+            description: The IDs of the Courses in the Bundle
+        bundle_card_image_url:
+          type: string
+          description: The card image url for the Bundle
+          example: http://example.com/image.jpg
     EnrollmentResponse:
       required:
       - activated_at
@@ -534,89 +617,6 @@ components:
           description: The date/time that the Enrollment expires.
           format: date-time
           example: '2019-01-01T01:01:00Z'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
-    GetEnrollmentsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    BundleResponse:
-      required:
-      - id
-      - name
-      - course_ids
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Bundle
-          example: 1.0
-        name:
-          type: string
-          description: The name of the Bundle
-          example: A Bundle
-        description:
-          type: string
-          description: The description on the Bundle
-          example: The Bundle description
-        tagline:
-          type: string
-          description: The tagline for the Bundle (Deprecated)
-          example: Bundle tagline
-        banner_image_url:
-          type: string
-          description: Deprecated - use 'bundle_card_image_url'* - The banner image url for the Bundle.
-          example: http://example.com/image.jpg
-        course_ids:
-          type: array
-          items:
-            type: number
-            description: The IDs of the Courses in the Bundle
-        bundle_card_image_url:
-          type: string
-          description: The card image url for the Bundle
-          example: http://example.com/image.jpg
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    GetCoursesResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

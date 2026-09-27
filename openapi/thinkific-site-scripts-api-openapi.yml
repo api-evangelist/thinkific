@@ -227,62 +227,127 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
-  responses:
-    SiteScriptPutPostError:
-      MissingInput:
-        value:
-          errors:
-            base:
-            - 'must provide one of: src or content'
-      InvalidSource:
-        value:
-          errors:
-            base:
-            - the source of the script must match the app's domain
-      MissingHMACHeaderForContentInput:
-        value:
-          errors:
-            base:
-            - Missing header `HMAC-SHA256-SIGNATURE`
-      InvalidHMACHeaderForContentInput:
-        value:
-          errors:
-            base:
-            - Invalid header `HMAC-SHA256-SIGNATURE`
-    ErrorForbiddenInsufficientScopeResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenInsufficientScope'
   schemas:
-    Pagination:
+    ErrorNotFound:
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
+        error:
           type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+          description: item not found error
+      example:
+        error: Record not found.
+    SiteScriptRequest:
+      required:
+      - name
+      - description
+      - page_scopes
+      - category
+      properties:
+        src:
+          type: string
+          description: A URL that points to where the script is hosted. Required if `content` is not provided. Note the TLD of the src url must match the app's url.
+          format: uri
+          example: https://your-site.com/site-script.js
+        content:
+          type: string
+          description: A string containing HTML/Javascript. Required if `src` is not provided. When providing the script using content, the header HMAC-SHA256-SIGNATURE is also require to be sent. Generate the signature using the app's client secret and the value.
+          example: console.log('Hello! This is a Site Script')
+        name:
+          type: string
+          description: A short and user-friendly string to identify the script.
+          example: MyApp's Tracking Script
+        description:
+          type: string
+          description: A user-friendly explanation of the script's purpose and what it does.
+          example: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+          type: array
+          description: 'An array of page and domain identifiers that the Site Script should be injected onto. `page_scopes` can contain identifiers that are groupings of pages and/or the pages themselves.
+
+
+            The majority of the page identifiers correspond to Liquid pages. For more details, take a look at our [Liquid API docs](https://developers.thinkific.com/themes/liquid-api/pages/).
+
+
+            Groupings and Page Identifiers:
+
+
+            | Page Grouping | Page Identifiers Included |
+
+            | ------- | --------|
+
+            | landing_pages   | home_landing_page, course_landing_page, collections_landing_page, bundle_landing_page, coming_soon_page, page_template (used for custom pages)   |
+
+            | checkout   | checkout_thankyou_page   |
+
+            | learning_experience   | student_dashboard, course_player   |
+
+            | all   | all page identifiers listed above   |
+
+            '
+          example:
+          - landing_pages
+          - course_player
+          items:
+            type: string
+            enum:
+            - landing_pages
+            - checkout
+            - learning_experience
+            - all
+            - home_landing_page
+            - course_landing_page
+            - collections_landing_page
+            - bundle_landing_page
+            - coming_soon_page
+            - page_template
+            - checkout_thankyou_page
+            - student_dashboard
+            - course_player
+        location:
+          type: string
+          description: 'Where in the HTML the script should be injected. Accepted values are: head or footer'
+          example: footer
+          enum:
+          - head
+          - footer
+          default: footer
+        load_method:
+          type: string
+          description: 'How the Site Script will be loaded into the page. Accepted values are: async, defer, and default'
+          example: async
+          enum:
+          - async
+          - defer
+          - default
+          default: async
+        category:
+          type: string
+          description: 'Describes the purpose of the script. Accepted values are: functional, analytics, marketing'
+          example: marketing
+          enum:
+          - functional
+          - analytics
+          - marketing
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorForbiddenInsufficientScope:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access token has insufficient scope.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     GetSiteScriptsResponse:
       required:
       - items
@@ -316,25 +381,6 @@ components:
             category: marketing
         meta:
           $ref: '#/components/schemas/Meta'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     SiteScriptResponse:
       type: object
       properties:
@@ -435,128 +481,52 @@ components:
           description: Site Script's updated date
           format: date-time
           example: '2018-07-12T23:19:00.154Z'
-    SiteScriptRequest:
-      required:
-      - name
-      - description
-      - page_scopes
-      - category
-      properties:
-        src:
-          type: string
-          description: A URL that points to where the script is hosted. Required if `content` is not provided. Note the TLD of the src url must match the app's url.
-          format: uri
-          example: https://your-site.com/site-script.js
-        content:
-          type: string
-          description: A string containing HTML/Javascript. Required if `src` is not provided. When providing the script using content, the header HMAC-SHA256-SIGNATURE is also require to be sent. Generate the signature using the app's client secret and the value.
-          example: console.log('Hello! This is a Site Script')
-        name:
-          type: string
-          description: A short and user-friendly string to identify the script.
-          example: MyApp's Tracking Script
-        description:
-          type: string
-          description: A user-friendly explanation of the script's purpose and what it does.
-          example: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
-        page_scopes:
-          type: array
-          description: 'An array of page and domain identifiers that the Site Script should be injected onto. `page_scopes` can contain identifiers that are groupings of pages and/or the pages themselves.
-
-
-            The majority of the page identifiers correspond to Liquid pages. For more details, take a look at our [Liquid API docs](https://developers.thinkific.com/themes/liquid-api/pages/).
-
-
-            Groupings and Page Identifiers:
-
-
-            | Page Grouping | Page Identifiers Included |
-
-            | ------- | --------|
-
-            | landing_pages   | home_landing_page, course_landing_page, collections_landing_page, bundle_landing_page, coming_soon_page, page_template (used for custom pages)   |
-
-            | checkout   | checkout_thankyou_page   |
-
-            | learning_experience   | student_dashboard, course_player   |
-
-            | all   | all page identifiers listed above   |
-
-            '
-          example:
-          - landing_pages
-          - course_player
-          items:
-            type: string
-            enum:
-            - landing_pages
-            - checkout
-            - learning_experience
-            - all
-            - home_landing_page
-            - course_landing_page
-            - collections_landing_page
-            - bundle_landing_page
-            - coming_soon_page
-            - page_template
-            - checkout_thankyou_page
-            - student_dashboard
-            - course_player
-        location:
-          type: string
-          description: 'Where in the HTML the script should be injected. Accepted values are: head or footer'
-          example: footer
-          enum:
-          - head
-          - footer
-          default: footer
-        load_method:
-          type: string
-          description: 'How the Site Script will be loaded into the page. Accepted values are: async, defer, and default'
-          example: async
-          enum:
-          - async
-          - defer
-          - default
-          default: async
-        category:
-          type: string
-          description: 'Describes the purpose of the script. Accepted values are: functional, analytics, marketing'
-          example: marketing
-          enum:
-          - functional
-          - analytics
-          - marketing
-    ErrorForbiddenInsufficientScope:
+    Pagination:
       type: object
       properties:
-        error:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
           type: string
-          description: access forbidden
-      example:
-        error: Access token has insufficient scope.
-    UnprocessableEntityError:
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    ValidationError:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        field_name:
+          type: string
+          description: validation error
   examples:
-    SiteScriptWithSrcResponse:
+    SiteScriptWithSrcRequest:
       summary: Site Script with src
       value:
-        site_script:
-          id: 123e4567-e89b-12d3-a456-426614174000
-          src: https://your-site.com/site-script.js
-          name: MyApp's Tracking Script
-          description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
-          page_scopes:
-          - landing_pages
-          - course_player
-          location: footer
-          load_method: async
-          category: marketing
+        src: https://your-site.com/site-script.js
+        name: MyApp's Tracking Script
+        description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+        page_scopes:
+        - landing_pages
+        - course_player
+        location: footer
+        load_method: async
+        category: marketing
     SiteScriptWithContentResponse:
       summary: Site Script with content
       value:
@@ -571,18 +541,20 @@ components:
           location: footer
           load_method: async
           category: marketing
-    SiteScriptWithSrcRequest:
+    SiteScriptWithSrcResponse:
       summary: Site Script with src
       value:
-        src: https://your-site.com/site-script.js
-        name: MyApp's Tracking Script
-        description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
-        page_scopes:
-        - landing_pages
-        - course_player
-        location: footer
-        load_method: async
-        category: marketing
+        site_script:
+          id: 123e4567-e89b-12d3-a456-426614174000
+          src: https://your-site.com/site-script.js
+          name: MyApp's Tracking Script
+          description: MyApp's Tracking Script runs on your site's landing pages and tracks information about your user's visits. MyApp uses this data in our reporting tools so you can better understand your customers.
+          page_scopes:
+          - landing_pages
+          - course_player
+          location: footer
+          load_method: async
+          category: marketing
     SiteScriptWithContentRequest:
       summary: Site Script with content
       value:
@@ -595,6 +567,34 @@ components:
         location: footer
         load_method: async
         category: marketing
+  responses:
+    SiteScriptPutPostError:
+      MissingInput:
+        value:
+          errors:
+            base:
+            - 'must provide one of: src or content'
+      InvalidSource:
+        value:
+          errors:
+            base:
+            - the source of the script must match the app's domain
+      MissingHMACHeaderForContentInput:
+        value:
+          errors:
+            base:
+            - Missing header `HMAC-SHA256-SIGNATURE`
+      InvalidHMACHeaderForContentInput:
+        value:
+          errors:
+            base:
+            - Invalid header `HMAC-SHA256-SIGNATURE`
+    ErrorForbiddenInsufficientScopeResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenInsufficientScope'
   securitySchemes:
     OAuthAccessToken:
       type: http

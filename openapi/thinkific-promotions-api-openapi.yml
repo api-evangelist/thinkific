@@ -206,102 +206,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
-    GetPromotionsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    PromotionResponse:
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Promotion as an integer.
-          example: 1.0
-        name:
-          type: string
-          description: The name of the Promotion.
-          example: A Promo
-        description:
-          type: string
-          description: A description for the Promotion.
-          example: The promo description
-        starts_at:
-          type: string
-          description: The date and time when the Promotion begins.
-          format: date-time
-          example: '2018-01-01T01:01:00Z'
-        expires_at:
-          type: string
-          description: The date and time when the Promotion ends.
-          format: date-time
-          example: '2018-01-31T01:01:00Z'
-        discount_type:
-          type: string
-          description: The type of discount. Must be either 'fixed' or 'percentage'.
-          enum:
-          - fixed
-          - percentage
-          example: fixed
-        amount:
-          type: number
-          description: The amount of the discount. If 'fixed', must be a dollar value. If 'percentage', must be a number greater than 0 and less than or equal to 100.
-          example: 10.0
-        coupon_ids:
-          type: array
-          description: The coupon ids related to the promotion.
-          example:
-          - 1
-          - 2
-          - 3
-          items:
-            type: number
-        duration:
-          type: number
-          description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
-          example: 3.0
     ErrorNotFound:
       type: object
       properties:
@@ -310,17 +214,6 @@ components:
           description: item not found error
       example:
         error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     PromotionRequest:
       required:
       - amount
@@ -382,6 +275,113 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    PromotionResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Promotion as an integer.
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Promotion.
+          example: A Promo
+        description:
+          type: string
+          description: A description for the Promotion.
+          example: The promo description
+        starts_at:
+          type: string
+          description: The date and time when the Promotion begins.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        expires_at:
+          type: string
+          description: The date and time when the Promotion ends.
+          format: date-time
+          example: '2018-01-31T01:01:00Z'
+        discount_type:
+          type: string
+          description: The type of discount. Must be either 'fixed' or 'percentage'.
+          enum:
+          - fixed
+          - percentage
+          example: fixed
+        amount:
+          type: number
+          description: The amount of the discount. If 'fixed', must be a dollar value. If 'percentage', must be a number greater than 0 and less than or equal to 100.
+          example: 10.0
+        coupon_ids:
+          type: array
+          description: The coupon ids related to the promotion.
+          example:
+          - 1
+          - 2
+          - 3
+          items:
+            type: number
+        duration:
+          type: number
+          description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
+          example: 3.0
+    GetPromotionsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

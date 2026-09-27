@@ -51,6 +51,7 @@ tags:
   - Education
   - Digital Products
   - Webhook
+  - Canada
 tags_raw:
   - Online Courses
   - E-Learning
@@ -61,6 +62,7 @@ tags_raw:
   - Education
   - Digital Products
   - Webhooks
+  - Canada
 apis:
 - aid: thinkific:webhooks-api
   name: Thinkific Webhooks API

@@ -47,14 +47,6 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
     ErrorNotFound:
       type: object
       properties:
@@ -63,6 +55,14 @@ components:
           description: item not found error
       example:
         error: Record not found.
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
     ContentResponse:
       required:
       - chapter_id

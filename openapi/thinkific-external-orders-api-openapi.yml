@@ -95,6 +95,13 @@ paths:
       operationId: postExternalOrdersByIdTransactionsPurchase
       x-operation-id-source: derived
 components:
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
     ErrorForbiddenAppsNotAvailable:
       type: object
@@ -158,13 +165,6 @@ components:
           description: type of the order
         transaction:
           $ref: '#/components/schemas/ExternalOrderTransaction'
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

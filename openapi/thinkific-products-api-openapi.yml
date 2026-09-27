@@ -116,14 +116,14 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
+    ErrorNotFound:
       type: object
       properties:
         error:
           type: string
-          description: access forbidden
+          description: item not found error
       example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
+        error: Record not found.
     ProductResponse:
       type: object
       properties:
@@ -226,33 +226,11 @@ components:
           description: The Product Price objects for the Product.
           items:
             $ref: '#/components/schemas/ProductPriceResponse'
-    Pagination:
+    Meta:
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     GetProductsResponse:
       required:
       - items
@@ -265,6 +243,14 @@ components:
             $ref: '#/components/schemas/ProductResponse'
         meta:
           $ref: '#/components/schemas/Meta'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
     ProductPriceResponse:
       type: object
       properties:
@@ -342,19 +328,33 @@ components:
           description: The three-letter ISO currency code of the Product Price. Must be a supported currency.
           example: usd
           default: usd
-    ErrorNotFound:
+    Pagination:
       type: object
       properties:
-        error:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
           type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

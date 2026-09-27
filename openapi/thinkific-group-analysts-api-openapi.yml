@@ -112,14 +112,6 @@ paths:
                   - Could not find group with ID 1.
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
     ErrorNotFound:
       type: object
       properties:
@@ -128,12 +120,13 @@ components:
           description: item not found error
       example:
         error: Record not found.
-    ValidationError:
+    UnprocessableEntityError:
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     GroupAnalystsAddGroupRequest:
       required:
       - group_ids
@@ -147,13 +140,20 @@ components:
           - 2
           items:
             type: number
-    UnprocessableEntityError:
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

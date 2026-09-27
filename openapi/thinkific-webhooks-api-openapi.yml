@@ -211,30 +211,22 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    Pagination:
+    ErrorNotFound:
       type: object
-      description: Pagination metadata
+      example:
+        error: Record not found.
+    UnprocessableEntityError:
+      type: object
       properties:
-        has_next:
-          type: boolean
-          description: indicate if there is a next page
-          example: 1.0
-        next_page:
-          type: string
-          description: Next page identifier
-          example: '20190807141006328188121'
-        page_items:
-          type: number
-          description: Number of total items
-          example: 2
-        total_items:
-          type: number
-          description: Number of total of items
-          example: 10
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 5
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Meta:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/Pagination'
     GetWebhooksResponse:
       required:
       - items
@@ -284,15 +276,30 @@ components:
           type: number
           description: Last User who updated the Webhook
           example: 1.0
-    ErrorNotFound:
+    Pagination:
       type: object
-      example:
-        error: Record not found.
-    Meta:
-      type: object
+      description: Pagination metadata
       properties:
-        page:
-          $ref: '#/components/schemas/Pagination'
+        has_next:
+          type: boolean
+          description: indicate if there is a next page
+          example: 1.0
+        next_page:
+          type: string
+          description: Next page identifier
+          example: '20190807141006328188121'
+        page_items:
+          type: number
+          description: Number of total items
+          example: 2
+        total_items:
+          type: number
+          description: Number of total of items
+          example: 10
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 5
     ValidationError:
       type: object
       properties:
@@ -312,13 +319,6 @@ components:
             **Note:** A Webhook''s target URL must use SSL encryption (aka use https).
 
             '
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   requestBodies:
     WebhookRequest:
       description: Webhook request type

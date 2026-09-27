@@ -48,6 +48,13 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -80,13 +87,6 @@ components:
           - New Group 2
           items:
             type: string
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

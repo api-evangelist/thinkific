@@ -111,41 +111,65 @@ paths:
           $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
+    ChapterResponse:
+      required:
+      - content_ids
+      - id
+      - name
+      - position
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Chapter as an integer
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Chapter
+          example: Chapter 1
+        position:
+          type: number
+          description: The position of the Chapter within the Course
+          example: 1.0
+        description:
+          type: string
+          description: The description of the Chapter
+          example: The first Chapter
+        duration_in_seconds:
+          type: number
+          description: The duration of the Chapter in seconds. This is the sum of the length of the video lessons in the Chapter
+          example: 60.0
+        content_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          - 3
+          items:
+            type: number
+            description: The IDs of the Contents within the Chapter
+    ErrorNotFound:
       type: object
       properties:
         error:
           type: string
-          description: access forbidden
+          description: item not found error
       example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
+        error: Record not found.
+    Meta:
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetCoursesResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     CourseResponse:
       required:
       - chapter_ids
@@ -239,14 +263,41 @@ components:
           type: number
           description: The ID of the Instructor of the Course
           example: 1.0
-    ErrorNotFound:
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
         error:
           type: string
-          description: item not found error
+          description: access forbidden
       example:
-        error: Record not found.
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     GetChaptersResponse:
       required:
       - items
@@ -257,57 +308,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ChapterResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ChapterResponse:
-      required:
-      - content_ids
-      - id
-      - name
-      - position
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Chapter as an integer
-          example: 1.0
-        name:
-          type: string
-          description: The name of the Chapter
-          example: Chapter 1
-        position:
-          type: number
-          description: The position of the Chapter within the Course
-          example: 1.0
-        description:
-          type: string
-          description: The description of the Chapter
-          example: The first Chapter
-        duration_in_seconds:
-          type: number
-          description: The duration of the Chapter in seconds. This is the sum of the length of the video lessons in the Chapter
-          example: 60.0
-        content_ids:
-          type: array
-          example:
-          - 1
-          - 2
-          - 3
-          items:
-            type: number
-            description: The IDs of the Contents within the Chapter
-    GetCoursesResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseResponse'
         meta:
           $ref: '#/components/schemas/Meta'
   responses:

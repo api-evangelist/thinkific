@@ -88,14 +88,68 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorForbiddenAppsNotAvailable:
+    ErrorNotFound:
       type: object
       properties:
         error:
           type: string
-          description: access forbidden
+          description: item not found error
       example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
+        error: Record not found.
+    ChapterResponse:
+      required:
+      - content_ids
+      - id
+      - name
+      - position
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Chapter as an integer
+          example: 1.0
+        name:
+          type: string
+          description: The name of the Chapter
+          example: Chapter 1
+        position:
+          type: number
+          description: The position of the Chapter within the Course
+          example: 1.0
+        description:
+          type: string
+          description: The description of the Chapter
+          example: The first Chapter
+        duration_in_seconds:
+          type: number
+          description: The duration of the Chapter in seconds. This is the sum of the length of the video lessons in the Chapter
+          example: 60.0
+        content_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          - 3
+          items:
+            type: number
+            description: The IDs of the Contents within the Chapter
+    GetContentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ContentResponse:
       required:
       - chapter_id
@@ -149,6 +203,14 @@ components:
           type: string
           description: The url of the Content in the Course Player
           example: http://somesite.thinkific.com/courses/take/xxx/yyy
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
     Pagination:
       type: object
       properties:
@@ -176,68 +238,6 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    GetContentsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    ChapterResponse:
-      required:
-      - content_ids
-      - id
-      - name
-      - position
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Chapter as an integer
-          example: 1.0
-        name:
-          type: string
-          description: The name of the Chapter
-          example: Chapter 1
-        position:
-          type: number
-          description: The position of the Chapter within the Course
-          example: 1.0
-        description:
-          type: string
-          description: The description of the Chapter
-          example: The first Chapter
-        duration_in_seconds:
-          type: number
-          description: The duration of the Chapter in seconds. This is the sum of the length of the video lessons in the Chapter
-          example: 60.0
-        content_ids:
-          type: array
-          example:
-          - 1
-          - 2
-          - 3
-          items:
-            type: number
-            description: The IDs of the Contents within the Chapter
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

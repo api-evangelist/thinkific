@@ -76,6 +76,50 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Item:
+      type: object
+      properties:
+        product_id:
+          type: number
+          description: Product ID
+          example: 1.0
+        product_name:
+          type: string
+          description: Product name
+          example: My Course
+        amount_dollars:
+          type: number
+          description: Product price in dollars
+          example: 20
+        amount_cents:
+          type: number
+          description: Product price in cents
+          example: 2000
+    GetOrdersResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -111,38 +155,6 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    Item:
-      type: object
-      properties:
-        product_id:
-          type: number
-          description: Product ID
-          example: 1.0
-        product_name:
-          type: string
-          description: Product name
-          example: My Course
-        amount_dollars:
-          type: number
-          description: Product price in dollars
-          example: 20
-        amount_cents:
-          type: number
-          description: Product price in cents
-          example: 2000
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     OrderResponse:
       required:
       - amount_cents
@@ -217,18 +229,6 @@ components:
           type: number
           description: The ID of the Order as an integer.
           example: 1.0
-    GetOrdersResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

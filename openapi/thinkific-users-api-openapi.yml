@@ -275,14 +275,6 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     CustomProfileFieldRequest:
       required:
       - custom_profile_field_definition_id
@@ -384,18 +376,6 @@ components:
           - SSO
           - OPENID_CONNECT
           default: SSO
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     AuthenticationResponse:
       type: object
       properties:
@@ -410,18 +390,60 @@ components:
           type: string
           description: User External Id given by the provider.
           example: abc123
-    GetUsersResponse:
-      required:
-      - items
-      - meta
+    CustomProfileField:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+        id:
+          type: number
+          description: Custom profile field ID
+          example: 1.0
+        value:
+          type: string
+          description: Custom profile field value
+          example: 887 909 9999
+        label:
+          type: string
+          description: Custom profile field label
+          example: Phone
+        custom_profile_field_definition_id:
+          type: number
+          description: Custom profile field definition ID
+          example: 1.0
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     UpdateUserRequest:
       type: object
       properties:
@@ -496,66 +518,6 @@ components:
           description: Custom profile fields for the User.
           items:
             $ref: '#/components/schemas/CustomProfileFieldRequest'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    CustomProfileField:
-      type: object
-      properties:
-        id:
-          type: number
-          description: Custom profile field ID
-          example: 1.0
-        value:
-          type: string
-          description: Custom profile field value
-          example: 887 909 9999
-        label:
-          type: string
-          description: Custom profile field label
-          example: Phone
-        custom_profile_field_definition_id:
-          type: number
-          description: Custom profile field definition ID
-          example: 1.0
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     UserResponse:
       type: object
       properties:
@@ -646,6 +608,44 @@ components:
           description: Custom profile fields for the User.
           items:
             $ref: '#/components/schemas/CustomProfileField'
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    GetUsersResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

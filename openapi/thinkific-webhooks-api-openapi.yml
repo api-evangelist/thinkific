@@ -211,34 +211,6 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorNotFound:
-      type: object
-      example:
-        error: Record not found.
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    Meta:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/Pagination'
-    GetWebhooksResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     WebhookResponse:
       type: object
       properties:
@@ -276,6 +248,10 @@ components:
           type: number
           description: Last User who updated the Webhook
           example: 1.0
+    ErrorNotFound:
+      type: object
+      example:
+        error: Record not found.
     Pagination:
       type: object
       description: Pagination metadata
@@ -300,12 +276,13 @@ components:
           type: number
           description: Number of total pages
           example: 5
-    ValidationError:
+    UnprocessableEntityError:
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     WebhookRequest:
       type: object
       properties:
@@ -319,6 +296,29 @@ components:
             **Note:** A Webhook''s target URL must use SSL encryption (aka use https).
 
             '
+    Meta:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/Pagination'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    GetWebhooksResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
   requestBodies:
     WebhookRequest:
       description: Webhook request type

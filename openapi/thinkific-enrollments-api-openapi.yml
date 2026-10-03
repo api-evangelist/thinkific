@@ -240,113 +240,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    GetEnrollmentsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    CreateEnrollmentRequest:
-      type: object
-      properties:
-        course_id:
-          type: number
-          description: The ID of the Course as an integer.
-          example: 1.0
-        user_id:
-          type: number
-          description: The ID of the User owning the Enrollment as an integer.
-          example: 1.0
-        activated_at:
-          type: string
-          description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
-          format: date-time
-          example: '2018-01-01T01:01:00Z'
-        expiry_date:
-          type: string
-          description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
-          format: date-time
-          example: '2019-01-01T01:01:00Z'
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    UpdateEnrollmentRequest:
-      type: object
-      properties:
-        activated_at:
-          type: string
-          description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
-          format: date-time
-          example: '2018-01-01T01:01:00Z'
-        expiry_date:
-          type: string
-          description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
-          format: date-time
-          example: '2019-01-01T01:01:00Z'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     EnrollmentResponse:
       required:
       - activated_at
@@ -431,6 +324,113 @@ components:
           description: The date/time that the Enrollment expires.
           format: date-time
           example: '2019-01-01T01:01:00Z'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    UpdateEnrollmentRequest:
+      type: object
+      properties:
+        activated_at:
+          type: string
+          description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        expiry_date:
+          type: string
+          description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
+          format: date-time
+          example: '2019-01-01T01:01:00Z'
+    CreateEnrollmentRequest:
+      type: object
+      properties:
+        course_id:
+          type: number
+          description: The ID of the Course as an integer.
+          example: 1.0
+        user_id:
+          type: number
+          description: The ID of the User owning the Enrollment as an integer.
+          example: 1.0
+        activated_at:
+          type: string
+          description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        expiry_date:
+          type: string
+          description: The date/time at which the Enrollment expired. If not provided, the Enrollment does not expire.
+          format: date-time
+          example: '2019-01-01T01:01:00Z'
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    GetEnrollmentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

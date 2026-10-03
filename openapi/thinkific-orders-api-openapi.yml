@@ -84,77 +84,6 @@ components:
           description: item not found error
       example:
         error: Record not found.
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Item:
-      type: object
-      properties:
-        product_id:
-          type: number
-          description: Product ID
-          example: 1.0
-        product_name:
-          type: string
-          description: Product name
-          example: My Course
-        amount_dollars:
-          type: number
-          description: Product price in dollars
-          example: 20
-        amount_cents:
-          type: number
-          description: Product price in cents
-          example: 2000
-    GetOrdersResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
     OrderResponse:
       required:
       - amount_cents
@@ -229,6 +158,77 @@ components:
           type: number
           description: The ID of the Order as an integer.
           example: 1.0
+    GetOrdersResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    Item:
+      type: object
+      properties:
+        product_id:
+          type: number
+          description: Product ID
+          example: 1.0
+        product_name:
+          type: string
+          description: Product name
+          example: My Course
+        amount_dollars:
+          type: number
+          description: Product price in dollars
+          example: 20
+        amount_cents:
+          type: number
+          description: Product price in cents
+          example: 2000
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

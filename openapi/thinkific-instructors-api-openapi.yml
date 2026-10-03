@@ -182,13 +182,33 @@ components:
           description: item not found error
       example:
         error: Record not found.
-    UnprocessableEntityError:
+    Pagination:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     InstructorRequest:
       required:
       - first_name
@@ -228,6 +248,25 @@ components:
           type: string
           description: The email of the Instructor
           example: bob_jones@example.com
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    GetInstructorsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstructorResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     Meta:
       type: object
       properties:
@@ -280,18 +319,12 @@ components:
         created_at:
           type: string
           description: The date/time that the Instructor was created.
-    GetInstructorsResponse:
-      required:
-      - items
-      - meta
+    ValidationError:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/InstructorResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+        field_name:
+          type: string
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -300,39 +333,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

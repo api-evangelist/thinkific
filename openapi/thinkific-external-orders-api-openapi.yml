@@ -95,45 +95,7 @@ paths:
       operationId: postExternalOrdersByIdTransactionsPurchase
       x-operation-id-source: derived
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ExternalOrderTransaction:
-      description: External Order Transaction
-      type: object
-      required:
-      - amount
-      - currency
-      properties:
-        amount:
-          example: 10000
-          type: number
-          description: the order amount in currency's smallest unit
-        currency:
-          type: string
-          example: USD
-          description: the order currency
-        reference:
-          example: 123abc
-          type: string
-          description: reference number provided by external payment provider
-        action:
-          example: purchase
-          type: string
-          description: Action of the transaction
     ExternalOrderRequest:
       type: object
       description: External Order Request
@@ -165,6 +127,44 @@ components:
           description: type of the order
         transaction:
           $ref: '#/components/schemas/ExternalOrderTransaction'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ExternalOrderTransaction:
+      description: External Order Transaction
+      type: object
+      required:
+      - amount
+      - currency
+      properties:
+        amount:
+          example: 10000
+          type: number
+          description: the order amount in currency's smallest unit
+        currency:
+          type: string
+          example: USD
+          description: the order currency
+        reference:
+          example: 123abc
+          type: string
+          description: reference number provided by external payment provider
+        action:
+          example: purchase
+          type: string
+          description: Action of the transaction
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

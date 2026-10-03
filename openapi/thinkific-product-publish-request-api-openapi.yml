@@ -156,65 +156,6 @@ paths:
                 - user_id: not found
 components:
   schemas:
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ProductPublishRequestBody:
-      required:
-      - user_id
-      type: object
-      properties:
-        user_id:
-          type: number
-          description: user responding for publish request
-          example: 100
-        response_text:
-          type: string
-          description: approval or declining message
-          example: Course approved
-        notify_requester:
-          type: boolean
-          description: whether it should notify the user who made the request
-          example: true
-    ProductPublishRequest:
-      required:
-      - product_id
-      - requesting_user_id
-      - status
-      type: object
-      properties:
-        product_id:
-          type: number
-          description: The ID pf the Product as an integer.
-          example: 1.0
-        status:
-          type: string
-          description: The approval status of the Product Publish Request. Can be either 'approved' or 'denied'.
-          example: approved
-        response_text:
-          type: string
-          description: The text of the response provided by the approver.
-          example: Wow! Great course!
-        requesting_user_id:
-          type: number
-          description: The ID of the requesting User as an integer.
-          example: 2.0
-        responding_user_id:
-          type: number
-          description: The ID of the responding User as an integer.
-        completed_at:
-          type: string
-          description: The date/time the Product Publish Request was completed.
-        created_at:
-          type: string
-          description: The date/time the Product Publish Request was created.
-        updated_at:
-          type: string
-          description: The date/time the Product Publish Request was last updated.
     ErrorNotFound:
       type: object
       properties:
@@ -223,31 +164,6 @@ components:
           description: item not found error
       example:
         error: Record not found.
-    GetProductPublishResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
     Pagination:
       type: object
       properties:
@@ -275,12 +191,25 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    ValidationError:
+    GetProductPublishResponse:
+      required:
+      - items
+      - meta
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     PromotionResponse:
       type: object
       properties:
@@ -330,6 +259,77 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
+    ProductPublishRequest:
+      required:
+      - product_id
+      - requesting_user_id
+      - status
+      type: object
+      properties:
+        product_id:
+          type: number
+          description: The ID pf the Product as an integer.
+          example: 1.0
+        status:
+          type: string
+          description: The approval status of the Product Publish Request. Can be either 'approved' or 'denied'.
+          example: approved
+        response_text:
+          type: string
+          description: The text of the response provided by the approver.
+          example: Wow! Great course!
+        requesting_user_id:
+          type: number
+          description: The ID of the requesting User as an integer.
+          example: 2.0
+        responding_user_id:
+          type: number
+          description: The ID of the responding User as an integer.
+        completed_at:
+          type: string
+          description: The date/time the Product Publish Request was completed.
+        created_at:
+          type: string
+          description: The date/time the Product Publish Request was created.
+        updated_at:
+          type: string
+          description: The date/time the Product Publish Request was last updated.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ProductPublishRequestBody:
+      required:
+      - user_id
+      type: object
+      properties:
+        user_id:
+          type: number
+          description: user responding for publish request
+          example: 100
+        response_text:
+          type: string
+          description: approval or declining message
+          example: Course approved
+        notify_requester:
+          type: boolean
+          description: whether it should notify the user who made the request
+          example: true
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

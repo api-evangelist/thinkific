@@ -45,10 +45,6 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorNotFound:
-      type: object
-      example:
-        error: Record not found.
     EventResponse:
       type: object
       properties:
@@ -70,6 +66,10 @@ components:
         payload:
           type: object
           description: A snapshot of the resource's attributes after the event occurrence.
+    ErrorNotFound:
+      type: object
+      example:
+        error: Record not found.
   securitySchemes:
     OAuthAccessToken:
       type: http

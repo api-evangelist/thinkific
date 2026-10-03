@@ -206,14 +206,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     PromotionRequest:
       required:
       - amount
@@ -268,26 +260,14 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ErrorForbiddenAppsNotAvailable:
+    ErrorNotFound:
       type: object
       properties:
         error:
           type: string
-          description: access forbidden
+          description: item not found error
       example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
+        error: Record not found.
     Pagination:
       type: object
       properties:
@@ -315,12 +295,25 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    ValidationError:
+    GetPromotionsResponse:
+      required:
+      - items
+      - meta
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     PromotionResponse:
       type: object
       properties:
@@ -370,18 +363,25 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    GetPromotionsResponse:
-      required:
-      - items
-      - meta
+    Meta:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

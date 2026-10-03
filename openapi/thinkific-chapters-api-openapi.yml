@@ -88,14 +88,18 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorNotFound:
+    GetContentsResponse:
+      required:
+      - items
+      - meta
       type: object
       properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ChapterResponse:
       required:
       - content_ids
@@ -133,23 +137,54 @@ components:
           items:
             type: number
             description: The IDs of the Contents within the Chapter
-    GetContentsResponse:
-      required:
-      - items
-      - meta
+    ErrorNotFound:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     Meta:
       type: object
       properties:
         pagination:
           $ref: '#/components/schemas/Pagination'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
     ContentResponse:
       required:
       - chapter_id
@@ -203,41 +238,6 @@ components:
           type: string
           description: The url of the Content in the Course Player
           example: http://somesite.thinkific.com/courses/take/xxx/yyy
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

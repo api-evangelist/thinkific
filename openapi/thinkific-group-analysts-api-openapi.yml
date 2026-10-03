@@ -112,6 +112,12 @@ paths:
                   - Could not find group with ID 1.
 components:
   schemas:
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     ErrorNotFound:
       type: object
       properties:
@@ -148,12 +154,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

@@ -46,63 +46,7 @@ paths:
         403:
           $ref: '#/components/responses/ErrorForbiddenAppsNotAvailableResponse'
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
-    CustomProfileFieldDefinitionsResponse:
-      required:
-      - field_type
-      - id
-      - label
-      - required
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Custom Profile Field Definition as an integer.
-          example: 1.0
-        label:
-          type: string
-          description: The label of the Custom Profile Field Definition.
-          example: Phone
-        field_type:
-          type: string
-          description: The Course's Product ID as an integer.
-          example: '1'
-        required:
-          type: boolean
-          description: A boolean indicating whether the Custom Profile Field Definition is required.
-          example: true
-    GetCustomProfileFieldDefinitions:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomProfileFieldDefinitionsResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
     Pagination:
       type: object
       properties:
@@ -130,6 +74,62 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
+    CustomProfileFieldDefinitionsResponse:
+      required:
+      - field_type
+      - id
+      - label
+      - required
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Custom Profile Field Definition as an integer.
+          example: 1.0
+        label:
+          type: string
+          description: The label of the Custom Profile Field Definition.
+          example: Phone
+        field_type:
+          type: string
+          description: The Course's Product ID as an integer.
+          example: '1'
+        required:
+          type: boolean
+          description: A boolean indicating whether the Custom Profile Field Definition is required.
+          example: true
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    GetCustomProfileFieldDefinitions:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomProfileFieldDefinitionsResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

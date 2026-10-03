@@ -55,6 +55,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -63,12 +69,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     CreateGroupUsersRequest:
       required:
       - group_names

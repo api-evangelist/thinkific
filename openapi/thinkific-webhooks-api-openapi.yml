@@ -248,10 +248,23 @@ components:
           type: number
           description: Last User who updated the Webhook
           example: 1.0
-    ErrorNotFound:
+    Meta:
       type: object
-      example:
-        error: Record not found.
+      properties:
+        page:
+          $ref: '#/components/schemas/Pagination'
+    GetWebhooksResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     Pagination:
       type: object
       description: Pagination metadata
@@ -296,29 +309,16 @@ components:
             **Note:** A Webhook''s target URL must use SSL encryption (aka use https).
 
             '
-    Meta:
+    ErrorNotFound:
       type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/Pagination'
+      example:
+        error: Record not found.
     ValidationError:
       type: object
       properties:
         field_name:
           type: string
           description: validation error
-    GetWebhooksResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
   requestBodies:
     WebhookRequest:
       description: Webhook request type

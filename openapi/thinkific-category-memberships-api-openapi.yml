@@ -86,14 +86,6 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -115,6 +107,14 @@ components:
           items:
             type: number
             description: An array of the IDs of the Products that should be added to the Category as integers
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

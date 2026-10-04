@@ -206,6 +206,11 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     PromotionRequest:
       required:
       - amount
@@ -260,14 +265,6 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     Pagination:
       type: object
       properties:
@@ -295,18 +292,6 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    GetPromotionsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     UnprocessableEntityError:
       type: object
       properties:
@@ -363,17 +348,14 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    Meta:
+    ErrorNotFound:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ValidationError:
-      type: object
-      properties:
-        field_name:
+        error:
           type: string
-          description: validation error
+          description: item not found error
+      example:
+        error: Record not found.
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -382,6 +364,24 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    GetPromotionsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

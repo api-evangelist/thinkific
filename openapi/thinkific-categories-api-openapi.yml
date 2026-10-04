@@ -294,25 +294,93 @@ components:
           description: The three-letter ISO currency code of the Product Price. Must be a supported currency.
           example: usd
           default: usd
-    CollectionRequest:
-      required:
-      - description
-      - name
-      - slug
+    Meta:
       type: object
       properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    CollectionResponse:
+      required:
+      - created_at
+      - default
+      - description
+      - id
+      - name
+      - product_ids
+      type: object
+      properties:
+        id:
+          type: number
+          description: The ID of the Category as an integer
+          example: 1.0
         name:
           type: string
           description: The name of the Category
-          example: My Category
+          example: All Courses
         description:
           type: string
           description: The description of the Category
-          example: This is a description of my category
+          example: All the Courses in the Site
         slug:
           type: string
-          description: The slug of the Category.
-          example: my-category
+          description: courses (string, required) - The slug of the Category
+          example: all
+        created_at:
+          type: string
+          description: The date and time when the Category was created
+          format: date-time
+          example: '2018-01-01T01:01:00Z'
+        product_ids:
+          type: array
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+            description: The IDs of the Products contained within the Category
+        default:
+          type: boolean
+          description: A boolean indicating whether the Category is the default
+          example: true
+    GetProductsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ProductResponse:
       type: object
       properties:
@@ -415,6 +483,29 @@ components:
           description: The Product Price objects for the Product.
           items:
             $ref: '#/components/schemas/ProductPriceResponse'
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
     GetCollectionsResponse:
       required:
       - items
@@ -427,122 +518,31 @@ components:
             $ref: '#/components/schemas/CollectionResponse'
         meta:
           $ref: '#/components/schemas/Meta'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
-    CollectionResponse:
-      required:
-      - created_at
-      - default
-      - description
-      - id
-      - name
-      - product_ids
-      type: object
-      properties:
-        id:
-          type: number
-          description: The ID of the Category as an integer
-          example: 1.0
-        name:
-          type: string
-          description: The name of the Category
-          example: All Courses
-        description:
-          type: string
-          description: The description of the Category
-          example: All the Courses in the Site
-        slug:
-          type: string
-          description: courses (string, required) - The slug of the Category
-          example: all
-        created_at:
-          type: string
-          description: The date and time when the Category was created
-          format: date-time
-          example: '2018-01-01T01:01:00Z'
-        product_ids:
-          type: array
-          example:
-          - 1
-          - 2
-          items:
-            type: number
-            description: The IDs of the Products contained within the Category
-        default:
-          type: boolean
-          description: A boolean indicating whether the Category is the default
-          example: true
-    GetProductsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
     ValidationError:
       type: object
       properties:
         field_name:
           type: string
           description: validation error
-    ErrorForbiddenAppsNotAvailable:
+    CollectionRequest:
+      required:
+      - description
+      - name
+      - slug
       type: object
       properties:
-        error:
+        name:
           type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
+          description: The name of the Category
+          example: My Category
+        description:
+          type: string
+          description: The description of the Category
+          example: This is a description of my category
+        slug:
+          type: string
+          description: The slug of the Category.
+          example: my-category
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

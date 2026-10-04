@@ -249,48 +249,11 @@ paths:
                   - Could not find group with ID 1.
 components:
   schemas:
-    GetGroupsResponse:
-      required:
-      - items
-      - meta
+    Meta:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    GroupAddAnalystRequest:
-      required:
-      - user_ids
-      type: object
-      properties:
-        user_ids:
-          type: array
-          description: The list of User IDs to add as analysts to the Group
-          example:
-          - 1
-          - 2
-          items:
-            type: number
-    GroupRequest:
-      required:
-      - name
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the Group
-          example: New Group 1
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:
@@ -331,6 +294,44 @@ components:
           - 2
           items:
             type: number
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    GroupRequest:
+      required:
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the Group
+          example: New Group 1
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     GroupResponse:
       required:
       - id
@@ -356,32 +357,31 @@ components:
           description: The date/time the Group was created
           format: date-time
           example: '2019-01-01T01:01:00Z'
-    UnprocessableEntityError:
+    GroupAddAnalystRequest:
+      required:
+      - user_ids
       type: object
       properties:
-        errors:
+        user_ids:
+          type: array
+          description: The list of User IDs to add as analysts to the Group
+          example:
+          - 1
+          - 2
+          items:
+            type: number
+    GetGroupsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
+            $ref: '#/components/schemas/GroupResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

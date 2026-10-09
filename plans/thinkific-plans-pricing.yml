@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Thinkific Plans and Pricing
 description: Pricing plans for the Thinkific online course platform with API access details
 version: '0.1'
@@ -75,3 +79,34 @@ notes: >
   API and webhook access requires the Grow plan ($199/month) or higher. Transaction fees apply
   when using external Stripe instead of Thinkific Payments. A 30-day free trial is available
   on Basic, Start, and Grow plans.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Start
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Grow
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Expand
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Plus
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []

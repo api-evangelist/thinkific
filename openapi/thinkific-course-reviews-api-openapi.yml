@@ -132,11 +132,21 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    Meta:
+    UnprocessableEntityError:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
     CourseReviewResponse:
       required:
       - approved
@@ -181,6 +191,23 @@ components:
           description: The date and time the Course Review was created.
           format: date-time
           example: '2017-04-30T01:00:00Z'
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    GetCourseReviewsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CourseReviewResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     Pagination:
       type: object
       properties:
@@ -237,33 +264,12 @@ components:
           type: boolean
           description: A boolean indicating whether the Course Review has been approved.
           example: true
-    UnprocessableEntityError:
+    ValidationError:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
+        field_name:
           type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    GetCourseReviewsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CourseReviewResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -272,12 +278,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

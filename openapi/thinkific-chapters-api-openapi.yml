@@ -88,18 +88,6 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    GetContentsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
     ContentResponse:
       required:
       - chapter_id
@@ -153,38 +141,6 @@ components:
           type: string
           description: The url of the Content in the Course Player
           example: http://somesite.thinkific.com/courses/take/xxx/yyy
-    Meta:
-      type: object
-      properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Pagination:
-      type: object
-      properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
-          type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
     ChapterResponse:
       required:
       - content_ids
@@ -230,6 +186,50 @@ components:
           description: item not found error
       example:
         error: Record not found.
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
+    GetContentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:

@@ -275,35 +275,49 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    Meta:
+    UnprocessableEntityError:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    UpdateUserRequest:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    UserResponse:
       type: object
       properties:
+        id:
+          type: number
+          description: User's ID
+          example: 1.0
+        created_at:
+          type: string
+          description: User's created date
+          format: date-time
+          example: '2018-07-12T23:19:00.154Z'
         first_name:
           type: string
-          description: 'User''s first name '
+          description: The first name of the User.
           example: Bob
         last_name:
           type: string
-          description: User's last name
+          description: The last name of the User.
           example: Smith
+        full_name:
+          type: string
+          description: The email of the User.
+          example: Bob Smith
+        company:
+          type: string
+          description: The company of the User.
+          example: The user's company
         email:
           type: string
-          description: User's email. This can only be updated by private integrations.
+          description: User's email
           format: email
           example: bob@example.com
-        password:
-          minLength: 6
-          type: string
-          description: The password of the User.
-          example: password
         roles:
           type: array
-          description: User's roles
+          description: 'Any specific roles that the User should be placed in. Possible roles are: affiliate, course_admin, group_analyst, site_admin.'
           example:
           - affiliate
           items:
@@ -319,41 +333,90 @@ components:
           example: https://example.com/avatar/123
         bio:
           type: string
-          description: User's bio
-          example: The user's bio
-        company:
-          type: string
-          description: User's Company Name
-          example: The user's company
+          description: The bio of the User.
+          example: User's bio
         headline:
           type: string
-          description: User's headline
-          example: The user's job title
+          description: The headline/title of the User.
+          example: User's headline
+        affiliate_code:
+          type: string
+          description: The affiliate code of the User. ** Required only if the User is an affiliate. **
+          example: abc123
         external_source:
           type: string
           description: User's external source
-          example: The external source that the user was created from
-        affiliate_code:
-          type: string
-          description: User's affiliate code
-          example: abc123
         affiliate_commission:
           type: number
-          description: Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100 if the type is percentage or lower than 9999.99 if is a fixed type.
+          description: The affiliate commission % of the User. ** Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100. **
           example: 20.0
         affiliate_commission_type:
           type: string
-          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). Required only if the User is an affiliate.
+          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). ** Required only if the User is an affiliate. **
           example: '%'
         affiliate_payout_email:
           type: string
-          description: The email of the User. Required only if the user is an affiliate. Used to pay the User out.
+          description: The email of the User. ** Required only if the user is an affiliate. Used to pay the User out. **
           example: bob@example.com
+        administered_course_ids:
+          type: array
+          description: User's administered course ids
+          items:
+            type: number
+            example:
+            - 10
+            - 20
+            - 30
         custom_profile_fields:
           type: array
           description: Custom profile fields for the User.
           items:
-            $ref: '#/components/schemas/CustomProfileFieldRequest'
+            $ref: '#/components/schemas/CustomProfileField'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    CustomProfileField:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Custom profile field ID
+          example: 1.0
+        value:
+          type: string
+          description: Custom profile field value
+          example: 887 909 9999
+        label:
+          type: string
+          description: Custom profile field label
+          example: Phone
+        custom_profile_field_definition_id:
+          type: number
+          description: Custom profile field definition ID
+          example: 1.0
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    CustomProfileFieldRequest:
+      required:
+      - custom_profile_field_definition_id
+      type: object
+      properties:
+        value:
+          type: string
+          description: Custom profile field value
+          example: 887 909 9999
+        custom_profile_field_definition_id:
+          type: number
+          description: Custom profile field definition id
+          example: 1.0
     Pagination:
       type: object
       properties:
@@ -381,67 +444,6 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    CustomProfileFieldRequest:
-      required:
-      - custom_profile_field_definition_id
-      type: object
-      properties:
-        value:
-          type: string
-          description: Custom profile field value
-          example: 887 909 9999
-        custom_profile_field_definition_id:
-          type: number
-          description: Custom profile field definition id
-          example: 1.0
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    AuthenticationResponse:
-      type: object
-      properties:
-        provider:
-          type: string
-          enum:
-          - SSO
-          - OPENID_CONNECT
-          description: Authentication provider associated with the user.
-          example: OPENID_CONNECT
-        external_id:
-          type: string
-          description: User External Id given by the provider.
-          example: abc123
-    CustomProfileField:
-      type: object
-      properties:
-        id:
-          type: number
-          description: Custom profile field ID
-          example: 1.0
-        value:
-          type: string
-          description: Custom profile field value
-          example: 887 909 9999
-        label:
-          type: string
-          description: Custom profile field label
-          example: Phone
-        custom_profile_field_definition_id:
-          type: number
-          description: Custom profile field definition ID
-          example: 1.0
     GetUsersResponse:
       required:
       - items
@@ -542,48 +544,30 @@ components:
           - SSO
           - OPENID_CONNECT
           default: SSO
-    ValidationError:
+    UpdateUserRequest:
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
-    UserResponse:
-      type: object
-      properties:
-        id:
-          type: number
-          description: User's ID
-          example: 1.0
-        created_at:
-          type: string
-          description: User's created date
-          format: date-time
-          example: '2018-07-12T23:19:00.154Z'
         first_name:
           type: string
-          description: The first name of the User.
+          description: 'User''s first name '
           example: Bob
         last_name:
           type: string
-          description: The last name of the User.
+          description: User's last name
           example: Smith
-        full_name:
-          type: string
-          description: The email of the User.
-          example: Bob Smith
-        company:
-          type: string
-          description: The company of the User.
-          example: The user's company
         email:
           type: string
-          description: User's email
+          description: User's email. This can only be updated by private integrations.
           format: email
           example: bob@example.com
+        password:
+          minLength: 6
+          type: string
+          description: The password of the User.
+          example: password
         roles:
           type: array
-          description: 'Any specific roles that the User should be placed in. Possible roles are: affiliate, course_admin, group_analyst, site_admin.'
+          description: User's roles
           example:
           - affiliate
           items:
@@ -599,45 +583,47 @@ components:
           example: https://example.com/avatar/123
         bio:
           type: string
-          description: The bio of the User.
-          example: User's bio
+          description: User's bio
+          example: The user's bio
+        company:
+          type: string
+          description: User's Company Name
+          example: The user's company
         headline:
           type: string
-          description: The headline/title of the User.
-          example: User's headline
-        affiliate_code:
-          type: string
-          description: The affiliate code of the User. ** Required only if the User is an affiliate. **
-          example: abc123
+          description: User's headline
+          example: The user's job title
         external_source:
           type: string
           description: User's external source
+          example: The external source that the user was created from
+        affiliate_code:
+          type: string
+          description: User's affiliate code
+          example: abc123
         affiliate_commission:
           type: number
-          description: The affiliate commission % of the User. ** Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100. **
+          description: Required only if the User is an affiliate. This should be greater than 0 and less than or equal to 100 if the type is percentage or lower than 9999.99 if is a fixed type.
           example: 20.0
         affiliate_commission_type:
           type: string
-          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). ** Required only if the User is an affiliate. **
+          description: The affiliate payout type, it can be either % (percentage, default) or $ (fixed amount). Required only if the User is an affiliate.
           example: '%'
         affiliate_payout_email:
           type: string
-          description: The email of the User. ** Required only if the user is an affiliate. Used to pay the User out. **
+          description: The email of the User. Required only if the user is an affiliate. Used to pay the User out.
           example: bob@example.com
-        administered_course_ids:
-          type: array
-          description: User's administered course ids
-          items:
-            type: number
-            example:
-            - 10
-            - 20
-            - 30
         custom_profile_fields:
           type: array
           description: Custom profile fields for the User.
           items:
-            $ref: '#/components/schemas/CustomProfileField'
+            $ref: '#/components/schemas/CustomProfileFieldRequest'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -646,6 +632,20 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
+    AuthenticationResponse:
+      type: object
+      properties:
+        provider:
+          type: string
+          enum:
+          - SSO
+          - OPENID_CONNECT
+          description: Authentication provider associated with the user.
+          example: OPENID_CONNECT
+        external_id:
+          type: string
+          description: User External Id given by the provider.
+          example: abc123
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

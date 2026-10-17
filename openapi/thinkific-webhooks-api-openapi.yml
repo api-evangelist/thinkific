@@ -211,6 +211,77 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      example:
+        error: Record not found.
+    WebhookRequest:
+      type: object
+      properties:
+        topic:
+          type: string
+          description: The topic that the Webhook will be listening for.
+        target_url:
+          type: string
+          description: 'The destination URL which should receive the events.<br />
+
+            **Note:** A Webhook''s target URL must use SSL encryption (aka use https).
+
+            '
+    Meta:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/Pagination'
+    Pagination:
+      type: object
+      description: Pagination metadata
+      properties:
+        has_next:
+          type: boolean
+          description: indicate if there is a next page
+          example: 1.0
+        next_page:
+          type: string
+          description: Next page identifier
+          example: '20190807141006328188121'
+        page_items:
+          type: number
+          description: Number of total items
+          example: 2
+        total_items:
+          type: number
+          description: Number of total of items
+          example: 10
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 5
+    GetWebhooksResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     WebhookResponse:
       type: object
       properties:
@@ -248,77 +319,6 @@ components:
           type: number
           description: Last User who updated the Webhook
           example: 1.0
-    Meta:
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/Pagination'
-    GetWebhooksResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/WebhookResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    Pagination:
-      type: object
-      description: Pagination metadata
-      properties:
-        has_next:
-          type: boolean
-          description: indicate if there is a next page
-          example: 1.0
-        next_page:
-          type: string
-          description: Next page identifier
-          example: '20190807141006328188121'
-        page_items:
-          type: number
-          description: Number of total items
-          example: 2
-        total_items:
-          type: number
-          description: Number of total of items
-          example: 10
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 5
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    WebhookRequest:
-      type: object
-      properties:
-        topic:
-          type: string
-          description: The topic that the Webhook will be listening for.
-        target_url:
-          type: string
-          description: 'The destination URL which should receive the events.<br />
-
-            **Note:** A Webhook''s target URL must use SSL encryption (aka use https).
-
-            '
-    ErrorNotFound:
-      type: object
-      example:
-        error: Record not found.
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
   requestBodies:
     WebhookRequest:
       description: Webhook request type

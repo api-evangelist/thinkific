@@ -127,14 +127,6 @@ components:
           description: type of the order
         transaction:
           $ref: '#/components/schemas/ExternalOrderTransaction'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
     ExternalOrderTransaction:
       description: External Order Transaction
       type: object
@@ -158,6 +150,14 @@ components:
           example: purchase
           type: string
           description: Action of the transaction
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

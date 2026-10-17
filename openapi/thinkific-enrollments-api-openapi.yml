@@ -240,17 +240,36 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    CreateEnrollmentRequest:
+    UnprocessableEntityError:
       type: object
       properties:
-        course_id:
-          type: number
-          description: The ID of the Course as an integer.
-          example: 1.0
-        user_id:
-          type: number
-          description: The ID of the User owning the Enrollment as an integer.
-          example: 1.0
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    GetEnrollmentsResponse:
+      required:
+      - items
+      - meta
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrollmentResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    UpdateEnrollmentRequest:
+      type: object
+      properties:
         activated_at:
           type: string
           description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.
@@ -377,33 +396,12 @@ components:
           description: The date/time that the Enrollment expires.
           format: date-time
           example: '2019-01-01T01:01:00Z'
-    UnprocessableEntityError:
+    ValidationError:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
+        field_name:
           type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    GetEnrollmentsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/EnrollmentResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -412,15 +410,17 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
+    CreateEnrollmentRequest:
       type: object
       properties:
-        field_name:
-          type: string
-          description: validation error
-    UpdateEnrollmentRequest:
-      type: object
-      properties:
+        course_id:
+          type: number
+          description: The ID of the Course as an integer.
+          example: 1.0
+        user_id:
+          type: number
+          description: The ID of the User owning the Enrollment as an integer.
+          example: 1.0
         activated_at:
           type: string
           description: The date/time at which the Enrollment is activated. If not provided, the Enrollment is a free trial.

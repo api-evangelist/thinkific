@@ -217,6 +217,13 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ProductPriceResponse:
       type: object
       properties:
@@ -294,38 +301,45 @@ components:
           description: The three-letter ISO currency code of the Product Price. Must be a supported currency.
           example: usd
           default: usd
-    Meta:
+    GetCollectionsResponse:
+      required:
+      - items
+      - meta
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    Pagination:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CollectionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    CollectionRequest:
+      required:
+      - description
+      - name
+      - slug
       type: object
       properties:
-        current_page:
-          type: number
-          description: Current page number
-          example: 1.0
-        next_page:
-          type: number
-          description: Next page number
-          example: 2.0
-        prev_page:
-          type: number
-          description: Previous page number
-        total_pages:
-          type: number
-          description: Number of total pages
-          example: 10.0
-        total_items:
-          type: number
-          description: Number of total items
-          example: 250.0
-        entries_info:
+        name:
           type: string
-          description: Entries info
-          example: 1-10 of 10
-      description: Pagination metadata
+          description: The name of the Category
+          example: My Category
+        description:
+          type: string
+          description: The description of the Category
+          example: This is a description of my category
+        slug:
+          type: string
+          description: The slug of the Category.
+          example: my-category
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
     CollectionResponse:
       required:
       - created_at
@@ -369,18 +383,11 @@ components:
           type: boolean
           description: A boolean indicating whether the Category is the default
           example: true
-    GetProductsResponse:
-      required:
-      - items
-      - meta
+    Meta:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProductResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     ProductResponse:
       type: object
       properties:
@@ -483,30 +490,7 @@ components:
           description: The Product Price objects for the Product.
           items:
             $ref: '#/components/schemas/ProductPriceResponse'
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    GetCollectionsResponse:
+    GetProductsResponse:
       required:
       - items
       - meta
@@ -515,34 +499,50 @@ components:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/CollectionResponse'
+            $ref: '#/components/schemas/ProductResponse'
         meta:
           $ref: '#/components/schemas/Meta'
+    Pagination:
+      type: object
+      properties:
+        current_page:
+          type: number
+          description: Current page number
+          example: 1.0
+        next_page:
+          type: number
+          description: Next page number
+          example: 2.0
+        prev_page:
+          type: number
+          description: Previous page number
+        total_pages:
+          type: number
+          description: Number of total pages
+          example: 10.0
+        total_items:
+          type: number
+          description: Number of total items
+          example: 250.0
+        entries_info:
+          type: string
+          description: Entries info
+          example: 1-10 of 10
+      description: Pagination metadata
     ValidationError:
       type: object
       properties:
         field_name:
           type: string
           description: validation error
-    CollectionRequest:
-      required:
-      - description
-      - name
-      - slug
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
-        name:
+        error:
           type: string
-          description: The name of the Category
-          example: My Category
-        description:
-          type: string
-          description: The description of the Category
-          example: This is a description of my category
-        slug:
-          type: string
-          description: The slug of the Category.
-          example: my-category
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

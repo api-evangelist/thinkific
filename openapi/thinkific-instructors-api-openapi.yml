@@ -174,50 +174,13 @@ paths:
                 $ref: '#/components/schemas/ErrorNotFound'
 components:
   schemas:
-    Meta:
+    UnprocessableEntityError:
       type: object
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    InstructorRequest:
-      required:
-      - first_name
-      - last_name
-      - slug
-      type: object
-      properties:
-        user_id:
-          type: number
-          description: The ID of the User owning the Instructor
-          example: 12.0
-        title:
-          type: string
-          description: The title of the Instructor
-          example: Mr.
-        first_name:
-          type: string
-          description: The first name of the Instructor
-          example: Bob
-        last_name:
-          type: string
-          description: The last name of the Instructor
-          example: Jones
-        bio:
-          type: string
-          description: The bio of the Instructor
-          example: Bob Jones is an instructor of note.
-        slug:
-          type: string
-          description: 'The slug of the Instructor NOTE: This will be removed in future API versions'
-          example: bob
-        avatar_url:
-          type: string
-          description: The fully-qualified url of the Instructor's avatar
-          example: https://example.com/avatar.png
-        email:
-          type: string
-          description: The email of the Instructor
-          example: bob_jones@example.com
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
     InstructorResponse:
       required:
       - created_at
@@ -265,6 +228,58 @@ components:
         created_at:
           type: string
           description: The date/time that the Instructor was created.
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    InstructorRequest:
+      required:
+      - first_name
+      - last_name
+      - slug
+      type: object
+      properties:
+        user_id:
+          type: number
+          description: The ID of the User owning the Instructor
+          example: 12.0
+        title:
+          type: string
+          description: The title of the Instructor
+          example: Mr.
+        first_name:
+          type: string
+          description: The first name of the Instructor
+          example: Bob
+        last_name:
+          type: string
+          description: The last name of the Instructor
+          example: Jones
+        bio:
+          type: string
+          description: The bio of the Instructor
+          example: Bob Jones is an instructor of note.
+        slug:
+          type: string
+          description: 'The slug of the Instructor NOTE: This will be removed in future API versions'
+          example: bob
+        avatar_url:
+          type: string
+          description: The fully-qualified url of the Instructor's avatar
+          example: https://example.com/avatar.png
+        email:
+          type: string
+          description: The email of the Instructor
+          example: bob_jones@example.com
+    Meta:
+      type: object
+      properties:
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     Pagination:
       type: object
       properties:
@@ -292,21 +307,6 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
     GetInstructorsResponse:
       required:
       - items
@@ -319,6 +319,12 @@ components:
             $ref: '#/components/schemas/InstructorResponse'
         meta:
           $ref: '#/components/schemas/Meta'
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -327,12 +333,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

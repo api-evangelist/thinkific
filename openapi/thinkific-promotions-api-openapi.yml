@@ -206,6 +206,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
     Meta:
       type: object
       properties:
@@ -292,13 +307,18 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    UnprocessableEntityError:
+    GetPromotionsResponse:
+      required:
+      - items
+      - meta
       type: object
       properties:
-        errors:
+        items:
           type: array
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/PromotionResponse'
+        meta:
+          $ref: '#/components/schemas/Meta'
     PromotionResponse:
       type: object
       properties:
@@ -348,14 +368,12 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    ErrorNotFound:
+    ValidationError:
       type: object
       properties:
-        error:
+        field_name:
           type: string
-          description: item not found error
-      example:
-        error: Record not found.
+          description: validation error
     ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
@@ -364,24 +382,6 @@ components:
           description: access forbidden
       example:
         error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
-    GetPromotionsResponse:
-      required:
-      - items
-      - meta
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromotionResponse'
-        meta:
-          $ref: '#/components/schemas/Meta'
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

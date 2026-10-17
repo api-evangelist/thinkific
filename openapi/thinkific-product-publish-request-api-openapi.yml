@@ -156,6 +156,21 @@ paths:
                 - user_id: not found
 components:
   schemas:
+    UnprocessableEntityError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
     ProductPublishRequest:
       required:
       - product_id
@@ -191,6 +206,23 @@ components:
         updated_at:
           type: string
           description: The date/time the Product Publish Request was last updated.
+    ProductPublishRequestBody:
+      required:
+      - user_id
+      type: object
+      properties:
+        user_id:
+          type: number
+          description: user responding for publish request
+          example: 100
+        response_text:
+          type: string
+          description: approval or declining message
+          example: Course approved
+        notify_requester:
+          type: boolean
+          description: whether it should notify the user who made the request
+          example: true
     Meta:
       type: object
       properties:
@@ -223,13 +255,6 @@ components:
           description: Entries info
           example: 1-10 of 10
       description: Pagination metadata
-    UnprocessableEntityError:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
     PromotionResponse:
       type: object
       properties:
@@ -279,14 +304,20 @@ components:
           type: number
           description: The duration for which the Promotion is applied. ** This value only applies to Promotions set on Products that are set as subscriptions or Payment Plans. **
           example: 3.0
-    ErrorNotFound:
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorForbiddenAppsNotAvailable:
       type: object
       properties:
         error:
           type: string
-          description: item not found error
+          description: access forbidden
       example:
-        error: Record not found.
+        error: Access to Apps is not available on your plan. Upgrade to gain access
     GetProductPublishResponse:
       required:
       - items
@@ -299,37 +330,6 @@ components:
             $ref: '#/components/schemas/PromotionResponse'
         meta:
           $ref: '#/components/schemas/Meta'
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ProductPublishRequestBody:
-      required:
-      - user_id
-      type: object
-      properties:
-        user_id:
-          type: number
-          description: user responding for publish request
-          example: 100
-        response_text:
-          type: string
-          description: approval or declining message
-          example: Course approved
-        notify_requester:
-          type: boolean
-          description: whether it should notify the user who made the request
-          example: true
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
   responses:
     ErrorForbiddenAppsNotAvailableResponse:
       description: Access Forbidden

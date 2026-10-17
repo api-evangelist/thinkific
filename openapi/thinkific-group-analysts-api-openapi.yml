@@ -111,13 +111,6 @@ paths:
                   group_id:
                   - Could not find group with ID 1.
 components:
-  responses:
-    ErrorForbiddenAppsNotAvailableResponse:
-      description: Access Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   schemas:
     UnprocessableEntityError:
       type: object
@@ -126,28 +119,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ValidationError'
-    ErrorNotFound:
-      type: object
-      properties:
-        error:
-          type: string
-          description: item not found error
-      example:
-        error: Record not found.
-    ErrorForbiddenAppsNotAvailable:
-      type: object
-      properties:
-        error:
-          type: string
-          description: access forbidden
-      example:
-        error: Access to Apps is not available on your plan. Upgrade to gain access
-    ValidationError:
-      type: object
-      properties:
-        field_name:
-          type: string
-          description: validation error
     GroupAnalystsAddGroupRequest:
       required:
       - group_ids
@@ -161,6 +132,35 @@ components:
           - 2
           items:
             type: number
+    ErrorNotFound:
+      type: object
+      properties:
+        error:
+          type: string
+          description: item not found error
+      example:
+        error: Record not found.
+    ValidationError:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: validation error
+    ErrorForbiddenAppsNotAvailable:
+      type: object
+      properties:
+        error:
+          type: string
+          description: access forbidden
+      example:
+        error: Access to Apps is not available on your plan. Upgrade to gain access
+  responses:
+    ErrorForbiddenAppsNotAvailableResponse:
+      description: Access Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorForbiddenAppsNotAvailable'
   securitySchemes:
     OAuthAccessToken:
       type: http

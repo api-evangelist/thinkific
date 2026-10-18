@@ -83,7 +83,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: thinkific-fivetran
   label: Fivetran
@@ -109,7 +109,7 @@
     - connectors/applications/thinkific
     vendor_link: https://www.thinkific.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: thinkific-meltano
   label: Meltano
@@ -138,7 +138,7 @@
     quality:
     - silver
     builder: 'community (Meltano Hub variant maintainers: birdiecare)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: thinkific-zoom-own
   label: Zoom (own)
